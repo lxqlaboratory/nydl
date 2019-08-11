@@ -1,27 +1,12 @@
 <template>
   <div class="navbar">
-    <hamburger :is-active="sidebar.opened" class="hamburger-container" @toggleClick="toggleSideBar" />
-
     <breadcrumb class="breadcrumb-container" />
-
     <div class="right-menu">
-      <el-dropdown class="avatar-container" trigger="click">
+      <el-dropdown class="avatar-container"  style="position: absolute;right: 1%;top:-2px;float: right" trigger="click">
         <div class="avatar-wrapper">
-          <img :src="avatar+'?imageView2/1/w/80/h/80'" class="user-avatar">
-          <i class="el-icon-caret-bottom" />
+          <span style="font-size: 20px;color: black">{{this.perName}}</span>
         </div>
-        <el-dropdown-menu slot="dropdown" class="user-dropdown">
-          <router-link to="/">
-            <el-dropdown-item>
-              Home
-            </el-dropdown-item>
-          </router-link>
-          <a target="_blank" href="https://github.com/PanJiaChen/vue-admin-template/">
-            <el-dropdown-item>Github</el-dropdown-item>
-          </a>
-          <a target="_blank" href="https://panjiachen.github.io/vue-element-admin-site/#/">
-            <el-dropdown-item>Docs</el-dropdown-item>
-          </a>
+        <el-dropdown-menu slot="dropdown" class="user-dropdown" style="margin-top: 0px">
           <el-dropdown-item divided>
             <span style="display:block;" @click="logout">Log Out</span>
           </el-dropdown-item>
@@ -32,27 +17,28 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+  import { initMenu } from '@/api/login'
 import Breadcrumb from '@/components/Breadcrumb'
-import Hamburger from '@/components/Hamburger'
-
 export default {
-  components: {
-    Breadcrumb,
-    Hamburger
+
+  data() {
+    return {
+      perName: ''
+    }
   },
-  computed: {
-    ...mapGetters([
-      'sidebar',
-      'avatar'
-    ])
+  created() {
+    this.fetchData()
+  },
+  components: {
+    Breadcrumb
   },
   methods: {
-    toggleSideBar() {
-      this.$store.dispatch('app/toggleSideBar')
+    fetchData() {
+      initMenu().then(res => {
+        this.perName = res.data.perName
+      })
     },
     async logout() {
-      await this.$store.dispatch('user/logout')
       this.$router.push(`/login?redirect=${this.$route.fullPath}`)
     }
   }
@@ -112,25 +98,25 @@ export default {
     }
 
     .avatar-container {
-      margin-right: 30px;
-
+      margin-right: 0px;
+      &:hover{
+        background: #99a9bf;
+      }
       .avatar-wrapper {
-        margin-top: 5px;
+        cursor: pointer;
+        margin-top: 0px;
+        margin-left: 10px;
+        margin-right: 10px;
         position: relative;
 
+        &:hover{
+          background: #99a9bf;
+        }
         .user-avatar {
-          cursor: pointer;
+          /*cursor: pointer;*/
           width: 40px;
           height: 40px;
-          border-radius: 10px;
-        }
-
-        .el-icon-caret-bottom {
-          cursor: pointer;
-          position: absolute;
-          right: -20px;
-          top: 25px;
-          font-size: 12px;
+          border-radius: 50%;
         }
       }
     }
