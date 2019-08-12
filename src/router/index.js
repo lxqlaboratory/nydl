@@ -126,7 +126,7 @@ export const constantRoutes = [
         path: 'txzqbg',
         component: () => import('@/views/pages/txzqbg'),
         name: 'txzqbg',
-        meta: { title: '填写中期报告', icon: 'form', roles: ['30'] }
+        meta: { title: '填写项目中期报告', icon: 'form', roles: ['30'] }
       },
       {
         path: 'txxmjtbg',
