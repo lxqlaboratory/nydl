@@ -7,3 +7,11 @@ export function fillProjectTrainningReportInit(data) {
     data
   })
 }
+
+export function fillProjectTrainningReport(data) {
+  return request({
+    url: '/nydlWeb/fillProjectTrainningReport',
+    method: 'POST',
+    data
+  })
+}

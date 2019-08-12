@@ -16,7 +16,6 @@
           class="inputSpan"
           type="textarea"
           placeholder="Please enter the content"
-          maxlength="300"
           rows="12"
           show-word-limit
         /></td>
@@ -28,6 +27,11 @@
       <tr>
         <td width="30%" class="colstyle1">审核意见</td>
         <td width="70%" class="colstyle1">{{list.checkStateName}}</td>
+      </tr>
+      <tr v-if="showButton">
+        <td colspan="12" align="center">
+          <el-button  type="primary" size="medium" @click="projectSubmit">提交</el-button>
+        </td>
       </tr>
       </tbody>
     </table>
@@ -42,12 +46,16 @@
 
 <script>
 import { fillProjectTrainningReportInit } from '@/api/table'
+import { fillProjectTrainningReport } from '@/api/table'
 export default {
   name: 'Txxmktbg',
   data() {
     return {
       list: [],
       showTable: false,
+      reportId: '',
+      saveMessage: '',
+      showButton: false,
       message: ''
     }
   },
@@ -60,10 +68,23 @@ export default {
         if(response.re == 1){
           this.showTable = true
           this.list = response.data.form
+          this.reportId = response.data.form.reportId
+          if(response.data.form.leader == 'yes' && response.data.form.checkState != 1){
+            this.showButton = true
+          }
         }else if(response.re == -1){
           this.showTable = false
           this.message = response.data
         }
+      })
+    },
+    projectSubmit(){
+      fillProjectTrainningReport({'reportType': '0', 'reportId': this.reportId, 'reportContent': this.list.reportContent }).then(response => {
+        this.saveMessage = response.data
+        this.$message({
+          message: this.saveMessage,
+          type: 'success'
+        })
       })
     }
   }
