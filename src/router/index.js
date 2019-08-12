@@ -53,7 +53,8 @@ export const constantRoutes = [
     name: 'personInfo',
     meta: {
       title: '个人信息',
-      icon: 'example'
+      icon: 'example',
+      roles: ['33']
     },
     children: [
       {
