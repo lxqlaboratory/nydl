@@ -67,7 +67,7 @@ export default {
       })
     },
     validateRole: function(routeItem) { // 验证用户权限
-      if (routeItem.meta == null || routeItem.meta.roles == null) {
+      if (routeItem.meta == null) {
         return true
       }
       for (var i = 0; i < this.menuList.length; i++) {
