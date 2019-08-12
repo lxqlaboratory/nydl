@@ -19,7 +19,7 @@
 </template>
 
 <script>
-  import { studentPasswordSubmit } from '@/api/baseInfomation'
+import { studentPasswordSubmit } from '@/api/baseInfomation'
 export default {
   name: 'Changepwd',
   data() {
@@ -95,15 +95,13 @@ export default {
   },
   methods: {
     submitForm() {
-      studentPasswordSubmit({'oldpassword': this.ruleForm.oldPass, 'newpassword1': this.ruleForm.newPass, 'newpassword2': this.ruleForm.checkPass }).then(res => {
-        if(res.re == -1)
-        {
+      studentPasswordSubmit({ 'oldpassword': this.ruleForm.oldPass, 'newpassword1': this.ruleForm.newPass, 'newpassword2': this.ruleForm.checkPass }).then(res => {
+        if (res.re == -1) {
           this.$message({
             type: 'error',
             message: '旧密码不正确请重新输入'
           })
-        }else{
-
+        } else {
           this.$message({
             type: 'success',
             message: '修改成功'
