@@ -1,9 +1,9 @@
 <template>
-  <div class="app-container">
+  <div  v-if="showTable"  class="app-container">
     <div class="caption">
     <span>注意只能组长提交，组员不能提交只能查看，导师同意后也不能再提交</span>
     </div>
-    <table class="content" width="100%">
+    <table  class="content" width="100%">
       <tbody>
       <tr>
       <td width="30%" class="colstyle1">项目名称</td>
@@ -32,6 +32,12 @@
       </tbody>
     </table>
   </div>
+
+  <div  v-else  class="app-container">
+    <div class="caption">
+      <span>{{this.message}}</span>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -40,7 +46,9 @@ export default {
   name: 'Txxmktbg',
   data() {
     return {
-      list: []
+      list: [],
+      showTable: false,
+      message: ''
     }
   },
   created() {
@@ -49,7 +57,13 @@ export default {
   methods: {
     fetchData() {
       fillProjectTrainningReportInit({ 'reportType': '0'} ).then(response => {
-        this.list = response.data.form
+        if(response.re == 1){
+          this.showTable = true
+          this.list = response.data.form
+        }else if(response.re == -1){
+          this.showTable = false
+          this.message = response.data
+        }
       })
     }
   }
