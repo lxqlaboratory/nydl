@@ -235,71 +235,61 @@ export const constantRoutes = [
         path: 'stuChooseProject',
         name: 'stuChooseProject',
         component: () => import('@/views/masterproject/stuChooseProject'),
-        meta: { title: '学生申请项目', icon: 'user' , roles: ['3'] }
+        meta: { title: '学生申请项目', icon: 'user' , roles: ['1'] }
       },
       {
         path: 'tutorProjectInfoList',
         name: 'tutorProjectInfoList',
         component: () => import('@/views/masterproject/tutorProjectInfoList'),
-        meta: { title: '导师确认学生', icon: 'password' , roles: ['16'] }
+        meta: { title: '导师确认学生', icon: 'password' , roles: ['1'] }
       }
     ]
   },
   {
-    path: '/nested',
+    path: '/tutor',
     component: Layout,
-    redirect: '/nested/menu1',
-    name: 'Nested',
+    name: 'tutor',
     meta: {
-      title: 'Nested',
-      icon: 'nested',
-      roles: ['110']
-  },
+      title: '导师制',
+      icon: 'example',
+      roles: ['33']
+    },
     children: [
       {
-        path: 'menu1',
-        component: () => import('@/views/nested/menu1/index'), // Parent router-view
-        name: 'Menu1',
-        meta: { title: 'Menu1' },
-        children: [
-          {
-            path: 'menu1-1',
-            component: () => import('@/views/nested/menu1/menu1-1'),
-            name: 'Menu1-1',
-            meta: { title: 'Menu1-1' }
-          },
-          {
-            path: 'menu1-2',
-            component: () => import('@/views/nested/menu1/menu1-2'),
-            name: 'Menu1-2',
-            meta: { title: 'Menu1-2' },
-            children: [
-              {
-                path: 'menu1-2-1',
-                component: () => import('@/views/nested/menu1/menu1-2/menu1-2-1'),
-                name: 'Menu1-2-1',
-                meta: { title: 'Menu1-2-1' }
-              },
-              {
-                path: 'menu1-2-2',
-                component: () => import('@/views/nested/menu1/menu1-2/menu1-2-2'),
-                name: 'Menu1-2-2',
-                meta: { title: 'Menu1-2-2' }
-              }
-            ]
-          },
-          {
-            path: 'menu1-3',
-            component: () => import('@/views/nested/menu1/menu1-3'),
-            name: 'Menu1-3',
-            meta: { title: 'Menu1-3' }
-          }
-        ]
+        path: 'tutorChooseStu',
+        name: 'tutorChooseStu',
+        component: () => import('@/views/tutor/tutorChooseStu'),
+        meta: { title: '导师确认学生', icon: 'user' , roles: ['1'] }
       },
       {
-        path: 'menu2',
-        component: () => import('@/views/nested/menu2/index'),
-        meta: { title: 'menu2' }
+        path: 'stuChooseTutor',
+        name: 'stuChooseTutor',
+        component: () => import('@/views/tutor/stuChooseTutor'),
+        meta: { title: '选择导师', icon: 'user' , roles: ['1'] }
+      }
+    ]
+  },
+  {
+    path: '/modular',
+    component: Layout,
+    name: 'modular',
+    meta: {
+      title: '模块划分',
+      icon: 'example',
+      roles: ['33']
+    },
+    children: [
+      {
+        path: 'stuChooseModular',
+        name: 'stuChooseModular',
+        component: () => import('@/views/modular/stuChooseModular'),
+        meta: { title: '学生申请模块', icon: 'user' , roles: ['1'] }
+      },
+      {
+        path: 'modularInfo',
+        name: 'modularInfo',
+        component: () => import('@/views/modular/modularInfo'),
+        meta: { title: '摸块划分情况', icon: 'user' , roles: ['1'] }
       }
     ]
   },
