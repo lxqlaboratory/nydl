@@ -78,9 +78,9 @@ export const constantRoutes = [
     ]
   },
   {
-    path: '/pages',
+    path: '/trainning',
     component: Layout,
-    name: 'cxxmsx',
+    name: 'trainning',
     meta: {
       title: '创新项目实训',
       icon: 'nested',
@@ -120,18 +120,18 @@ export const constantRoutes = [
       {
         path: 'txxmktbg',
         name: 'txxmktbg',
-        component: () => import('@/views/pages/nydlStudentFillProjectTrainningReportStart'),
+        component: () => import('@/views/trainning/studentFillProjectTrainningReportStart'),
         meta: { title: '填写项目开题报告', icon: 'form' , roles: ['29'] }
       },
       {
         path: 'txzqbg',
-        component: () => import('@/views/pages/nydlStudentFillProjectTrainningReportMiddle'),
+        component: () => import('@/views/trainning/studentFillProjectTrainningReportMiddle'),
         name: 'txzqbg',
         meta: { title: '填写项目中期报告', icon: 'form', roles: ['30'] }
       },
       {
         path: 'txxmjtbg',
-        component: () => import('@/views/pages/nydlStudentFillProjectTrainningReportFinal'),
+        component: () => import('@/views/trainning/studentFillProjectTrainningReportFinal'),
         name: 'txxmjtbg',
         meta: { title: '填写项目结题报告', icon: 'form', roles: ['31'] }
       },
@@ -176,6 +176,72 @@ export const constantRoutes = [
         name: 'changepwd',
         component: () => import('@/views/personInfo/changepwd'),
         meta: { title: '确认学生课题', icon: 'password' , roles: ['16'] }
+      }
+    ]
+  },
+  {
+    path: '/graduate',
+    component: Layout,
+    name: 'graduate',
+    meta: {
+      title: '本科毕业设计',
+      icon: 'example',
+      roles: ['33']
+    },
+    children: [
+      {
+        path: 'stuInfomation',
+        name: 'stuInfomation',
+        component: () => import('@/views/personInfo/stuInfomation'),
+        meta: { title: '学生课题申请', icon: 'user' , roles: ['1'] }
+      },
+      {
+        path: 'teacherInfomation',
+        name: 'teacherInfomation',
+        component: () => import('@/views/personInfo/teacherInfomation'),
+        meta: { title: '查看申请状态', icon: 'user' , roles: ['3'] }
+      },
+      {
+        path: 'changepwd',
+        name: 'changepwd',
+        component: () => import('@/views/personInfo/changepwd'),
+        meta: { title: '提交课题申请表', icon: 'password' , roles: ['16'] }
+      },
+      {
+        path: 'changepwd',
+        name: 'changepwd',
+        component: () => import('@/views/personInfo/changepwd'),
+        meta: { title: '确认学生课题', icon: 'password' , roles: ['16'] }
+      }
+    ]
+  },
+  {
+    path: '/masterproject',
+    component: Layout,
+    name: 'masterproject',
+    meta: {
+      title: '本硕连读项目',
+      icon: 'example',
+      roles: ['33']
+    },
+    children: [
+      {
+        path: 'tutorProjectInfo',
+        name: 'tutorProjectInfo',
+        component: () => import('@/views/masterproject/tutorProjectInfo'),
+        meta: { title: '导师项目情况', icon: 'user' , roles: ['1'] }
+      },
+      {
+        path: 'stuChooseProject',
+        name: 'stuChooseProject',
+        component: () => import('@/views/masterproject/stuChooseProject'),
+        meta: { title: '学生申请项目', icon: 'user' , roles: ['3'] }
+      },
+      {
+        path: 'tutorProjectInfoList',
+        name: 'tutorProjectInfoList',
+        component: () => import('@/views/masterproject/tutorProjectInfoList'),
+        meta: { title: '导师确认学生', icon: 'password' , roles: ['16'] }
       }
     ]
   },
