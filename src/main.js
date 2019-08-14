@@ -15,6 +15,11 @@ import '@/icons' // icon
 import axios from 'axios'
 Vue.prototype.$reqs = axios
 Vue.config.productionTip = false
+
+import VDistpicker from 'v-distpicker'
+
+Vue.component('v-distpicker', VDistpicker)
+
 /**
  * If you don't want to use mock-server
  * you want to use MockJs for mock api

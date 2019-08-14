@@ -15,3 +15,11 @@ export function studentInformationSubmit(data) {
     data
   })
 }
+//加载市、区
+export function getPlaceList() {
+  return request({
+    url: '/nydlBean/getPlaceList',
+    method: 'POST',
+    data: {}
+  })
+}

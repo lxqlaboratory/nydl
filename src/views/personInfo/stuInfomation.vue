@@ -5,10 +5,10 @@
         <td colspan="4" style="font-size: 16px;font-weight: bold;color: #304156 ">学生个人简况表</td>
       </tr>
       <tr>
-        <td class="colstyle1" width="25%">姓名</td>
-        <td class="colstyle2" width="25%"><el-input v-model="formData.perName" size="mini" class="elinput" disabled></el-input></td>
-        <td class="colstyle1" width="25%">性别</td>
-        <td class="colstyle2" width="25%">
+        <td width="25%">姓名</td>
+        <td width="25%"><el-input v-model="formData.perName" size="mini" class="elinput" disabled></el-input></td>
+        <td width="25%">性别</td>
+        <td width="25%">
           <el-select v-model="formData.gender" size="mini" class="elinput" disabled>
             <el-option
               v-for="item in gender"
@@ -20,20 +20,23 @@
         </td>
       </tr>
       <tr>
-        <td class="colstyle1">电话</td>
-        <td class="colstyle2"><el-input v-model="formData.mobilePhone" size="mini" class="elinput" ></el-input></td>
-        <td class="colstyle1">微信</td>
-        <td class="colstyle2"><el-input v-model="formData.wechat" size="mini" class="elinput" ></el-input></td>
+        <td>电话</td>
+        <td><el-input v-model="formData.mobilePhone" size="mini" class="elinput" ></el-input></td>
+        <td>微信</td>
+        <td><el-input v-model="formData.wechat" size="mini" class="elinput" ></el-input></td>
       </tr>
       <tr>
-        <td class="colstyle1">QQ</td>
-        <td class="colstyle2"><el-input v-model="formData.qq" size="mini" class="elinput" ></el-input></td>
-        <td class="colstyle1">E-mail</td>
-        <td class="colstyle2"><el-input v-model="formData.email" size="mini" class="elinput" ></el-input></td>
+        <td>QQ</td>
+        <td><el-input v-model="formData.qq" size="mini" class="elinput" ></el-input></td>
+        <td>E-mail</td>
+        <td><el-input v-model="formData.email" size="mini" class="elinput" ></el-input></td>
       </tr>
       <tr>
-        <td class="colstyle1" >籍贯</td>
-        <td class="colstyle2" >
+        <td colspan="1">籍贯</td>
+        <td colspan="3" >
+          <v-distpicker :province="formData.province" :city ="formData.city " :area="formData.town"  @selected='onSelected'></v-distpicker>
+        </td>
+        <!--<td class="colstyle2" >
           <el-select v-model="formData.province" size="mini" class="elinput" placeholder="省" >
             <el-option
               v-for="pro in provinceList"
@@ -62,15 +65,15 @@
               :value="item.code">
             </el-option>
           </el-select>
-        </td>
+        </td>-->
       </tr>
       <tr>
-        <td class="colstyle1" colspan="1">专业</td>
-        <td class="colstyle2" colspan="3"><el-input v-model="formData.majorNum" size="mini" class="elinput2" disabled></el-input></td>
+        <td colspan="1">专业</td>
+        <td colspan="3"><el-input v-model="formData.majorNum" size="mini" class="elinput2" disabled></el-input></td>
       </tr>
       <tr>
-        <td class="colstyle1" colspan="1">理想、兴趣、爱好、要求等</td>
-        <td class="colstyle2" colspan="3"><el-input
+        <td colspan="1">理想、兴趣、爱好、要求等</td>
+        <td colspan="3"><el-input
           v-model="formData.introduction"
           class="inputSpan"
           type="textarea"
@@ -91,9 +94,12 @@
 </template>
 
 <script>
+  import VDistpicker from 'v-distpicker'
   import { studentInformationSubmitInit } from '@/api/stuInfomation'
   import { studentInformationSubmit } from '@/api/stuInfomation'
+  import { getPlaceList } from '@/api/stuInfomation'
   export default {
+    components: { VDistpicker },
     data() {
       return {
         formData : {},
@@ -113,29 +119,50 @@
     },
     created() {
       this.fetchData()
+      this.getPlaceList()
     },
     methods: {
       fetchData() {
         studentInformationSubmitInit().then(res => {
           this.formData = res.data
+          /*if(res.data.province != ""){
+            for(var i = 0;i<res.data.provinceList.length;i++){
+              if(res.data.province == res.data.provinceList[i].parentValue ){
+                this.formData.province = res.data.provinceList[i].label
+              }
+            }
+          }*/
           this.provinceList = res.data.provinceList
         })
       },
+      getPlaceList(){
+        getPlaceList().then(res=>{
+          this.cityList = res.data.cityList
+          this.townList = res.data.townList
+        })
+      },
+
       submitInfo(){
         studentInformationSubmit(this.formData).then(res=>{
-          if(res.data.re == 1){
+          if(res.re == 1){
             this.$message({
               message: '修改成功',
               type: 'success'
             })
           }
         })
+      },
+      onSelected(data){
+        this.formData.province= data.province.value
+        this.formData.city=data.city.value
+        this.formData.town=data.area.value
+        console.log(data)
       }
     }
   }
 </script>
 
-<style scoped>
+<style>
   .container{
     margin :100px;
   }
@@ -178,5 +205,14 @@
     letter-spacing:1px;
     text-align: left !important;
     font-size: 12px;
+  }
+  .distpicker-address-wrapper select{
+    padding: 0;
+    border: 2px solid #EBEEF5;
+    border-radius: 4px;
+    color:  #606266;
+    height: 28px;
+    font-size: 12px;
+    width: 26%;
   }
 </style>
