@@ -37,11 +37,6 @@
                 <el-button  class="loginBtn" style="width: 100%;margin-bottom: 5%;background: #409EFF" :loading="loading" @click="handleLogin">登录</el-button>
               </el-col>
             </el-row>
-            <div style="display: flex;flex-direction: row;justify-content: space-between;align-items: center;width: 100%;margin-top: 25px;color:#409EFF">
-              <el-checkbox v-model="ydxy"><span
-                style="font-size: 13px"
-              >记住密码</span></el-checkbox>
-            </div>
           </div>
         </div>
       </div>
