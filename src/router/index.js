@@ -120,18 +120,18 @@ export const constantRoutes = [
       {
         path: 'txxmktbg',
         name: 'txxmktbg',
-        component: () => import('@/views/pages/txxmktbg'),
+        component: () => import('@/views/pages/nydlStudentFillProjectTrainningReportStart'),
         meta: { title: '填写项目开题报告', icon: 'form' , roles: ['29'] }
       },
       {
         path: 'txzqbg',
-        component: () => import('@/views/pages/txzqbg'),
+        component: () => import('@/views/pages/nydlStudentFillProjectTrainningReportMiddle'),
         name: 'txzqbg',
         meta: { title: '填写项目中期报告', icon: 'form', roles: ['30'] }
       },
       {
         path: 'txxmjtbg',
-        component: () => import('@/views/pages/txxmjtbg'),
+        component: () => import('@/views/pages/nydlStudentFillProjectTrainningReportFinal'),
         name: 'txxmjtbg',
         meta: { title: '填写项目结题报告', icon: 'form', roles: ['31'] }
       },
@@ -140,6 +140,42 @@ export const constantRoutes = [
         component: () => import('@/views/pages/jnjpkccgtj'),
         name: 'jnjpkccgtj',
         meta: { title: '节能减排课程成果提交', icon: 'form', roles: ['32'] }
+      }
+    ]
+  },
+  {
+    path: '/graduate',
+    component: Layout,
+    name: 'graduate',
+    meta: {
+      title: '本科毕业设计',
+      icon: 'example',
+      roles: ['33']
+    },
+    children: [
+      {
+        path: 'stuInfomation',
+        name: 'stuInfomation',
+        component: () => import('@/views/personInfo/stuInfomation'),
+        meta: { title: '学生课题申请', icon: 'user' , roles: ['1'] }
+      },
+      {
+        path: 'teacherInfomation',
+        name: 'teacherInfomation',
+        component: () => import('@/views/personInfo/teacherInfomation'),
+        meta: { title: '查看申请状态', icon: 'user' , roles: ['3'] }
+      },
+      {
+        path: 'changepwd',
+        name: 'changepwd',
+        component: () => import('@/views/personInfo/changepwd'),
+        meta: { title: '提交课题申请表', icon: 'password' , roles: ['16'] }
+      },
+      {
+        path: 'changepwd',
+        name: 'changepwd',
+        component: () => import('@/views/personInfo/changepwd'),
+        meta: { title: '确认学生课题', icon: 'password' , roles: ['16'] }
       }
     ]
   },
