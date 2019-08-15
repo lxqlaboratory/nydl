@@ -1,4 +1,7 @@
 <template>
+ <div class="app-container">
+ 666
+ </div>
 </template>
 
 <script>

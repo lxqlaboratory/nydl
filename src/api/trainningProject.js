@@ -1,5 +1,14 @@
 import request from '@/utils/request'
 
+export function practiceEnergyTeacherCheck() {
+  return request({
+    url: '/nydlWeb/practiceEnergyTeacherCheck',
+    method: 'POST',
+    data: {}
+  })
+}
+
+
 export function practiceProjectTutorGrade() {
   return request({
     url: '/nydlWeb/practiceProjectTutorGrade',
