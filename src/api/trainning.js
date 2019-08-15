@@ -7,11 +7,3 @@ export function practiceProjectTutorGrade() {
     data: {}
   })
 }
-
-export function practiceProjectTutorGradeStu(data) {
-  return request({
-    url: '/nydlWeb/practiceProjectTutorGradeStu',
-    method: 'POST',
-    data
-  })
-}
