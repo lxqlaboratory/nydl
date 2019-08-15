@@ -166,9 +166,9 @@ export const constantRoutes = [
         meta: { title: '审批学生创新训练项目资源申请', icon: 'form', roles: ['38'] }
       },
       {
-        path: 'studentUploadAchieve',
-        component: () => import('@/views/trainning/studentUploadAchieve'),
-        name: 'studentUploadAchieve',
+        path: 'tutorPracticeEnergyCheck',
+        component: () => import('@/views/trainning/tutorPracticeEnergyCheck'),
+        name: 'tutorPracticeEnergyCheck',
         meta: { title: '观摩项目考勤', icon: 'form', roles: ['39'] }
       },
       {
