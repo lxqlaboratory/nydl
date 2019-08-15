@@ -154,13 +154,13 @@ export default {
         this.stuIdList[i] = this.applyList[i].personId
         this.scoreList[i] = this.applyList[i].projectScore
       }
-       practiceProjectTutorGradeStu({ 'stuIdList': this.stuIdList , 'scoreList': this.scoreList }).then(res => {
-          if(res.re == 1){
-            this.$message({
-              type: 'success',
-              message: '提交成功'
-            })
-          }
+      practiceProjectTutorGradeStu({ 'stuIdList': this.stuIdList, 'scoreList': this.scoreList }).then(res => {
+        if (res.re == 1) {
+          this.$message({
+            type: 'success',
+            message: '提交成功'
+          })
+        }
       })
     }
   }
