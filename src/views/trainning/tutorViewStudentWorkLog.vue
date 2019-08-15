@@ -3,9 +3,9 @@
 </template>
 
 <script>
-  export default {
-    name: 'viewProjectTeamInfo'
-  }
+    export default {
+        name: "tutorViewStudentWorkLog"
+    }
 </script>
 
 <style scoped>
