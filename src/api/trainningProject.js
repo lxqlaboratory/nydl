@@ -8,6 +8,21 @@ export function practiceEnergyTeacherCheck() {
   })
 }
 
+export function practiceWorkCheckListSub(data) {
+  return request({
+    url: '/nydlWeb/practiceWorkCheckListSub',
+    method: 'POST',
+    data
+  })
+}
+
+export function practiceWorkCheckListInit(data) {
+  return request({
+    url: '/nydlWeb/practiceWorkCheckListInit',
+    method: 'POST',
+    data
+  })
+}
 
 export function practiceProjectTutorGrade() {
   return request({
