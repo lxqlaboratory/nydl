@@ -91,7 +91,7 @@ export const constantRoutes = [
         path: 'studentApplyPracticeEnergy',
         name: 'studentApplyPracticeEnergy',
         component: () => import('@/views/trainning/studentApplyPracticeEnergy'),
-        meta: { title: '申请观摩项目', icon: 'form' , roles: ['23'] }
+        meta: { title: '申请观摩项目', icon: 'form' , roles: ['22'] }
       },
       {
         path: 'studentViewProjectTrainningAppState',
@@ -151,55 +151,55 @@ export const constantRoutes = [
         path: 'tutorViewProjectList',
         component: () => import('@/views/trainning/tutorViewProjectList'),
         name: 'tutorViewProjectList',
-        meta: { title: '老师查看创新训练项目申请情况', icon: 'form', roles: ['32'] }
+        meta: { title: '老师查看创新训练项目申请情况', icon: 'form', roles: ['36'] }
       },
       {
         path: 'tutorViewStudentWorkLog',
         component: () => import('@/views/trainning/tutorViewStudentWorkLog'),
         name: 'tutorViewStudentWorkLog',
-        meta: { title: '查看学生工作日志', icon: 'form', roles: ['32'] }
+        meta: { title: '查看学生工作日志', icon: 'form', roles: ['37'] }
       },
       {
         path: 'tutorCheckProjectResoureceApply',
         component: () => import('@/views/trainning/tutorCheckProjectResoureceApply'),
         name: 'tutorCheckProjectResoureceApply',
-        meta: { title: '审批学生创新训练项目资源申请', icon: 'form', roles: ['32'] }
+        meta: { title: '审批学生创新训练项目资源申请', icon: 'form', roles: ['38'] }
       },
       {
         path: 'studentUploadAchieve',
         component: () => import('@/views/trainning/studentUploadAchieve'),
         name: 'studentUploadAchieve',
-        meta: { title: '观摩项目考勤', icon: 'form', roles: ['32'] }
+        meta: { title: '观摩项目考勤', icon: 'form', roles: ['39'] }
       },
       {
         path: 'tutorCheckProjectTrainningReportListStart',
         component: () => import('@/views/trainning/tutorCheckProjectTrainningReportListStart'),
         name: 'tutorCheckProjectTrainningReportListStart',
-        meta: { title: '审查创新训练开期报告', icon: 'form', roles: ['32'] }
+        meta: { title: '审查创新训练开期报告', icon: 'form', roles: ['40'] }
       },
       {
         path: 'studentUploadAchieve',
         component: () => import('@/views/trainning/tutorCheckProjectTrainningReportListMiddle'),
         name: 'studentUploadAchieve',
-        meta: { title: '审查创新训练中期报告', icon: 'form', roles: ['32'] }
+        meta: { title: '审查创新训练中期报告', icon: 'form', roles: ['41'] }
       },
       {
         path: 'tutorCheckProjectTrainningReportListFinal',
         component: () => import('@/views/trainning/tutorCheckProjectTrainningReportListFinal'),
         name: 'tutorCheckProjectTrainningReportListFinal',
-        meta: { title: '审查创新训练结题报告', icon: 'form', roles: ['32'] }
+        meta: { title: '审查创新训练结题报告', icon: 'form', roles: ['42'] }
       },
       {
         path: 'tutorViewProjectAchieve',
         component: () => import('@/views/trainning/tutorViewProjectAchieve'),
         name: 'tutorViewProjectAchieve',
-        meta: { title: '查看创新训练成果', icon: 'form', roles: ['32'] }
+        meta: { title: '查看创新训练成果', icon: 'form', roles: ['43'] }
       },
       {
         path: 'tutorProjectTrainningScoreSubmit',
         component: () => import('@/views/trainning/tutorProjectTrainningScoreSubmit'),
         name: 'TutorProjectTrainningScoreSubmit',
-        meta: { title: '提交创新训练成绩', icon: 'form', roles: ['32'] }
+        meta: { title: '提交创新训练成绩', icon: 'form', roles: ['44'] }
       }
     ]
   },
@@ -210,32 +210,32 @@ export const constantRoutes = [
     meta: {
       title: '本科毕业设计',
       icon: 'example',
-      roles: ['33']
+      roles: ['45']
     },
     children: [
       {
         path: 'studentGeaduateDesignApply',
         name: 'studentGeaduateDesignApply',
         component: () => import('@/views/graduate/studentGeaduateDesignApply'),
-        meta: { title: '学生课题申请', icon: 'user' , roles: ['1'] }
+        meta: { title: '学生课题申请', icon: 'user' , roles: ['46'] }
       },
       {
         path: 'studentViewGeaduateDesignApply',
         name: 'studentViewGeaduateDesignApply',
         component: () => import('@/views/graduate/studentViewGeaduateDesignApply'),
-        meta: { title: '查看申请状态', icon: 'user' , roles: ['3'] }
+        meta: { title: '查看申请状态', icon: 'user' , roles: ['47'] }
       },
       {
         path: 'tutorSubmitGeaduateDesignProject',
         name: 'tutorSubmitGeaduateDesignProject',
         component: () => import('@/views/graduate/tutorSubmitGeaduateDesignProject'),
-        meta: { title: '提交课题申请表', icon: 'password' , roles: ['16'] }
+        meta: { title: '提交课题申请表', icon: 'password' , roles: ['48'] }
       },
       {
         path: 'tutorConfirmGeaduateDesignApply',
         name: 'tutorConfirmGeaduateDesignApply',
         component: () => import('@/views/graduate/tutorConfirmGeaduateDesignApply'),
-        meta: { title: '确认学生课题', icon: 'password' , roles: ['16'] }
+        meta: { title: '确认学生课题', icon: 'password' , roles: ['49'] }
       }
     ]
   },
@@ -246,26 +246,26 @@ export const constantRoutes = [
     meta: {
       title: '本硕连读项目',
       icon: 'example',
-      roles: ['33']
+      roles: ['34']
     },
     children: [
       {
         path: 'tutorProjectInfo',
         name: 'tutorProjectInfo',
         component: () => import('@/views/masterproject/tutorProjectInfo'),
-        meta: { title: '导师项目情况', icon: 'user' , roles: ['1'] }
+        meta: { title: '导师项目情况', icon: 'user' , roles: ['5'] }
       },
       {
         path: 'stuChooseProject',
         name: 'stuChooseProject',
         component: () => import('@/views/masterproject/stuChooseProject'),
-        meta: { title: '学生申请项目', icon: 'user' , roles: ['1'] }
+        meta: { title: '学生申请项目', icon: 'user' , roles: ['6'] }
       },
       {
         path: 'tutorProjectInfoList',
         name: 'tutorProjectInfoList',
         component: () => import('@/views/masterproject/tutorProjectInfoList'),
-        meta: { title: '导师确认学生', icon: 'password' , roles: ['1'] }
+        meta: { title: '导师确认学生', icon: 'password' , roles: ['52'] }
       }
     ]
   },
@@ -276,20 +276,20 @@ export const constantRoutes = [
     meta: {
       title: '导师制',
       icon: 'example',
-      roles: ['33']
+      roles: ['2']
     },
     children: [
       {
         path: 'tutorChooseStu',
         name: 'tutorChooseStu',
         component: () => import('@/views/tutor/tutorChooseStu'),
-        meta: { title: '导师确认学生', icon: 'user' , roles: ['1'] }
+        meta: { title: '导师确认学生', icon: 'user' , roles: ['4'] }
       },
       {
         path: 'stuChooseTutor',
         name: 'stuChooseTutor',
         component: () => import('@/views/tutor/stuChooseTutor'),
-        meta: { title: '选择导师', icon: 'user' , roles: ['1'] }
+        meta: { title: '选择导师', icon: 'user' , roles: ['50'] }
       }
     ]
   },
@@ -300,20 +300,20 @@ export const constantRoutes = [
     meta: {
       title: '模块划分',
       icon: 'example',
-      roles: ['33']
+      roles: ['20']
     },
     children: [
       {
         path: 'stuChooseModular',
         name: 'stuChooseModular',
         component: () => import('@/views/modular/stuChooseModular'),
-        meta: { title: '学生申请模块', icon: 'user' , roles: ['1'] }
+        meta: { title: '学生申请模块', icon: 'user' , roles: ['21'] }
       },
       {
         path: 'modularInfo',
         name: 'modularInfo',
         component: () => import('@/views/modular/modularInfo'),
-        meta: { title: '摸块划分情况', icon: 'user' , roles: ['1'] }
+        meta: { title: '摸块划分情况', icon: 'user' , roles: ['20'] }
       }
     ]
   },
