@@ -110,7 +110,7 @@
 <script>
 import { practiceProjectallGradeLook } from '@/api/practiceProjectallGradeLook'
 export default {
-  name: 'Ckjnjpkczcj',
+  name: 'studentProjectTrainningScoreView',
   data() {
     return {
       actionList: [],

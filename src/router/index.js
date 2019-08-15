@@ -88,94 +88,118 @@ export const constantRoutes = [
     },
     children: [
       {
-        path: 'ckcxxlxmsqzt',
-        name: 'ckcxxlxmsqzt',
-        component: () => import('@/views/pages/ckcxxlxmsqzt'),
+        path: 'studentApplyPracticeEnergy',
+        name: 'studentApplyPracticeEnergy',
+        component: () => import('@/views/trainning/studentApplyPracticeEnergy'),
+        meta: { title: '申请观摩项目', icon: 'form' , roles: ['23'] }
+      },
+      {
+        path: 'studentViewProjectTrainningAppState',
+        name: 'studentViewProjectTrainningAppState',
+        component: () => import('@/views/trainning/studentViewProjectTrainningAppState'),
         meta: { title: '查看创新训练项目申请状态', icon: 'form' , roles: ['23'] }
       },
       {
-        path: 'cktdjbqk',
-        name: 'cktdjbqk',
-        component: () => import('@/views/pages/cktdjbqk'),
+        path: 'viewProjectTeamInfo',
+        name: 'viewProjectTeamInfo',
+        component: () => import('@/views/trainning/viewProjectTeamInfo'),
         meta: { title: '查看团队基本情况', icon: 'form' , roles: ['24'] }
       },
       {
-        path: 'txcxxlxmrz',
-        name: 'txcxxlxmrz',
-        component: () => import('@/views/pages/txcxxlxmrz'),
+        path: 'studentWorkLogSubmit',
+        name: 'studentWorkLogSubmit',
+        component: () => import('@/views/trainning/studentWorkLogSubmit'),
         meta: { title: '填写创新训练项目日志', icon: 'form' , roles: ['25'] }
       },
       {
-        path: 'xxsqcxxlxmzy',
-        name: 'xxsqcxxlxmzy',
-        component: () => import('@/views/pages/xxsqcxxlxmzy'),
+        path: 'studentApplyProjectResoure',
+        name: 'studentApplyProjectResoure',
+        component: () => import('@/views/trainning/studentApplyProjectResoure'),
         meta: { title: '学生申请创新训练项目资源', icon: 'form' , roles: ['26'] }
       },
       {
-        path: 'ckjnjpkczcj',
-        name: 'ckjnjpkczcj',
-        component: () => import('@/views/pages/ckjnjpkczcj'),
+        path: 'studentProjectTrainningScoreView',
+        name: 'studentProjectTrainningScoreView',
+        component: () => import('@/views/trainning/studentProjectTrainningScoreView'),
         meta: { title: '查看节能减排课程成绩', icon: 'form' , roles: ['27'] }
       },
       {
-        path: 'txxmktbg',
-        name: 'txxmktbg',
+        path: 'studentFillProjectTrainningReportStart',
+        name: 'studentFillProjectTrainningReportStart',
         component: () => import('@/views/trainning/studentFillProjectTrainningReportStart'),
         meta: { title: '填写项目开题报告', icon: 'form' , roles: ['29'] }
       },
       {
-        path: 'txzqbg',
+        path: 'studentFillProjectTrainningReportMiddle',
         component: () => import('@/views/trainning/studentFillProjectTrainningReportMiddle'),
-        name: 'txzqbg',
+        name: 'studentFillProjectTrainningReportMiddle',
         meta: { title: '填写项目中期报告', icon: 'form', roles: ['30'] }
       },
       {
-        path: 'txxmjtbg',
+        path: 'studentFillProjectTrainningReportFinal',
         component: () => import('@/views/trainning/studentFillProjectTrainningReportFinal'),
-        name: 'txxmjtbg',
+        name: 'studentFillProjectTrainningReportFinal',
         meta: { title: '填写项目结题报告', icon: 'form', roles: ['31'] }
       },
       {
-        path: 'jnjpkccgtj',
-        component: () => import('@/views/pages/jnjpkccgtj'),
-        name: 'jnjpkccgtj',
+        path: 'studentUploadAchieve',
+        component: () => import('@/views/trainning/studentUploadAchieve'),
+        name: 'studentUploadAchieve',
         meta: { title: '节能减排课程成果提交', icon: 'form', roles: ['32'] }
-      }
-    ]
-  },
-  {
-    path: '/graduate',
-    component: Layout,
-    name: 'graduate',
-    meta: {
-      title: '本科毕业设计',
-      icon: 'example',
-      roles: ['33']
-    },
-    children: [
-      {
-        path: 'stuInfomation',
-        name: 'stuInfomation',
-        component: () => import('@/views/personInfo/stuInfomation'),
-        meta: { title: '学生课题申请', icon: 'user' , roles: ['1'] }
       },
       {
-        path: 'teacherInfomation',
-        name: 'teacherInfomation',
-        component: () => import('@/views/personInfo/teacherInfomation'),
-        meta: { title: '查看申请状态', icon: 'user' , roles: ['3'] }
+        path: 'studentUploadAchieve',
+        component: () => import('@/views/trainning/studentUploadAchieve'),
+        name: 'studentUploadAchieve',
+        meta: { title: '老师查看创新训练项目申请情况', icon: 'form', roles: ['32'] }
       },
       {
-        path: 'changepwd',
-        name: 'changepwd',
-        component: () => import('@/views/personInfo/changepwd'),
-        meta: { title: '提交课题申请表', icon: 'password' , roles: ['16'] }
+        path: 'studentUploadAchieve',
+        component: () => import('@/views/trainning/studentUploadAchieve'),
+        name: 'studentUploadAchieve',
+        meta: { title: '查看学生工作日志', icon: 'form', roles: ['32'] }
       },
       {
-        path: 'changepwd',
-        name: 'changepwd',
-        component: () => import('@/views/personInfo/changepwd'),
-        meta: { title: '确认学生课题', icon: 'password' , roles: ['16'] }
+        path: 'studentUploadAchieve',
+        component: () => import('@/views/trainning/studentUploadAchieve'),
+        name: 'studentUploadAchieve',
+        meta: { title: '审批学生创新训练项目资源申请', icon: 'form', roles: ['32'] }
+      },
+      {
+        path: 'studentUploadAchieve',
+        component: () => import('@/views/trainning/studentUploadAchieve'),
+        name: 'studentUploadAchieve',
+        meta: { title: '观摩项目考勤', icon: 'form', roles: ['32'] }
+      },
+      {
+        path: 'tutorCheckProjectTrainningReportListStart',
+        component: () => import('@/views/trainning/tutorCheckProjectTrainningReportListStart'),
+        name: 'tutorCheckProjectTrainningReportListStart',
+        meta: { title: '审查创新训练开期报告', icon: 'form', roles: ['32'] }
+      },
+      {
+        path: 'studentUploadAchieve',
+        component: () => import('@/views/trainning/tutorCheckProjectTrainningReportListMiddle'),
+        name: 'studentUploadAchieve',
+        meta: { title: '审查创新训练中期报告', icon: 'form', roles: ['32'] }
+      },
+      {
+        path: 'tutorCheckProjectTrainningReportListFinal',
+        component: () => import('@/views/trainning/tutorCheckProjectTrainningReportListFinal'),
+        name: 'tutorCheckProjectTrainningReportListFinal',
+        meta: { title: '审查创新训练结题报告', icon: 'form', roles: ['32'] }
+      },
+      {
+        path: 'tutorViewProjectAchieve',
+        component: () => import('@/views/trainning/tutorViewProjectAchieve'),
+        name: 'tutorViewProjectAchieve',
+        meta: { title: '查看创新训练成果', icon: 'form', roles: ['32'] }
+      },
+      {
+        path: 'tutorProjectTrainningScoreSubmit',
+        component: () => import('@/views/trainning/tutorProjectTrainningScoreSubmit'),
+        name: 'TutorProjectTrainningScoreSubmit',
+        meta: { title: '提交创新训练成绩', icon: 'form', roles: ['32'] }
       }
     ]
   },

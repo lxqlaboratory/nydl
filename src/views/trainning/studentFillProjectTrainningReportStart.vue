@@ -48,7 +48,7 @@
 import { fillProjectTrainningReportInit } from '@/api/table'
 import { fillProjectTrainningReport } from '@/api/table'
 export default {
-  name: 'Txxmktbg',
+  name: 'studentFillProjectTrainningReportStart',
   data() {
     return {
       list: [],
