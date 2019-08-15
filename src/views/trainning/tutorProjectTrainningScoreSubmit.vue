@@ -103,8 +103,8 @@
 </template>
 
 <script>
-import { practiceProjectTutorGrade } from '@/api/practiceProjectallGradeLook'
-import { practiceProjectTutorGradeStu } from '@/api/practiceProjectallGradeLook'
+import { practiceProjectTutorGrade } from '@/api/trainningProject'
+import { practiceProjectTutorGradeStu } from '@/api/trainningProject'
 export default {
   name: 'TutorProjectTrainningScoreSubmit',
   data() {
