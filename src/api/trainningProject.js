@@ -1,5 +1,21 @@
 import request from '@/utils/request'
 
+export function fillProjectTrainningReportInit(data) {
+  return request({
+    url: '/nydlWeb/fillProjectTrainningReportInit',
+    method: 'POST',
+    data
+  })
+}
+
+export function fillProjectTrainningReport(data) {
+  return request({
+    url: '/nydlWeb/fillProjectTrainningReport',
+    method: 'POST',
+    data
+  })
+}
+
 export function practiceEnergyTeacherCheck() {
   return request({
     url: '/nydlWeb/practiceEnergyTeacherCheck',
@@ -46,5 +62,26 @@ export function practiceProjectallGradeLook() {
     data:{}
   })
 }
+export function labAllEnergyPracticeProjectListInit(data) {
+  return request({
+    url: '/nydlWeb/labAllEnergyPracticeProjectListInit',
+    method: 'POST',
+    data
+  })
+}
+export function energyPracticeProjectStuApply(data) {
+  return request({
+    url: '/nydlWeb/energyPracticeProjectStuApply',
+    method: 'POST',
+    data
+  })
+}
+  export function energyPracticeProjectStuApplyCancel(data) {
+    return request({
+      url: '/nydlWeb/energyPracticeProjectStuApplyCancel',
+      method: 'POST',
+      data
+    })
+  }
 
 

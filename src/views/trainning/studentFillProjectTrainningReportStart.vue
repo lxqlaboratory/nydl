@@ -45,8 +45,8 @@
 </template>
 
 <script>
-import { fillProjectTrainningReportInit } from '@/api/table'
-import { fillProjectTrainningReport } from '@/api/table'
+import { fillProjectTrainningReportInit } from '@/api/trainningProject'
+import { fillProjectTrainningReport } from '@/api/trainningProject'
 export default {
   name: 'studentFillProjectTrainningReportStart',
   data() {
