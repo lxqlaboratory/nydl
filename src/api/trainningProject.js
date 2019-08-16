@@ -83,5 +83,12 @@ export function energyPracticeProjectStuApply(data) {
       data
     })
   }
+export function getStuProjectTrainningApplyStateData() {
+  return request({
+    url: '/nydlWeb/getStuProjectTrainningApplyStateData',
+    method: 'POST',
+    data: {}
+  })
+}
 
 
