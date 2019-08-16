@@ -39,3 +39,12 @@ export function practiceProjectTutorGradeStu(data) {
     data
   })
 }
+export function practiceProjectallGradeLook() {
+  return request({
+    url: '/nydlWeb/practiceProjectallGradeLook',
+    method: 'POST',
+    data:{}
+  })
+}
+
+

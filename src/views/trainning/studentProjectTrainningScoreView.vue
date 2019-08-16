@@ -4,34 +4,31 @@
     <tbody>
     <tr>
       <td width="15%">学号</td>
-      <td width="20%">{{formList.stuNum}}</td>
+      <td width="20%">{{form.stuNum}}</td>
       <td width="15%">姓名</td>
-      <td width="20%" ></td>
+      <td width="20%" >{{form.stuName}}</td>
       <td width="15%">专业</td>
-      <td width="20%"></td>
+      <td width="20%">{{form.majorName}}</td>
     </tr>
     <tr>
       <td >申请数量</td>
-      <td ></td>
+      <td >{{form.applyNum}}</td>
       <td >出勤数量</td>
-      <td >
-      </td>
-      <td >观摩成绩
-      </td>
-      <td >
-      </td>
+      <td >{{form.attendanceNum}}</td>
+      <td >观摩成绩</td>
+      <td >{{form.actionScore}}</td>
     </tr>
     <tr>
       <td >项目名称</td>
-      <td ></td>
+      <td >{{form.projectName}}</td>
       <td >项目组</td>
-      <td ></td>
+      <td >{{form.actionScore}}</td>
       <td >训练项目成绩</td>
-      <td ></td>
+      <td >{{form.projectScore}}</td>
     </tr>
     <tr>
       <td colspan="1">最后成绩</td>
-      <td colspan="5" ></td></tr>
+      <td colspan="5" >{{form.endScoreStr}}</td></tr>
     </tbody>
     </table>
 
@@ -73,6 +70,9 @@
         align="center"
         color="black"
       >
+        <template slot-scope="scope">
+          {{ scope.row.attendanceDateStr }}
+        </template>
       </el-table-column>
       <el-table-column
         label="时间"
@@ -80,6 +80,9 @@
         align="center"
         color="black"
       >
+        <template slot-scope="scope">
+          {{ scope.row.projectTime }}
+        </template>
       </el-table-column>
       <el-table-column
         label="地点"
@@ -88,6 +91,9 @@
         align="center"
         color="black"
       >
+        <template slot-scope="scope">
+          {{ scope.row.projectPlace }}
+        </template>
       </el-table-column>
       <el-table-column
         label="考勤教师"
@@ -95,6 +101,9 @@
         align="center"
         color="black"
       >
+        <template slot-scope="scope">
+          {{ scope.row.attendanceName }}
+        </template>
       </el-table-column>
       <el-table-column
         label="考勤状态"
@@ -102,19 +111,23 @@
         align="center"
         color="black"
       >
+        <template slot-scope="scope">
+          {{ scope.row.attendanceState }}
+        </template>
       </el-table-column>
     </el-table>
   </div>
 </template>
 
 <script>
-import { practiceProjectallGradeLook } from '@/api/practiceProjectallGradeLook'
+import { practiceProjectallGradeLook } from '@/api/trainningProject'
+
 export default {
   name: 'studentProjectTrainningScoreView',
   data() {
     return {
       actionList: [],
-      formList: ''
+      form: ''
     }
   },
   created() {
@@ -123,8 +136,9 @@ export default {
   methods: {
     fetchData() {
       practiceProjectallGradeLook().then(response => {
+        console.log(response.data.form);
         this.actionList = response.data.actionList
-        this.formList = response.data.form
+        this.form = response.data.form
       })
     }
   }
