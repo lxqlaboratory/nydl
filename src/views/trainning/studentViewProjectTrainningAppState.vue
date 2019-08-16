@@ -66,7 +66,7 @@
         width="300"
       >
         <template slot-scope="scope">
-          <el-button class="infoBtn"  @click="pushTopicInfo(scope.row.applyId )">{{ scope.row.topicTitle }}</el-button>
+          <el-button class="infoBtn"  @click="pushTopicInfo(scope.row.applyId,scope.row.tutorId )">{{ scope.row.topicTitle }}</el-button>
         </template>
       </el-table-column>
       <el-table-column
@@ -140,7 +140,7 @@
         width="300"
       >
         <template slot-scope="scope">
-          <el-button class="infoBtn"  @click="pushTopicInfo(scope.row.applyId )">{{ scope.row.topicTitle }}</el-button>
+          <el-button class="infoBtn"  @click="pushTopicInfo(scope.row.applyId,scope.row.tutorId )">{{ scope.row.topicTitle }}</el-button>
         </template>
       </el-table-column>
       <el-table-column
@@ -180,11 +180,10 @@
         })
       },
       pushTeachInfo(tutorId){
-        console.log(tutorId);
         this.$router.push({ name: 'teacherInfomation', params: { tutorId }})
       },
-      pushTopicInfo(applyId){
-        this.$router.push({ name: 'projectTrainningProjectInfo', params:{applyId }})
+      pushTopicInfo(applyId,tutorId){
+        this.$router.push({ name: 'projectTrainningProjectInfo', params:{applyId,tutorId }})
       }
 
     }

@@ -90,5 +90,12 @@ export function getStuProjectTrainningApplyStateData() {
     data: {}
   })
 }
+export function labEnergyPracticeResearchApplyInit(data) {
+  return request({
+    url: '/nydlWeb/labEnergyPracticeResearchApplyInit',
+    method: 'POST',
+    data
+  })
+}
 
 

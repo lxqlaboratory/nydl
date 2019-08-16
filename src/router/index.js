@@ -64,10 +64,16 @@ export const constantRoutes = [
         meta: { title: '学生个人信息', icon: 'user' , roles: ['1'] }
       },
       {
-        path: 'teacherInfomation',
-        name: 'teacherInfomation',
+        path: 'teacherInfomationEdit',
+        name: 'teacherInfomationEdit',
         component: () => import('@/views/personInfo/teacherInfomationEdit'),
         meta: { title: '教师个人信息', icon: 'user' , roles: ['3'] }
+      },
+      {
+        path: 'teacherInfomation',
+        name: 'teacherInfomation',
+        component: () => import('@/views/personInfo/teacherInfomation'),
+        meta: { title: '教师个人信息', icon: 'user' , roles: [] }
       },
       {
         path: 'changepwd',
@@ -207,7 +213,13 @@ export const constantRoutes = [
         component: () => import('@/views/trainning/tutorProjectTrainningScoreSubmit'),
         name: 'TutorProjectTrainningScoreSubmit',
         meta: { title: '提交创新训练成绩', icon: 'form', roles: ['44'] }
-      }
+      },
+      {
+        path: 'projectTrainningProjectInfo',
+        name: 'projectTrainningProjectInfo',
+        component: () => import('@/views/trainning/projectTrainningProjectInfo'),
+        meta: { title: '', icon: 'user' , roles: [] }
+      },
     ]
   },
   {
