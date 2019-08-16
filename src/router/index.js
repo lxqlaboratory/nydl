@@ -66,7 +66,7 @@ export const constantRoutes = [
       {
         path: 'teacherInfomation',
         name: 'teacherInfomation',
-        component: () => import('@/views/personInfo/teacherInfomation'),
+        component: () => import('@/views/personInfo/teacherInfomationEdit'),
         meta: { title: '教师个人信息', icon: 'user' , roles: ['3'] }
       },
       {
