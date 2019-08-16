@@ -15,7 +15,7 @@
       <el-table-column
         label="序号"
         fixed="left"
-        width="100"
+        width="60"
         align="center"
         color="black"
       >
@@ -25,44 +25,37 @@
       </el-table-column>
       <el-table-column
         label="学号"
+        prop ="stuNum"
         fixed="left"
-        width="300"
         align="center"
         color="black"
-      >
-        <template slot-scope="scope">
-          {{ scope.row.stuNum }}
-        </template>
-      </el-table-column>
+        width="140"
+      />
       <el-table-column
         label="姓名"
+        prop = "stuName"
         fixed="left"
         align="center"
         color="black"
-      >
-        <template slot-scope="scope">
-          {{ scope.row.stuName }}
-        </template>
-      </el-table-column>
+        width="100"
+      />
       <el-table-column
         label="教工号"
+        prop = "teaNum"
         fixed="left"
         align="center"
         color="black"
-      >
-        <template slot-scope="scope">
-          {{ scope.row.teaNum }}
-        </template>
-      </el-table-column>
+        width="130"
+      />
       <el-table-column
         label="教师姓名"
         fixed="left"
-        width="330"
         align="center"
         color="black"
+        width="100"
       >
         <template slot-scope="scope">
-          {{ scope.row.teaName }}
+          <el-button class="infoBtn"  @click="pushTeachInfo(scope.row.tutoId )">{{ scope.row.teaName }}</el-button>
         </template>
       </el-table-column>
       <el-table-column
@@ -70,21 +63,20 @@
         fixed="left"
         align="center"
         color="black"
+        width="300"
       >
         <template slot-scope="scope">
-          {{ scope.row.topicTitle }}
+          <el-button class="infoBtn"  @click="pushTopicInfo(scope.row.applyId )">{{ scope.row.topicTitle }}</el-button>
         </template>
       </el-table-column>
       <el-table-column
         label="状态"
+        prop = "state"
         fixed="left"
         align="center"
         color="black"
-      >
-        <template slot-scope="scope">
-          {{ scope.row.state }}
-        </template>
-      </el-table-column>
+        width="120"
+      />
     </el-table>
   </div>
   <div>
@@ -97,7 +89,7 @@
       <el-table-column
         label="序号"
         fixed="left"
-        width="100"
+        width="60"
         align="center"
         color="black"
       >
@@ -107,44 +99,37 @@
       </el-table-column>
       <el-table-column
         label="学号"
+        prop ="stuNum"
         fixed="left"
-        width="300"
         align="center"
         color="black"
-      >
-        <template slot-scope="scope">
-          {{ scope.row.stuNum }}
-        </template>
-      </el-table-column>
+        width="140"
+      />
       <el-table-column
         label="姓名"
+        prop = "stuName"
         fixed="left"
         align="center"
         color="black"
-      >
-        <template slot-scope="scope">
-          {{ scope.row.stuName }}
-        </template>
-      </el-table-column>
+        width="100"
+      />
       <el-table-column
         label="教工号"
+        prop = "teaNum"
         fixed="left"
         align="center"
         color="black"
-      >
-        <template slot-scope="scope">
-          {{ scope.row.teaNum }}
-        </template>
-      </el-table-column>
+        width="130"
+      />
       <el-table-column
         label="教师姓名"
         fixed="left"
-        width="330"
         align="center"
         color="black"
+        width="100"
       >
         <template slot-scope="scope">
-          {{ scope.row.teaName }}
+          <el-button class="infoBtn"  @click="pushTeachInfo(scope.row.tutoId )">{{ scope.row.teaName }}</el-button>
         </template>
       </el-table-column>
       <el-table-column
@@ -152,21 +137,20 @@
         fixed="left"
         align="center"
         color="black"
+        width="300"
       >
         <template slot-scope="scope">
-          {{ scope.row.topicTitle }}
+          <el-button class="infoBtn"  @click="pushTopicInfo(scope.row.applyId )">{{ scope.row.topicTitle }}</el-button>
         </template>
       </el-table-column>
       <el-table-column
         label="状态"
+        prop = "state"
         fixed="left"
         align="center"
         color="black"
-      >
-        <template slot-scope="scope">
-          {{ scope.row.state }}
-        </template>
-      </el-table-column>
+        width="120"
+      />
     </el-table>
   </div>
   </div>
@@ -194,7 +178,14 @@
           this.otherList = response.data.otherList
           this.tf = response.data.rf
         })
+      },
+      pushTeachInfo(tutorId){
+        this.$router.push({ name: 'teacherInfomation', params: { tutorId }})
+      },
+      pushTopicInfo(applyId){
+        this.$router.push({ name: 'projectTrainningProjectInfo', params: { timesId, flag0, applyNum }})
       }
+
     }
 
   }
