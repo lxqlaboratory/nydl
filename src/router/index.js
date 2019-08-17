@@ -130,21 +130,27 @@ export const constantRoutes = [
         meta: { title: '查看节能减排课程成绩', icon: 'form' , roles: ['27'] }
       },
       {
+        path: '/studentFillProjectTrainningReport',
+        name: 'studentFillProjectTrainningReport',
+        component: () => import('@/views/trainning/studentFillProjectTrainningReport'),
+        meta: { title: '填写项目开题报告', icon: 'form' , roles: [] },
+      },
+      {
         path: 'studentFillProjectTrainningReportStart',
         name: 'studentFillProjectTrainningReportStart',
         component: () => import('@/views/trainning/studentFillProjectTrainningReportStart'),
-        meta: { title: '填写项目开题报告', icon: 'form' , roles: ['29'] }
+        meta: { title: '填写项目开题报告', icon: 'form' , roles: ['29'] },
       },
       {
         path: 'studentFillProjectTrainningReportMiddle',
-        component: () => import('@/views/trainning/studentFillProjectTrainningReportMiddle'),
         name: 'studentFillProjectTrainningReportMiddle',
+        component: () => import('@/views/trainning/studentFillProjectTrainningReportMiddle'),
         meta: { title: '填写项目中期报告', icon: 'form', roles: ['30'] }
       },
       {
         path: 'studentFillProjectTrainningReportFinal',
-        component: () => import('@/views/trainning/studentFillProjectTrainningReportFinal'),
         name: 'studentFillProjectTrainningReportFinal',
+        component: () => import('@/views/trainning/studentFillProjectTrainningReportFinal'),
         meta: { title: '填写项目结题报告', icon: 'form', roles: ['31'] }
       },
       {
@@ -182,7 +188,7 @@ export const constantRoutes = [
         component: () => import('@/views/trainning/tuorPracticeEnergyDetail'),
         name: 'tuorPracticeEnergyDetail',
         hidden: true,
-        meta: { title: '观摩项目考勤详情', icon: 'form', roles: ['39'] }
+        meta: { title: '观摩项目考勤详情', icon: 'form', roles: [] }
       },
       {
         path: 'tutorCheckProjectTrainningReportListStart',
@@ -218,7 +224,7 @@ export const constantRoutes = [
         path: 'projectTrainningProjectInfo',
         name: 'projectTrainningProjectInfo',
         component: () => import('@/views/trainning/projectTrainningProjectInfo'),
-        meta: { title: '', icon: 'user' , roles: [] }
+        meta: { title: '创新项目详细', icon: 'user' , roles: [] }
       },
     ]
   },
