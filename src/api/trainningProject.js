@@ -32,6 +32,8 @@ export function practiceWorkCheckListSub(data) {
   })
 }
 
+
+
 export function practiceWorkCheckListInit(data) {
   return request({
     url: '/nydlWeb/practiceWorkCheckListInit',
@@ -93,6 +95,14 @@ export function getStuProjectTrainningApplyStateData() {
 export function labEnergyPracticeResearchApplyInit(data) {
   return request({
     url: '/nydlWeb/labEnergyPracticeResearchApplyInit',
+    method: 'POST',
+    data
+  })
+}
+
+export function getCheckProjectTrainningReportList(data) {
+  return request({
+    url: '/nydlWeb/getCheckProjectTrainningReportList',
     method: 'POST',
     data
   })

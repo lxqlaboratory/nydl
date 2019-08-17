@@ -1,11 +1,19 @@
 <template>
   <div class="app-container">
     <div class="portlet-title">
-      <span >已选观摩项目考勤情况</span>
+      <td width="25%">
+        <el-select v-model="reportType" size="mini" class="elinput" >
+          <el-option
+            v-for="item in reportTypes"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value">
+          </el-option>
+        </el-select>
+      </td>
     </div>
-
     <el-table
-      :data="actionList"
+      :data="applyList"
       border
       style="width: 100%;"
       :header-cell-style="{background:'#eef1f6',color:'#606266',fontSize: '14px'}"
@@ -22,65 +30,59 @@
         </template>
       </el-table-column>
       <el-table-column
-        label="活动名称"
+        label="课题名"
+        prop = "projectName"
         fixed="left"
         width="300"
         align="center"
         color="black"
-      >
-        <template slot-scope="scope">
-          {{ scope.row.projectName }}
-        </template>
-      </el-table-column>
+      />
       <el-table-column
-        label="日期"
+        label="组长学号"
+        width="150"
+        prop="stuNum"
         fixed="left"
         align="center"
         color="black"
-      >
-        <template slot-scope="scope">
-          {{ scope.row.attendanceDateStr }}
-        </template>
-      </el-table-column>
+      />
       <el-table-column
-        label="时间"
+        label="组长姓名"
+        prop = "stuName"
         fixed="left"
         align="center"
         color="black"
-      >
-        <template slot-scope="scope">
-          {{ scope.row.projectTime }}
-        </template>
-      </el-table-column>
+      />
       <el-table-column
-        label="地点"
+        label="组长专业"
+        prop = "majorName"
         fixed="left"
-        width="330"
+        width="150"
         align="center"
         color="black"
-      >
-        <template slot-scope="scope">
-          {{ scope.row.projectPlace }}
-        </template>
-      </el-table-column>
+      />
       <el-table-column
-        label="考勤教师"
+        label="组长班级"
+        prop = "className"
         fixed="left"
         align="center"
         color="black"
-      >
-        <template slot-scope="scope">
-          {{ scope.row.attendanceName }}
-        </template>
-      </el-table-column>
+      />
       <el-table-column
-        label="考勤状态"
+        label="审核状态"
+        prop = "checkStateName"
         fixed="left"
         align="center"
         color="black"
+      />
+      <el-table-column
+        label="操作"
+        fixed="left"
+        align="center"
+        color="black"
+        width="300"
       >
         <template slot-scope="scope">
-          {{ scope.row.attendanceState }}
+          <el-button class="infoBtn"  @click="pushReportCheck(scope.row.reportId )">审核</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -88,14 +90,26 @@
 </template>
 
 <script>
-  import { practiceProjectallGradeLook } from '@/api/trainningProject'
+  import { getCheckProjectTrainningReportList } from '@/api/trainningProject'
 
   export default {
-    name: 'tutorCheckProjectTrainningReportListStart',
+    name: 'tutorCheckProjectTrainningReportList',
     data() {
       return {
-        actionList: [],
-        form: ''
+        applyList: [],
+        reportType:0,
+        reportTypes:[
+          {
+            value: '0',
+            label: '开题报告'
+          }, {
+            value: '1',
+            label: '中期报告'
+          }, {
+            value: '2',
+            label: '结题报告'
+          }
+        ]
       }
     },
     created() {
@@ -103,12 +117,15 @@
     },
     methods: {
       fetchData() {
-        practiceProjectallGradeLook().then(response => {
-          console.log(response.data.form);
-          this.actionList = response.data.actionList
-          this.form = response.data.form
+        getCheckProjectTrainningReportList({
+          'reportType': this.$route.params.reportType}).then(response => {
+          this.applyList = response.data.applyList
         })
+      },
+      pushReportCheck(reportId){
+        this.$router.push({ name: 'tutorCheckProjectTrainningReport', params: { reportId }})
       }
+
     }
 
   }

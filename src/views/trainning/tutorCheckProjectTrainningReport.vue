@@ -4,7 +4,7 @@
 
 <script>
     export default {
-        name: "tutorCheckProjectTrainningReportListFinal"
+        name: "tutorCheckProjectTrainningReport"
     }
 </script>
 

@@ -191,22 +191,16 @@ export const constantRoutes = [
         meta: { title: '观摩项目考勤详情', icon: 'form', roles: [] }
       },
       {
-        path: 'tutorCheckProjectTrainningReportListStart',
-        component: () => import('@/views/trainning/tutorCheckProjectTrainningReportListStart'),
-        name: 'tutorCheckProjectTrainningReportListStart',
-        meta: { title: '审查创新训练开期报告', icon: 'form', roles: ['40'] }
+        path: 'tutorCheckProjectTrainningReportList',
+        component: () => import('@/views/trainning/tutorCheckProjectTrainningReportList'),
+        name: 'tutorCheckProjectTrainningReportList',
+        meta: { title: '审查创新训练报告列表', icon: 'form', roles: ['40'] }
       },
       {
-        path: 'studentUploadAchieve',
-        component: () => import('@/views/trainning/tutorCheckProjectTrainningReportListMiddle'),
-        name: 'studentUploadAchieve',
-        meta: { title: '审查创新训练中期报告', icon: 'form', roles: ['41'] }
-      },
-      {
-        path: 'tutorCheckProjectTrainningReportListFinal',
-        component: () => import('@/views/trainning/tutorCheckProjectTrainningReportListFinal'),
-        name: 'tutorCheckProjectTrainningReportListFinal',
-        meta: { title: '审查创新训练结题报告', icon: 'form', roles: ['42'] }
+        path: 'tutorCheckProjectTrainningReport',
+        component: () => import('@/views/trainning/tutorCheckProjectTrainningReport'),
+        name: 'tutorCheckProjectTrainningReport',
+        meta: { title: '审查创新训练中期报告', icon: 'form', roles: [] }
       },
       {
         path: 'tutorViewProjectAchieve',
