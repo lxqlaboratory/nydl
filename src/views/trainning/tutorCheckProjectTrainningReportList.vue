@@ -2,7 +2,7 @@
   <div class="app-container">
     <div class="portlet-title">
       <td width="25%">
-        <el-select v-model="reportType" size="mini" class="elinput" >
+        <el-select v-model="formData.reportType" size="mini" class="elinput"   @change="selectTrigger()" >
           <el-option
             v-for="item in reportTypes"
             :key="item.value"
@@ -91,13 +91,14 @@
 
 <script>
   import { getCheckProjectTrainningReportList } from '@/api/trainningProject'
+  import { checkProjectTrainningReportQuery } from '@/api/trainningProject'
 
   export default {
     name: 'tutorCheckProjectTrainningReportList',
     data() {
       return {
+        formData:{'reportType':'开题报告'},
         applyList: [],
-        reportType:0,
         reportTypes:[
           {
             value: '0',
@@ -117,8 +118,13 @@
     },
     methods: {
       fetchData() {
-        getCheckProjectTrainningReportList({
-          'reportType': this.$route.params.reportType}).then(response => {
+        getCheckProjectTrainningReportList().then(response => {
+          this.formData = response.data
+          this.applyList = response.data.applyList
+        })
+      },
+      selectTrigger(){
+        checkProjectTrainningReportQuery(this.formData).then(response => {
           this.applyList = response.data.applyList
         })
       },

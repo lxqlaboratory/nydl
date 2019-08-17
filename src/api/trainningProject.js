@@ -100,7 +100,14 @@ export function labEnergyPracticeResearchApplyInit(data) {
   })
 }
 
-export function getCheckProjectTrainningReportList(data) {
+export function getCheckProjectTrainningReportList() {
+  return request({
+    url: '/nydlWeb/getCheckProjectTrainningReportList',
+    method: 'POST',
+    data:{}
+  })
+}
+export function checkProjectTrainningReportQuery(data) {
   return request({
     url: '/nydlWeb/getCheckProjectTrainningReportList',
     method: 'POST',

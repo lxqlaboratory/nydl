@@ -125,13 +125,6 @@
       fetchData() {
         studentInformationSubmitInit().then(res => {
           this.formData = res.data
-          /*if(res.data.province != ""){
-            for(var i = 0;i<res.data.provinceList.length;i++){
-              if(res.data.province == res.data.provinceList[i].parentValue ){
-                this.formData.province = res.data.provinceList[i].label
-              }
-            }
-          }*/
           this.provinceList = res.data.provinceList
         })
       },
