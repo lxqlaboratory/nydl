@@ -114,5 +114,20 @@ export function checkProjectTrainningReportQuery(data) {
     data
   })
 }
+export function checkProjectTrainningReportInit(data) {
+  return request({
+    url: '/nydlWeb/checkProjectTrainningReportInit',
+    method: 'POST',
+    data
+  })
+}
+export function checkProjectTrainningReportSubmit(data) {
+  return request({
+    url: '/nydlWeb/checkProjectTrainningReportSubmit',
+    method: 'POST',
+    data
+  })
+}
+
 
 

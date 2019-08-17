@@ -22,7 +22,7 @@
       </tr>
       <tr>
         <td width="30%" height="150px">导师评语</td>
-        <td width="70%" class="colstyle1"></td>
+        <td width="70%" class="colstyle1">{{list.checkOpinion}}</td>
       </tr>
       <tr>
         <td width="30%" class="colstyle1">审核意见</td>

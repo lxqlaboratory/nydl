@@ -79,7 +79,7 @@
         fixed="left"
         align="center"
         color="black"
-        width="300"
+        width="100"
       >
         <template slot-scope="scope">
           <el-button class="infoBtn"  @click="pushReportCheck(scope.row.reportId )">审核</el-button>
@@ -129,6 +129,7 @@
         })
       },
       pushReportCheck(reportId){
+        console.log('reportId',reportId)
         this.$router.push({ name: 'tutorCheckProjectTrainningReport', params: { reportId }})
       }
 

@@ -200,7 +200,7 @@ export const constantRoutes = [
         path: 'tutorCheckProjectTrainningReport',
         component: () => import('@/views/trainning/tutorCheckProjectTrainningReport'),
         name: 'tutorCheckProjectTrainningReport',
-        meta: { title: '审查创新训练中期报告', icon: 'form', roles: [] }
+        meta: { title: '审查创新训练报告', icon: 'form', roles: [] }
       },
       {
         path: 'tutorViewProjectAchieve',
