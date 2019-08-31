@@ -159,9 +159,6 @@ export default {
           return false
         }
       }
-      if (this.choosedArr.length > 2) {
-        this.choosedArr.splice(2)// 只保留前两个元素
-      }
       let item = {
         'modularName': modularName,
         'modularId': stuChooseModularId
@@ -232,7 +229,6 @@ export default {
           message: '提交成功',
           type: 'success'
         })
-        this.$router.go(0)
       })
     }
   }
