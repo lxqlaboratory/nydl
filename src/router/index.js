@@ -332,7 +332,7 @@ export const constantRoutes = [
         path: 'modularInfo',
         name: 'modularInfo',
         component: () => import('@/views/modular/modularInfo'),
-        meta: { title: '摸块划分情况', icon: 'user' , roles: ['20'] }
+        meta: { title: '摸块划分情况', icon: 'user' , roles: [] }
       }
     ]
   },
