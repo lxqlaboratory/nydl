@@ -1,5 +1,5 @@
 <template>
-  <div class="app-container">
+  <div class="app-container" >
     <div class="portlet-title">
       <div class="caption">
         <span>&nbsp;&nbsp;请同学们选择模块划分！点击“提交”即可。导师确认后系统提示“已确认”</span>
@@ -14,7 +14,9 @@
                    <el-input v-model="modularName1" size="mini" />
                  </td>
                  <td colspan="1" align="left">
-                   <el-button size="mini" class="submitBtn" @click="deleteModular1">删除</el-button>
+                   <template v-if="isConfirm === '0'" >
+                     <el-button size="mini" class="submitBtn" @click="deleteModular1">删除</el-button>
+                   </template>
                  </td>
                  <!--<td colspan="1" align="left">-->
                  <!--状态-->
@@ -26,7 +28,9 @@
               <el-input v-model="modularName2" size="mini" />
             </td>
             <td colspan="1" align="left">
-              <el-button size="mini" class="submitBtn" @click="deleteModular2">删除</el-button>
+              <template v-if="isConfirm === '0'" >
+                <el-button size="mini" class="submitBtn" @click="deleteModular2">删除</el-button>
+              </template>
             </td>
           <!--<td colspan="1" align="left">-->
             <!--状态-->
@@ -38,7 +42,9 @@
               <el-input v-model="modularName3" size="mini" />
             </td>
             <td colspan="1" align="left">
-              <el-button size="mini" class="submitBtn" @click="deleteModular3">删除</el-button>
+              <template v-if="isConfirm === '0'" >
+                <el-button size="mini" class="submitBtn" @click="deleteModular3">删除</el-button>
+              </template>
             </td>
           <!--<td colspan="1" align="left">-->
             <!--状态-->
@@ -48,7 +54,9 @@
     </div>
 
     <div align="center">
-      <el-button size="mini" class="submitBtn" @click="submitModular">提交</el-button>
+      <template v-if="isConfirm === '0'" >
+        <el-button size="mini" class="submitBtn" @click="submitModular">提交</el-button>
+      </template>
     </div>
 
     <div class="tpl-portlet-components">
@@ -61,6 +69,7 @@
       :data="modularList"
       border
       style="width: 100%;"
+      width="800"
       size="mini"
       :header-cell-style="{background:'#eef1f6',color:'#606266',fontSize: '14px'}"
     >
@@ -88,7 +97,7 @@
       <el-table-column
         label="模块描述"
         fixed="left"
-        width="800"
+        width="600"
         align="center"
         color="black"
       >
@@ -103,7 +112,9 @@
         color="black"
       >
         <template slot-scope="scope">
-          <el-button class="submitBtn" size="mini" @click="submit(scope.row.modularName,scope.row.modularId)">选择</el-button>
+          <template v-if="isConfirm === '0'" >
+            <el-button class="submitBtn" size="mini" @click="submit(scope.row.modularName,scope.row.modularId)">选择</el-button>
+          </template>
         </template>
       </el-table-column>
     </el-table>
@@ -127,6 +138,7 @@ export default {
       modularId1: '',
       modularId2: '',
       modularId3: '',
+      isConfirm:'0',
       choosedArr: []
     }
   },
@@ -149,12 +161,13 @@ export default {
         this.modularName1 = this.choosedArr[0].modularName
         this.modularName2 = this.choosedArr[1].modularName
         this.modularName3 = this.choosedArr[2].modularName
+        this.isConfirm = res.data.isConfirm
       })
     },
     submit(modularName, stuChooseModularId) {
       for (let i = 0; i < this.choosedArr.length; i++) {
         const modularId = this.choosedArr[i].modularId
-        if (modularId == stuChooseModularId) {
+        if (modularId === stuChooseModularId) {
           alert('请勿选择相同项目')
           return false
         }
