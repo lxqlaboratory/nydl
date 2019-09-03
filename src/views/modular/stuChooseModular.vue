@@ -97,7 +97,7 @@
       <el-table-column
         label="模块描述"
         fixed="left"
-        width="600"
+        width="500"
         align="center"
         color="black"
       >
