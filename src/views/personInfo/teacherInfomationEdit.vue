@@ -5,32 +5,35 @@
         <td colspan="7" style="font-size: 16px;font-weight: bold;color: #304156 ">指导教师简况表</td>
       </tr>
       <tr>
-        <td colspan="1" width="200">导师姓名</td>
-        <td colspan="1" width="200">学历/学位</td>
-        <td colspan="1" width="200">职称</td>
-        <td colspan="1" width="200">电话</td>
-        <td colspan="1" width="200">E-mail</td>
-        <td colspan="1" width="200">qq</td>
-        <td colspan="1" width="200">微信</td>
+        <td colspan="1" width="17%">导师姓名</td>
+        <td colspan="1" width="17%">{{formData.perName}}</td>
+        <td colspan="1" width="16%">学历/学位</td>
+        <td colspan="1" width="17%">{{formData.degree}}</td>
+        <td colspan="1" width="16%">职称</td>
+        <td colspan="1" width="17%">{{formData.proTitle}}</td>
       </tr>
       <tr>
-        <td colspan="1" >{{formData.perName}}</td>
-        <td colspan="1" >{{formData.degree}}</td>
-        <td colspan="1" >{{formData.proTitle}}</td>
+        <td colspan="1" >电话</td>
         <td colspan="1" >{{formData.mobilePhone}}</td>
-        <td colspan="1" >{{formData.email}}</td>
+        <td colspan="1">qq</td>
         <td colspan="1" >{{formData.qq}}</td>
+        <td colspan="1" >微信</td>
         <td colspan="1" >{{formData.wechat}}</td>
       </tr>
       <tr>
+        <td colspan="1" >E-mail</td>
+        <td colspan="5" >{{formData.email}}</td>
+      </tr>
+      <tr>
         <td colspan="1">研究方向</td>
-        <td colspan="6"><el-input
+        <td colspan="5">
+          <el-input
           v-model="formData.researchDirection"
           class="inputSpan"
           type="textarea"
           placeholder="Please enter the content"
           maxlength="300"
-          rows="2"
+          rows="8"
           show-word-limit
           disabled
         />
@@ -38,7 +41,7 @@
       </tr>
       <tr>
         <td colspan="1">当前从事工作简介</td>
-        <td colspan="6"><el-input
+        <td colspan="5"><el-input
           v-model="formData.introduction"
           class="inputSpan"
           type="textarea"
@@ -70,7 +73,7 @@
     methods: {
       fetchData() {
         tutorInformationSubmitInit({
-          'tutorId': this.$route.params.tutorId
+          'tutorId': this.$route.params.personId
         }).then(res => {
           this.formData = res.data
         })

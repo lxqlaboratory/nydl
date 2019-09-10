@@ -70,7 +70,7 @@
     methods: {
       fetchData() {
         tutorInformationSubmitInit({
-          'tutorId': this.$route.params.tutorId
+          'tutorId': this.$route.params.personId
           }).then(res => {
           this.formData = res.data
         })
