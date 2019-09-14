@@ -1,6 +1,61 @@
 <template>
   <div class="dashboard-container">
-    欢迎
+    <div class="portlet-title">
+      <div class="caption font-darkblue bold" style=" text-align: center;">
+        <span>系统通知</span>
+      </div>
+    </div>
+
+    <el-table
+      :data="noticeList"
+      border
+      style="width: 100%;"
+      :header-cell-style="{background:'#eef1f6',color:'#606266',fontSize: '14px'}"
+    >
+      <el-table-column
+        label="序号"
+        fixed="left"
+        width="70"
+        align="center"
+        color="black"
+      >
+        <template slot-scope="scope">
+          {{ scope.$index+1 }}
+        </template>
+      </el-table-column>
+      <el-table-column
+        label="通知编号"
+        prop="noticeNum"
+        fixed="left"
+        align="center"
+        color="black"
+      />
+      <el-table-column
+        label="通知名称"
+        prop="noticeName"
+        fixed="left"
+        align="center"
+        color="black"
+      />
+      <el-table-column type="expand">
+        <template scope="scope">
+          <el-table
+            :data="scope.row.contentList"
+            height="300"
+            border
+            style="width: 100%">
+            <el-table-column
+              label="通知内容"
+              prop="notice"
+              fixed="left"
+              align="center"
+              color="black"
+            />
+          </el-table>
+        </template>
+      </el-table-column>
+    </el-table>
+
   </div>
 </template>
 

@@ -38,6 +38,11 @@
               </el-col>
             </el-row>
           </div>
+          <div style="display: flex;flex-direction: row;justify-content: space-between;align-items: center;width: 100%;margin-top: 25px;color:#ff9419">
+            <el-checkbox v-model="ydxy"><span
+              style="font-size: 13px"
+            >记住密码</span></el-checkbox>
+          </div>
         </div>
       </div>
       <div>
