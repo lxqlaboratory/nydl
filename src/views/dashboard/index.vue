@@ -26,6 +26,7 @@
       <el-table-column
         label="通知编号"
         prop="noticeNum"
+        width="140"
         fixed="left"
         align="center"
         color="black"
@@ -40,13 +41,13 @@
       <el-table-column type="expand">
         <template scope="scope">
           <el-table
-            :data="scope.row.contentList"
-            height="300"
+            :data="scope.row.conList"
+            height="600"
             border
             style="width: 100%">
             <el-table-column
               label="通知内容"
-              prop="notice"
+              prop="noticeContent"
               fixed="left"
               align="center"
               color="black"
@@ -65,7 +66,7 @@ export default {
   name: 'Dashboard',
   data() {
     return {
-      dataList: ''
+      noticeList: ''
     }
   },
   created() {
@@ -74,7 +75,7 @@ export default {
   methods: {
     fetchData() {
       getSystemNoticeListOfPerson().then(res => {
-        this.dataList = res.data
+        this.noticeList = res.data
       })
     }
   }
