@@ -60,9 +60,24 @@
 </template>
 
 <script>
-
+  import { getSystemNoticeListOfPerson } from '@/api/user'
 export default {
-  name: 'Dashboard'
+  name: 'Dashboard',
+  data() {
+    return {
+      dataList: ''
+    }
+  },
+  created() {
+    this.fetchData()
+  },
+  methods: {
+    fetchData() {
+      getSystemNoticeListOfPerson().then(res => {
+        this.dataList = res.data
+      })
+    }
+  }
 }
 </script>
 

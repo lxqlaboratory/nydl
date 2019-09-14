@@ -22,3 +22,11 @@ export function logout() {
     method: 'post'
   })
 }
+
+export function getSystemNoticeListOfPerson() {
+  return request({
+    url: '/system/getSystemNoticeListOfPerson',
+    method: 'post',
+    data: {}
+  })
+}

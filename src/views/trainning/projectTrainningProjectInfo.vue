@@ -40,7 +40,7 @@
 </template>
 
 <script>
-  import { labEnergyPracticeResearchApplyInit } from '@/api/trainningProject'
+import { labEnergyPracticeResearchApplyInit } from '@/api/trainningProject'
   export default {
     data() {
       return {
