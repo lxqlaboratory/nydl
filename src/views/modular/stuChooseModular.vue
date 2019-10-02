@@ -3,7 +3,7 @@
     <template v-if="isConfirm === '1'" >
       <div class="portlet-title">
         <div class="caption">
-          <span>&nbsp;&nbsp;您选择的某块已经确认</span>
+          <span>&nbsp;&nbsp;学院确认您选择的模块为：{{modularName}}</span>
         </div>
       </div>
     </template>
@@ -128,6 +128,7 @@ export default {
       modularList: '',
       flag: true,
       saveMessage: '',
+      modularName: '',
       modularName1: '',
       modularName2: '',
       modularName3: '',
@@ -158,6 +159,7 @@ export default {
         this.modularName2 = this.choosedArr[1].modularName
         this.modularName3 = this.choosedArr[2].modularName
         this.isConfirm = res.data.isConfirm
+        this.modularName= res.data.modularName
       })
     },
     submit(modularName, stuChooseModularId) {
