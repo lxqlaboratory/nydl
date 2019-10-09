@@ -198,6 +198,13 @@ export const constantRoutes = [
         meta: { title: '观摩项目考勤详情', icon: 'form', roles: [] }
       },
       {
+        path: 'tuorPracticeEnergyAfterDetail',
+        component: () => import('@/views/trainning/tuorPracticeEnergyAfterDetail'),
+        name: 'tuorPracticeEnergyAfterDetail',
+        hidden: true,
+        meta: { title: '观摩项目考勤详情', icon: 'form', roles: [] }
+      },
+      {
         path: 'tutorCheckProjectTrainningReportList',
         component: () => import('@/views/trainning/tutorCheckProjectTrainningReportList'),
         name: 'tutorCheckProjectTrainningReportList',

@@ -7,17 +7,12 @@
     </div>
 
     <el-table
-      :data="applyList"
+      :data="applyList1"
       size="mini"
       tooltip-effect="dark"
       style="width: 100%"
       :header-cell-style="{background:'#eef1f6',color:'#606266',fontSize: '14px'}"
-      @selection-change="handleSelectionChange"
     >
-      <el-table-column
-        type="selection"
-        width="55"
-      />
       <el-table-column
         label="序号"
         fixed="left"
@@ -77,20 +72,21 @@
           {{ scope.row.banJi }}
         </template>
       </el-table-column>
+      <el-table-column
+        label="考勤状况"
+        show-overflow-tooltip
+      >
+        <template slot-scope="scope">
+          <el-button size="mini" class="submitBtn">{{ scope.row.personId }}</el-button>
+        </template>
+      </el-table-column>
     </el-table>
-    <div> &nbsp;&nbsp;</div>
-    <div> &nbsp;&nbsp;</div>
-    <div align="center">
-      <el-button size="mini" class="submitBtn" @click="submitPractice">确认提交</el-button>
-    </div>
   </div>
 </template>
 
 <script>
-import { practiceWorkCheckListInit } from '@/api/trainningProject'
-import { practiceWorkCheckListSub } from '@/api/trainningProject'
 export default {
-  name: 'TuorPracticeEnergyDetail',
+  name: 'TuorPracticeEnergyAfterDetail',
   data() {
     return {
       loading: false,
@@ -101,7 +97,7 @@ export default {
       stuList: [],
       multipleSelection: [],
       selected: [],
-      applyList: []
+      applyList1: {}
     }
   },
   watch: {
@@ -111,56 +107,18 @@ export default {
     this.fetchData()
   },
   methods: {
-    fetchData: function() {
+    fetchData: function () {
       this.error = this.post = null
       this.loading = true
-      practiceWorkCheckListInit({
-        'timesId': this.$route.params.timesId,
-        'flag0': this.$route.params.flag0,
-        'applyNum': this.$route.params.applyNum
-      }, (err, post) => {
-        this.loading = false
-        if (err) {
-          this.error = err.toString()
-        } else {
-          this.post = post
-        }
-      }).then(
-        res => {
-          this.applyList = res.data.applyList
-          this.multipleSelection = res.data.form.selected
-          this.flag = res.data.form.flag0
-          this.timesId = res.data.form.timesId
-        }
-      )
-    },
-    handleSelectionChange(val) {
-      this.multipleSelection = val
-    },
-    submitPractice() {
-      for (var i = 0; i < this.applyList.length; i++) {
-        for (var j = 0; j < this.multipleSelection.length; j++) {
-          if (this.applyList[i].stuName == this.multipleSelection[j].stuName) {
-            this.selected[i] = 1
-            break
-          } else {
-            this.selected[i] = 0
+      this.applyList1 = this.$route.params.applyList
+      this.selected = this.$route.params.selected
+      for (var i = 0; i < this.applyList1.length; i++) {
+          if(this.selected[i] == 1){
+            this.applyList1[i].personId = '已考勤'
+          }else{
+            this.applyList1[i].personId = '未考勤'
           }
-        }
       }
-      practiceWorkCheckListSub({
-        'timesId': this.timesId,
-        'selected': this.selected,
-        'flag0': this.flag
-      }).then(res => {
-        if (res.re == 1) {
-          this.$message({
-            type: 'success',
-            message: '提交成功'
-          })
-        }
-        this.$router.push({ name: 'tuorPracticeEnergyAfterDetail', params: { 'timesId':this.timesId, 'selected': this.selected,'applyList':this.applyList }})
-      })
     }
   }
 }

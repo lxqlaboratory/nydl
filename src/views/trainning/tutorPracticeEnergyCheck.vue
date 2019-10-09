@@ -100,7 +100,7 @@
               </template>
             </el-table-column>
             <el-table-column
-              label="申请人数"
+              label="申请时间"
               fixed="left"
               align="center"
               color="black"
