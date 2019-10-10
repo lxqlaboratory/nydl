@@ -149,6 +149,7 @@ export default {
 
     pushAttendance(timesId, flag1, applyNum){
        this.flag = flag1
+      //this.$router.push({ name: 'tuorPracticeEnergyDetail', params: { timesId, flag1, applyNum }})
       if(this.flag == true)
       {
         this.$router.push({ name: 'tuorPracticeEnergyAfterDetail', params: {  timesId, flag1, applyNum}})
