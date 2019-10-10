@@ -116,7 +116,7 @@
               color="black"
             >
             <template slot-scope="scope">
-              <el-button class="infoBtn"  @click="pushAttendance(scope.row.timesId , scope.row.flag0, scope.row.applyNum )">活动考勤</el-button>
+              <el-button class="infoBtn"  @click="pushAttendance(scope.row.timesId , scope.row.flag1, scope.row.applyNum )">活动考勤</el-button>
             </template>
             </el-table-column>
           </el-table>
@@ -133,6 +133,7 @@ export default {
   data() {
     return {
       stuList: [],
+      flag: '',
       applyList: []
     }
   },
@@ -146,8 +147,14 @@ export default {
       })
     },
 
-    pushAttendance(timesId, flag0, applyNum){
-      this.$router.push({ name: 'tuorPracticeEnergyDetail', params: { timesId, flag0, applyNum }})
+    pushAttendance(timesId, flag1, applyNum){
+       this.flag = flag1
+      if(this.flag == true)
+      {
+        this.$router.push({ name: 'tuorPracticeEnergyAfterDetail', params: {  timesId, flag1, applyNum}})
+      }else{
+        this.$router.push({ name: 'tuorPracticeEnergyDetail', params: { timesId, flag1, applyNum }})
+      }
     }
   }
 }

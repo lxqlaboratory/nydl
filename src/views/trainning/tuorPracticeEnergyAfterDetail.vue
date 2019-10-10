@@ -85,6 +85,7 @@
 </template>
 
 <script>
+  import { practiceWorkCheckListInit } from '@/api/trainningProject'
 export default {
   name: 'TuorPracticeEnergyAfterDetail',
   data() {
@@ -110,15 +111,33 @@ export default {
     fetchData: function () {
       this.error = this.post = null
       this.loading = true
-      this.applyList1 = this.$route.params.applyList
-      this.selected = this.$route.params.selected
-      for (var i = 0; i < this.applyList1.length; i++) {
-          if(this.selected[i] == 1){
-            this.applyList1[i].personId = '已考勤'
-          }else{
-            this.applyList1[i].personId = '未考勤'
+          practiceWorkCheckListInit({
+          'timesId': this.$route.params.timesId,
+          'flag0': this.$route.params.flag0,
+          'applyNum': this.$route.params.applyNum,
+          'mod': 'true'
+        }, (err, post) => {
+          this.loading = false
+          if (err) {
+            this.error = err.toString()
+          } else {
+            this.post = post
           }
-      }
+        }).then(
+          res => {
+            this.applyList1 = res.data.applyList
+            this.selected = res.data.form.selected
+            this.flag = res.data.form.flag0
+            this.timesId = res.data.form.timesId
+            for (var i = 0; i < this.applyList1.length; i++) {
+              if(this.selected[i] == 1){
+                this.applyList1[i].personId = '已考勤'
+              }else{
+                this.applyList1[i].personId = '未考勤'
+              }
+            }
+          }
+        )
     }
   }
 }

@@ -117,7 +117,8 @@ export default {
       practiceWorkCheckListInit({
         'timesId': this.$route.params.timesId,
         'flag0': this.$route.params.flag0,
-        'applyNum': this.$route.params.applyNum
+        'applyNum': this.$route.params.applyNum,
+        'mod': 'true'
       }, (err, post) => {
         this.loading = false
         if (err) {
@@ -159,7 +160,7 @@ export default {
             message: '提交成功'
           })
         }
-        this.$router.push({ name: 'tuorPracticeEnergyAfterDetail', params: { 'timesId':this.timesId, 'selected': this.selected,'applyList':this.applyList }})
+        this.$router.push({ name: 'tutorPracticeEnergyCheck'})
       })
     }
   }
