@@ -11,6 +11,7 @@
       size="mini"
       tooltip-effect="dark"
       style="width: 100%"
+      ref="multipleTable"
       :header-cell-style="{background:'#eef1f6',color:'#606266',fontSize: '14px'}"
       @selection-change="handleSelectionChange"
     >
@@ -100,8 +101,11 @@ export default {
       timesId: '',
       stuList: [],
       multipleSelection: [],
+      ceshi:[],
+      currentdate: '',
       selected: [],
-      applyList: []
+      applyList: [],
+      checkbox:''
     }
   },
   watch: {
@@ -129,9 +133,20 @@ export default {
       }).then(
         res => {
           this.applyList = res.data.applyList
-          this.multipleSelection = res.data.form.selected
+          this.ceshi = res.data.form.selected
           this.flag = res.data.form.flag0
           this.timesId = res.data.form.timesId
+          this.applyList.forEach(item=>{
+                this.$refs.multipleTable.toggleRowSelection(item ,true)
+          })
+          this.$nextTick(()=>{
+            for (var i = 0; i < this.applyList.length; i++) {
+              if(this.ceshi[i] == 1)
+              {
+                this.$refs.multipleTable.toggleRowSelection(this.applyList[i],true)
+              }
+            }
+          })
         }
       )
     },
@@ -139,6 +154,21 @@ export default {
       this.multipleSelection = val
     },
     submitPractice() {
+
+      var date = new Date();
+      var seperator1 = "-";
+      var year = date.getFullYear();
+      var month = date.getMonth() + 1;
+      var strDate = date.getDate();
+      if (month >= 1 && month <= 9) {
+        month = "0" + month;
+      }
+      if (strDate >= 0 && strDate <= 9) {
+        strDate = "0" + strDate;
+      }
+       this.currentdate = year + seperator1 + month + seperator1 + strDate;
+
+
       for (var i = 0; i < this.applyList.length; i++) {
         for (var j = 0; j < this.multipleSelection.length; j++) {
           if (this.applyList[i].stuName == this.multipleSelection[j].stuName) {
@@ -152,7 +182,8 @@ export default {
       practiceWorkCheckListSub({
         'timesId': this.timesId,
         'selected': this.selected,
-        'flag0': this.flag
+        'flag0': this.flag,
+        'currentdate': this.currentdate
       }).then(res => {
         if (res.re == 1) {
           this.$message({
@@ -160,10 +191,11 @@ export default {
             message: '提交成功'
           })
         }
-        this.$router.push({ name: 'tutorPracticeEnergyCheck'})
+        this.$router.push({ name: 'tuorPracticeEnergyAfterDetail',params: { 'applyList': this.applyList,'selected': this.selected}})
       })
     }
   }
+
 }
 </script>
 
