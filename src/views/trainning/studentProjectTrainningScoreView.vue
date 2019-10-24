@@ -16,13 +16,13 @@
       <td >出勤数量</td>
       <td >{{form.attendanceNum}}</td>
       <td >观摩成绩</td>
-      <td >{{form.actionScore}}</td>
+      <td >{{form.actionScoreStr}}</td>
     </tr>
     <tr>
       <td >项目名称</td>
       <td >{{form.projectName}}</td>
       <td >项目组</td>
-      <td >{{form.actionScore}}</td>
+      <td >{{form.groupNumStr}}</td>
       <td >训练项目成绩</td>
       <td >{{form.projectScore}}</td>
     </tr>
