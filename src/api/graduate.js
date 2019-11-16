@@ -50,6 +50,15 @@ export function tutorResearchApply(data) {
   })
 }
 
+export function tutorResearchConfirmStudentApply(data) {
+  return request({
+    url: '/web/tutorResearchConfirmStudentApply',
+    method: 'POST',
+    data
+  })
+}
+
+
 // 学生
 export function studentApplyRearchListInit() {
   return request({

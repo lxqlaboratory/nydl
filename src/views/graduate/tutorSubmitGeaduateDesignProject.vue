@@ -95,8 +95,11 @@
         width="180"
       >
         <template  slot-scope=" scope">
+          <div v-if="hideAdd">
           <el-button type="text" @click="modifyProject(scope.row.applyId)" v-if="hideAdd">修改</el-button>
-          <el-button type="danger" size="mini" @click="deleteProject(scope.row.applyId)"  v-if="hideAdd" >删除</el-button>
+
+          <el-button type="danger" size="mini" @click="deleteProject(scope.row.applyId)"  v-if="scope.row.applyCount > 0 ? !hidedelete:hidedelete" >删除</el-button>
+          </div>
           <el-button type="text" @click="check(scope.row.applyId)"  v-if="chakan">查看</el-button>
         </template>
 
@@ -134,7 +137,7 @@
               color="black"
             >
               <template slot-scope="scope">
-                {{ scope.row.perName }}
+                <el-button type="text" >{{ scope.row.perName }}</el-button>
               </template>
             </el-table-column>
             <el-table-column
@@ -173,7 +176,7 @@
       </el-table-column>
     </el-table>
     <div class="addBtn">
-      <el-button v-if="hideAdd" size="medium" class="submitBtn" @click="addProject()">添加课题</el-button>
+      <el-button v-if="tianjiaketi" size="medium" class="submitBtn" @click="addProject()">添加课题</el-button>
     </div>
   </div>
 </template>
@@ -183,6 +186,7 @@
 import { tutorResearchApplyList } from '@/api/graduate'
 import { tutorResearchApplyListData } from '@/api/graduate'
 import { tutorResearchApplyDelete } from '@/api/graduate'
+import { tutorResearchConfirmStudentApply } from '@/api/graduate'
 export default {
   // 提交毕业课题申请
   name: 'TutorSubmitGeaduateDesignProject',
@@ -191,8 +195,11 @@ export default {
       tableList: [],
       year: '',
       stuList: [],
+      graduateMax: '',
       currentYear: '',
       hideAdd: true,
+      tianjiaketi: true,
+      hidedelete: true,
       chakan: false,
       yearList: []
     }
@@ -206,7 +213,13 @@ export default {
         this.tableList = res.data.applyList
         this.yearList = res.data.yearList
         this.year = res.data.year
+        this.graduateMax = res.data.graduateMax
         this.currentYear = res.data.currentYear
+        if(this.tableList.length+1 > this.graduateMax){
+          this.tianjiaketi = false
+        }else{
+          this.tianjiaketi = true
+        }
       })
     },
     modifyProject(applyId) {
@@ -227,11 +240,14 @@ export default {
         this.year = res.data.year
         this.currentYear = res.data.currentYear
         if (this.year != this.currentYear) {
-
+          this.hidedelete = false
           this.hideAdd = false
+          this.tianjiaketi = false
           this.chakan = true
         } else {
           this.hideAdd = true
+          this.tianjiaketi = true
+          this.hidedelete = true
           this.chakan = false
         }
       })
@@ -240,10 +256,26 @@ export default {
       this.$router.push({ name: 'tutorSubmitGeaduateDesignProjectEditDetail', params: { 'applyId': applyId, 'hideAdd': this.hideAdd }})
     },
     confimStu(stuApplyId){
-
+      tutorResearchConfirmStudentApply({ 'stuApplyId': stuApplyId , 'isConfirm': 1}).then(res => {
+           if(res.data == '确认成功'){
+             this.$message({
+               type: 'success',
+               message: '确认成功'
+             })
+             this.fetchData()
+           }
+      })
     },
     refuseStu(stuApplyId){
-
+      tutorResearchConfirmStudentApply({ 'stuApplyId': stuApplyId , 'isConfirm': 2}).then(res => {
+        if(res.data == '确认成功'){
+          this.$message({
+            type: 'success',
+            message: '已拒绝该学生'
+          })
+          this.fetchData()
+        }
+      })
     }
   }
 }

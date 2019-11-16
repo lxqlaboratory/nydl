@@ -8,14 +8,14 @@
         <td colspan="1" width="200">课题名称</td>
         <td colspan="6"><el-input v-model="research.topicTitle" size="mini" /></td>
       </tr>
-      <tr>
-        <td colspan="1">教师姓名</td>
-        <td colspan="1">张立国</td>
-        <td colspan="1">职称</td>
-        <td colspan="1">教授</td>
-        <td colspan="1">学位</td>
-        <td colspan="1">研究生学位</td>
-      </tr>
+      <!--<tr>-->
+        <!--<td colspan="1">教师姓名</td>-->
+        <!--<td colspan="1">张立国</td>-->
+        <!--<td colspan="1">职称</td>-->
+        <!--<td colspan="1">教授</td>-->
+        <!--<td colspan="1">学位</td>-->
+        <!--<td colspan="1">研究生学位</td>-->
+      <!--</tr>-->
       <tr>
         <td colspan="1" width="200">课题来源</td>
         <td colspan="6"><el-select v-model="research.topicResource" placeholder="请选择" size="mini" style="width: 90%">
@@ -43,14 +43,7 @@
       <tr>
         <td colspan="1">设计时间</td>
         <td colspan="2">
-          <el-date-picker
-            v-model="research.topicDate"
-            type="date"
-            size="mini"
-            value-format="yyyy-MM-dd"
-            placeholder="请选择日期"
-            style="width: 90%"
-          />
+          <el-input v-model="research.topicDate" size="mini" />
         </td>
         <td colspan="1">上机时数</td>
         <td colspan="2"><el-input v-model="research.practiceHours" size="mini" placeholder="请输入数字" /></td>
@@ -61,9 +54,9 @@
           v-model="research.topicContent"
           class="inputSpan"
           type="textarea"
-          placeholder="Please enter the content"
+          placeholder="要求200字以上"
           minlength="200"
-          rows="5"
+          rows="25"
           show-word-limit
         />
         </td>
@@ -176,6 +169,12 @@ export default {
           this.$message({
             type: 'success',
             message: '修改成功'
+          })
+          this.$router.push({ name: 'tutorSubmitGeaduateDesignProject'})
+        }else{
+          this.$message({
+            type: 'error',
+            message: '修改失败'
           })
         }
       })
