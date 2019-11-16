@@ -137,7 +137,7 @@
               color="black"
             >
               <template slot-scope="scope">
-                {{ scope.row.perName }}
+                <el-button type="text" >{{ scope.row.perName }}</el-button>
               </template>
             </el-table-column>
             <el-table-column
