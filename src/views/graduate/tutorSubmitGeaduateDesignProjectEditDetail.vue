@@ -43,14 +43,7 @@
       <tr>
         <td colspan="1">设计时间</td>
         <td colspan="2">
-          <el-date-picker
-            v-model="research.topicDate"
-            type="date"
-            size="mini"
-            value-format="yyyy-MM-dd"
-            placeholder="请选择日期"
-            style="width: 90%"
-          />
+          <el-input v-model="research.topicDate" size="mini" />
         </td>
         <td colspan="1">上机时数</td>
         <td colspan="2"><el-input v-model="research.practiceHours" size="mini" placeholder="请输入数字" /></td>
@@ -177,6 +170,7 @@ export default {
             type: 'success',
             message: '修改成功'
           })
+          this.$router.push({ name: 'tutorSubmitGeaduateDesignProject'})
         }
       })
     }
