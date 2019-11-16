@@ -272,6 +272,13 @@ export const constantRoutes = [
         meta: { title: '课题申请表', icon: 'password'  }
       },
       {
+        path: 'tutorSubmitGeaduateDesignProjectEditDetail',
+        name: 'tutorSubmitGeaduateDesignProjectEditDetail',
+        component: () => import('@/views/graduate/tutorSubmitGeaduateDesignProjectEditDetail'),
+        hidden: true,
+        meta: { title: '编辑课题申请表', icon: 'password'  }
+      },
+      {
         path: 'tutorConfirmGeaduateDesignApply',
         name: 'tutorConfirmGeaduateDesignApply',
         component: () => import('@/views/graduate/tutorConfirmGeaduateDesignApply'),

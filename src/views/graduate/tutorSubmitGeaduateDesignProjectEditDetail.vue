@@ -23,8 +23,8 @@
             v-for="item in topicResourceList"
             :key="item.value"
             :label="item.label"
-            :value="item.value">
-          </el-option>
+            :value="item.value"
+          />
         </el-select></td>
       </tr>
       <tr>
@@ -34,8 +34,8 @@
             v-for="item in topicTypeList"
             :key="item.value"
             :label="item.label"
-            :value="item.value">
-          </el-option>
+            :value="item.value"
+          />
         </el-select></td>
         <td colspan="1">设计地点</td>
         <td colspan="2"><el-input v-model="research.topicPlace" size="mini" /></td>
@@ -49,8 +49,8 @@
             size="mini"
             value-format="yyyy-MM-dd"
             placeholder="请选择日期"
-            style="width: 90%">
-          </el-date-picker>
+            style="width: 90%"
+          />
         </td>
         <td colspan="1">上机时数</td>
         <td colspan="2"><el-input v-model.number="research.practiceHours" size="mini" placeholder="请输入数字" /></td>
@@ -129,11 +129,10 @@
 </template>
 
 <script>
-  import { tutorResearchApplyInit } from '@/api/graduate'
-  import { tutorResearchApply } from '@/api/graduate'
+import { tutorResearchApplyInit } from '@/api/graduate'
+import { tutorResearchApply } from '@/api/graduate'
 export default {
-  // 提交毕业课题申请
-  name: 'TutorSubmitGeaduateDesignProject',
+  name: 'TutorSubmitGeaduateDesignProjectEditDetail',
   data() {
     return {
       research: {
@@ -159,19 +158,19 @@ export default {
   },
   methods: {
     fetchData: function() {
-      tutorResearchApplyInit().then(res => {
+      tutorResearchApplyInit({ 'applyId': this.$route.params.applyId }).then(res => {
         this.topicTypeList = res.data.topicTypeList
         this.topicResourceList = res.data.topicResourceList
       })
     },
-    submit(){
+    submit() {
       tutorResearchApply(this.research).then(res => {
-       if(res.data == '提交成功'){
+        if (res.data == '提交成功') {
           this.$message({
-         type: 'success',
-         message: '提交成功'
-        })
-     }
+            type: 'success',
+            message: '提交成功'
+          })
+        }
       })
     }
 
@@ -232,5 +231,4 @@ export default {
     font-size: 12px;
     width: 26%;
   }
-
 </style>
