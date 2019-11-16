@@ -8,11 +8,37 @@ export function tutorResearchApplyList() {
   })
 }
 
+
+export function tutorResearchApplyListData(data) {
+  return request({
+    url: '/webNydl/tutorResearchApplyList',
+    method: 'POST',
+    data
+  })
+}
+
 export function tutorResearchApplyInit(data) {
   return request({
     url: '/web/tutorResearchApplyInit',
     method: 'POST',
     data
+  })
+}
+
+export function tutorResearchApplyDelete(data) {
+  return request({
+    url: '/web/tutorResearchApplyDelete',
+    method: 'POST',
+    data
+  })
+}
+
+
+export function tutorResearchApplyInitData() {
+  return request({
+    url: '/web/tutorResearchApplyInit',
+    method: 'POST',
+    data: {}
   })
 }
 

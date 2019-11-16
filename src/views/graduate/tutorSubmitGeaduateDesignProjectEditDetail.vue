@@ -53,7 +53,7 @@
           />
         </td>
         <td colspan="1">上机时数</td>
-        <td colspan="2"><el-input v-model.number="research.practiceHours" size="mini" placeholder="请输入数字" /></td>
+        <td colspan="2"><el-input v-model="research.practiceHours" size="mini" placeholder="请输入数字" /></td>
       </tr>
       <tr>
         <td colspan="1">主要研究内容</td>
@@ -123,7 +123,7 @@
     </table>
 
     <div align="center">
-      <el-button size="medium" class="submitBtn" @click="submit">提交</el-button>
+      <el-button size="medium" class="submitBtn" @click="submit" v-if="hidden">修改</el-button>
     </div>
   </div>
 </template>
@@ -149,6 +149,7 @@ export default {
         topicType: '',
         topicPlace: ''
       },
+      hidden: true,
       topicTypeList: [],
       topicResourceList: []
     }
@@ -158,9 +159,15 @@ export default {
   },
   methods: {
     fetchData: function() {
+      if(this.$route.params.hideAdd == false){
+        this.hidden = false
+      }else {
+        this.hidden = true
+      }
       tutorResearchApplyInit({ 'applyId': this.$route.params.applyId }).then(res => {
         this.topicTypeList = res.data.topicTypeList
         this.topicResourceList = res.data.topicResourceList
+        this.research = res.data
       })
     },
     submit() {
@@ -168,7 +175,7 @@ export default {
         if (res.data == '提交成功') {
           this.$message({
             type: 'success',
-            message: '提交成功'
+            message: '修改成功'
           })
         }
       })
