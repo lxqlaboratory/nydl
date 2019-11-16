@@ -59,6 +59,14 @@ export function studentApplyRearchListInit() {
   })
 }
 
+export function studentApplyRearchListInitByCondition(data) {
+  return request({
+    url: '/webNydl/studentApplyRearchListInit',
+    method: 'POST',
+    data
+  })
+}
+
 export function studentApplySubmit(data) {
   return request({
     url: '/webNydl/studentApplySubmit',
@@ -74,5 +82,3 @@ export function studentApplyDelete(data) {
     data
   })
 }
-
-
