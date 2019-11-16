@@ -53,7 +53,7 @@
           </el-date-picker>
         </td>
         <td colspan="1">上机时数</td>
-        <td colspan="2"><el-input v-model.number="research.practiceHours" size="mini" placeholder="请输入数字" /></td>
+        <td colspan="2"><el-input v-model="research.practiceHours" size="mini" placeholder="请输入数字" /></td>
       </tr>
       <tr>
         <td colspan="1">主要研究内容</td>
@@ -129,7 +129,7 @@
 </template>
 
 <script>
-  import { tutorResearchApplyInit } from '@/api/graduate'
+  import { tutorResearchApplyInitData } from '@/api/graduate'
   import { tutorResearchApply } from '@/api/graduate'
 export default {
   // 提交毕业课题申请
@@ -159,7 +159,7 @@ export default {
   },
   methods: {
     fetchData: function() {
-      tutorResearchApplyInit().then(res => {
+      tutorResearchApplyInitData().then(res => {
         this.topicTypeList = res.data.topicTypeList
         this.topicResourceList = res.data.topicResourceList
       })
