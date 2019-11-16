@@ -164,8 +164,8 @@
               width="180"
             >
               <template  slot-scope=" scope">
-                <el-button type="text" @click="modifyProject(scope.row.applyId)" >确认</el-button>
-                <el-button type="text" @click="modifyProject(scope.row.applyId)" >拒绝</el-button>
+                <el-button type="text" @click="confimStu(scope.row.stuApplyId)" >确认</el-button>
+                <el-button type="text" @click="refuseStu(scope.row.stuApplyId)" >拒绝</el-button>
               </template>
             </el-table-column>
           </el-table>
@@ -238,6 +238,12 @@ export default {
     },
     check(applyId) {
       this.$router.push({ name: 'tutorSubmitGeaduateDesignProjectEditDetail', params: { 'applyId': applyId, 'hideAdd': this.hideAdd }})
+    },
+    confimStu(stuApplyId){
+
+    },
+    refuseStu(stuApplyId){
+
     }
   }
 }

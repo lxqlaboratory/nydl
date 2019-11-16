@@ -49,3 +49,30 @@ export function tutorResearchApply(data) {
     data
   })
 }
+
+// 学生
+export function studentApplyRearchListInit() {
+  return request({
+    url: '/webNydl/studentApplyRearchListInit',
+    method: 'POST',
+    data: {}
+  })
+}
+
+export function studentApplySubmit(data) {
+  return request({
+    url: '/webNydl/studentApplySubmit',
+    method: 'POST',
+    data
+  })
+}
+
+export function studentApplyDelete(data) {
+  return request({
+    url: '/webNydl/studentApplyDelete',
+    method: 'POST',
+    data
+  })
+}
+
+
