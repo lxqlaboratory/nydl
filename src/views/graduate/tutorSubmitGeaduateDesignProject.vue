@@ -1,5 +1,17 @@
 <template>
   <div class="app-container">
+    <div >
+    <el-select v-model="year" placeholder="请输入年份" >
+      <el-option
+        v-for="item in yearList"
+        :key="item.value"
+        :label="item.label"
+        :value="item.value"
+      />
+    </el-select>
+      <el-button size="medium"  class="submitBtn" @click="search()">搜索</el-button>
+    </div>
+    <div></div>
     <el-table
       :data="tableList"
       border
@@ -97,7 +109,9 @@ export default {
   name: 'TutorSubmitGeaduateDesignProject',
   data() {
     return {
-      tableList: []
+      tableList: [],
+      year: '',
+      yearList: []
     }
   },
   created() {
@@ -107,6 +121,7 @@ export default {
     fetchData: function() {
       tutorResearchApplyList().then(res => {
         this.tableList = res.data.applyList
+        this.yearList = res.data.yearList
       })
     },
     modifyProject(applyId) {
