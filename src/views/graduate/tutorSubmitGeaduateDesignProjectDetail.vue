@@ -8,14 +8,14 @@
         <td colspan="1" width="200">课题名称</td>
         <td colspan="6"><el-input v-model="research.topicTitle" size="mini" /></td>
       </tr>
-      <tr>
-        <td colspan="1">教师姓名</td>
-        <td colspan="1">张立国</td>
-        <td colspan="1">职称</td>
-        <td colspan="1">教授</td>
-        <td colspan="1">学位</td>
-        <td colspan="1">研究生学位</td>
-      </tr>
+      <!--<tr>-->
+        <!--<td colspan="1">教师姓名</td>-->
+        <!--<td colspan="1">张立国</td>-->
+        <!--<td colspan="1">职称</td>-->
+        <!--<td colspan="1">教授</td>-->
+        <!--<td colspan="1">学位</td>-->
+        <!--<td colspan="1">研究生学位</td>-->
+      <!--</tr>-->
       <tr>
         <td colspan="1" width="200">课题来源</td>
         <td colspan="6"><el-select v-model="research.topicResource" placeholder="请选择" size="mini" style="width: 90%">
@@ -54,9 +54,9 @@
           v-model="research.topicContent"
           class="inputSpan"
           type="textarea"
-          placeholder="Please enter the content"
+          placeholder="要求200字以上"
           minlength="200"
-          rows="5"
+          rows="25"
           show-word-limit
         />
         </td>
