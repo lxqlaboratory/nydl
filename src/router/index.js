@@ -282,7 +282,7 @@ export const constantRoutes = [
         path: 'tutorConfirmGeaduateDesignApply',
         name: 'tutorConfirmGeaduateDesignApply',
         component: () => import('@/views/graduate/tutorConfirmGeaduateDesignApply'),
-        meta: { title: '确认学生课题', icon: 'password' , roles: ['49'] }
+        meta: { title: '确认学生课题', icon: 'password'  }
       }
     ]
   },
