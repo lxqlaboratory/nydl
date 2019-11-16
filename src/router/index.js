@@ -243,7 +243,7 @@ export const constantRoutes = [
     meta: {
       title: '本科毕业设计',
       icon: 'example',
-      roles: ['45']
+      roles: ['33']
     },
     children: [
       {
@@ -256,6 +256,7 @@ export const constantRoutes = [
         path: 'studentViewGeaduateDesignApply',
         name: 'studentViewGeaduateDesignApply',
         component: () => import('@/views/graduate/studentViewGeaduateDesignApply'),
+        hidden: true,
         meta: { title: '查看申请状态', icon: 'user' , roles: ['30'] }
       },
       {
