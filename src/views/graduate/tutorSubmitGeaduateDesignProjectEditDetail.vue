@@ -171,6 +171,11 @@ export default {
             message: '修改成功'
           })
           this.$router.push({ name: 'tutorSubmitGeaduateDesignProject'})
+        }else{
+          this.$message({
+            type: 'error',
+            message: '修改失败'
+          })
         }
       })
     }
