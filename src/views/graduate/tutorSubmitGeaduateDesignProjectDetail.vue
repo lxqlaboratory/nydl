@@ -115,8 +115,8 @@
       </tr>
     </table>
 
-    <div align="center">
-      <el-button size="medium" class="submitBtn" @click="submit">提交</el-button>
+    <div align="center" >
+      <el-button size="medium" class="submitBtn" @click="submit" :disabled="isDisable">提交</el-button>
     </div>
   </div>
 </template>
@@ -141,8 +141,10 @@ export default {
         topicContent: '',
         practiceHours: '',
         topicType: '',
-        topicPlace: ''
+        topicPlace: '',
+
       },
+      isDisable: false,
       topicTypeList: [],
       topicResourceList: []
     }
@@ -158,12 +160,14 @@ export default {
       })
     },
     submit(){
+      this.isDisable = true
       tutorResearchApply(this.research).then(res => {
        if(res.data == '提交成功'){
           this.$message({
          type: 'success',
          message: '提交成功'
         })
+         this.isDisable = false
          this.$router.push({ name: 'tutorSubmitGeaduateDesignProject'})
      }else{
          this.$message({
