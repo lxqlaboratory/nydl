@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <div id="demo" >
     <table class="content">
       <tr>
         <td colspan="7" style="font-size: 16px;font-weight: bold;color: #304156 ">毕业设计（论文）课题申请表</td>
@@ -117,6 +118,10 @@
 
     <div align="center">
       <el-button size="medium" class="submitBtn" @click="submit" v-if="hidden">修改</el-button>
+      <button class="submitBtn2">
+        <a :href="'/nydl/webNydl/exportGraduateTeacherResearchApply?applyId='+this.$route.params.applyId" download="毕业设计（论文）课题申请表.pdf">下载pdf</a>
+      </button>
+    </div>
     </div>
   </div>
 </template>
@@ -218,6 +223,13 @@ export default {
     border: 1px solid #EBEEF5;
     border-radius: 4px;
     color:  #606266;
+  }
+  .submitBtn2{
+    background-color:#1F2D3D;
+    color: #ffffff;
+    border: 0px;
+    height: 30px;
+    width: 90px;
   }
   .inputSpan{
     border: 1px solid #EBEEF5;

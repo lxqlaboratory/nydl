@@ -59,6 +59,14 @@ export function tutorResearchConfirmStudentApply(data) {
 }
 
 
+export function exportGraduateTeacherResearchApply(data) {
+  return request({
+    url: '/webNydl/exportGraduateTeacherResearchApply',
+    method: 'POST',
+    data
+  })
+}
+
 // 学生
 export function studentApplyRearchListInit() {
   return request({

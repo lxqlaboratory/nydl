@@ -16,6 +16,9 @@ import axios from 'axios'
 Vue.prototype.$reqs = axios
 Vue.config.productionTip = false
 
+import htmlToPdf from '@/utils/htmlToPdf'
+Vue.use(htmlToPdf)
+
 import VDistpicker from 'v-distpicker'
 
 Vue.component('v-distpicker', VDistpicker)
