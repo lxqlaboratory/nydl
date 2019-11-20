@@ -8,6 +8,7 @@ export function getStudentListCanConfirm() {
     data: {}
   })
 }
+
 /*导师确认学生提交 */
 
 export function submitStudentConfirm() {
@@ -18,11 +19,4 @@ export function submitStudentConfirm() {
   })
 }
 
-/* 学生选导师-提交申请 */
-export function stuChooseTutorSubmit(data) {
-  return request({
-    url: '/nydlBean/stuChooseTutorSubmit',
-    method: 'POST',
-    data
-  })
-}
+
