@@ -59,7 +59,7 @@ export function tutorResearchConfirmStudentApply(data) {
 }
 
 
-export function exportGraduateTeacherResearchApply(data) {
+export function pdfDownload(data) {
   return request({
     url: '/webNydl/exportGraduateTeacherResearchApply',
     method: 'POST',
@@ -99,3 +99,5 @@ export function studentApplyDelete(data) {
     data
   })
 }
+
+

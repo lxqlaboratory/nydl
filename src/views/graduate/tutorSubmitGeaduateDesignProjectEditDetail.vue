@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <a  style="position: fixed;z-index:-1;top: 0;left: 0;" ref="temp1"  :href="'/nydl/webNydl/getBytesBufferDataByDataKey?dataKey='+this.dataKey" download="毕业设计（论文）课题申请表.pdf"></a>
     <div id="demo" >
     <table class="content">
       <tr>
@@ -118,9 +119,7 @@
 
     <div align="center">
       <el-button size="medium" class="submitBtn" @click="submit" v-if="hidden">修改</el-button>
-      <button class="submitBtn2">
-        <a :href="'/nydl/webNydl/exportGraduateTeacherResearchApply?applyId='+this.$route.params.applyId" download="毕业设计（论文）课题申请表.pdf">下载pdf</a>
-      </button>
+      <!--<el-button size="mini" class="submitBtn" @click="downloadPDF()">下载pdf</el-button>-->
     </div>
     </div>
   </div>
@@ -129,6 +128,7 @@
 <script>
 import { tutorResearchApplyInit } from '@/api/graduate'
 import { tutorResearchApply } from '@/api/graduate'
+import { pdfDownload } from '@/api/graduate'
 export default {
   name: 'TutorSubmitGeaduateDesignProjectEditDetail',
   data() {
@@ -148,6 +148,7 @@ export default {
         topicPlace: ''
       },
       hidden: true,
+      dataKey: '',
       topicTypeList: [],
       topicResourceList: []
     }
@@ -169,7 +170,7 @@ export default {
       })
     },
     submit() {
-      tutorResearchApply(this.research).then(res => {
+      tutorResearchApply({ 'applyId': this.$route.params.applyId }).then(res => {
         if (res.data == '提交成功') {
           this.$message({
             type: 'success',
@@ -183,8 +184,26 @@ export default {
           })
         }
       })
+    },
+    downloadPDF(){
+      pdfDownload({ 'applyId': this.$route.params.applyId }).then(res => {
+        this.dataKey = res.dataKey
+        if(this.dataKey != null){
+          alert(this.dataKey)
+          this.$refs.temp1.click()
+        }else if(res.msg!=null||res.msg!="") {
+          this.$message({
+            message: res.msg,
+            type: 'error'
+          })
+        }else  (
+          this.$message({
+            message: '下载失败',
+            type: 'error'
+          })
+        )
+      })
     }
-
   }
 }
 </script>
