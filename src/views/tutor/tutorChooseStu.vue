@@ -3,7 +3,7 @@
 
 
     <el-table
-      :data="teacherList"
+      :data="stuTableList"
       border
       style="width: 100%;"
       size="mini"
@@ -48,7 +48,7 @@
         color="black"
       >
         <template slot-scope="scope">
-          {{ scope.row.province }}
+          {{ scope.row.province }}- {{ scope.row.city }}-{{ scope.row.town }}
         </template>
       </el-table-column>
       <el-table-column
