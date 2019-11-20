@@ -119,7 +119,7 @@
 </template>
 
 <script>
-import { getStudentListCanConfirm } from '@/api/tutorialSystem'
+import { getStudentListCanConfirm } from '@/api/tutorChoseStu'
 import { submitStudentConfirm } from '@/api/tutorialSystem'
 export default {
   name: 'TutorChooseStu',
