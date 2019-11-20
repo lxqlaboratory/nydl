@@ -1,7 +1,16 @@
 <template>
-  <div class="app-container" >
+  <div class="app-container">
+    <div class="portlet-title">
+      <div class="caption">
+        <span>已确认或拒绝学生</span>
+      </div>
+    </div>
 
-
+    <div class="portlet-title">
+      <div class="caption" >
+        <span>申请学生列表</span>
+      </div>
+    </div>
     <el-table
       :data="stuTableList"
       border
@@ -38,7 +47,7 @@
         color="black"
       >
         <template slot-scope="scope">
-          {{ scope.row.gender }}
+          {{ scope.row.gender===1?'男' : '女' }}
         </template>
       </el-table-column>
       <el-table-column
@@ -101,7 +110,7 @@
         color="black"
       >
         <template slot-scope="scope">
-          {{ scope.row.wantLevel }}
+          {{ getLevel(scope.row.wantLevel) }}
         </template>
       </el-table-column>
       <el-table-column
@@ -111,7 +120,8 @@
         color="black"
       >
         <template slot-scope="scope">
-          {{ scope.row.undergraduateTutorMax }}
+          <el-button class="chooseBtn" type="text" size="mini" @click="confirmStu(scope.row.personId, scope.row.wantLevel)">确认</el-button>
+          <el-button class="chooseBtn" type="text" size="mini" @click="refuseStu(scope.row.personId, scope.row.wantLevel)">拒绝</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -120,12 +130,17 @@
 
 <script>
 import { getStudentListCanConfirm } from '@/api/tutorChoseStu'
-import { submitStudentConfirm } from '@/api/tutorialSystem'
+import { submitStudentConfirm } from '@/api/tutorChoseStu'
 export default {
   name: 'TutorChooseStu',
   data() {
     return {
-      stuTableList: []
+      stuTableList: [],
+      confirmArrInit: [],
+      refuseArrInit: [],
+      studentRemovedList: [],
+      studentWantList: [],
+      studentList: []
     }
   },
   created() {
@@ -137,10 +152,61 @@ export default {
         this.stuTableList = res.data
       })
     },
+    getLevel: function(id) {
+      const sw = {
+        '1': '一志愿',
+        '2': '二志愿',
+        '3': '三志愿'
+      }
+      return sw[id]
+    },
+    confirmStu() {
+
+    },
+    refuseStu() {
+
+    }
   }
 }
 </script>
 
 <style scoped>
-
+  .container{
+    width: 100%;
+    margin: 20px;
+  }
+  .portlet-title{
+    border-bottom: 1px solid #eef1f5;
+    padding: 0;
+    min-height: 40px;
+  }
+  .caption{
+    font-size: 20px;
+    line-height: 18px;
+    color: steelblue;
+    font-weight: bold;
+  }
+  .submitBtn{
+    background-color:#1F2D3D;
+    color: #ffffff;
+    border: 0px;
+  }
+  .content{
+    width:100%;
+    border-top: 1px solid #EBEEF5;
+    border-left: 1px solid #EBEEF5;
+    border-spacing: 0;/*去掉单元格间隙*/
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  .content tr {
+    width : 100% !important;
+  }
+  .content td {
+    padding: 10px 30px;
+    border-bottom: 1px solid #EBEEF5;
+    border-right: 1px solid #EBEEF5;
+    text-align: center;
+    font-size: 12px;
+  }
 </style>
