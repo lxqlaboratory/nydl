@@ -243,21 +243,21 @@ export const constantRoutes = [
     meta: {
       title: '本科毕业设计',
       icon: 'example',
-      roles: ['33']
+      roles: ['45']
     },
     children: [
       {
         path: 'studentGeaduateDesignApply',
         name: 'studentGeaduateDesignApply',
         component: () => import('@/views/graduate/studentGeaduateDesignApply'),
-        meta: { title: '学生课题申请', icon: 'user' , roles: ['30'] }
+        meta: { title: '学生课题申请', icon: 'user' , roles: ['46'] }
       },
       {
         path: 'studentViewGeaduateDesignApply',
         name: 'studentViewGeaduateDesignApply',
         component: () => import('@/views/graduate/studentViewGeaduateDesignApply'),
         hidden: true,
-        meta: { title: '查看申请状态', icon: 'user' , roles: ['30'] }
+        meta: { title: '查看申请状态', icon: 'user' , roles: ['47'] }
       },
       {
         path: 'tutorSubmitGeaduateDesignProject',
