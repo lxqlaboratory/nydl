@@ -271,10 +271,12 @@ export default {
     },
     submitTutor() {
       stuChooseTutorSubmit({'tutorId1': this.personId1,'tutorId2': this.personId2,'tutorId3': this.personId3}).then(res => {
-        this.$message({
-          message: '提交成功',
-          type: 'success'
-        })
+        if(res.re == 1){
+          this.$message({
+            message: res.data.msg,
+            type: 'success'
+          })
+        }
       })
     },
     pushInfo(personId) {
