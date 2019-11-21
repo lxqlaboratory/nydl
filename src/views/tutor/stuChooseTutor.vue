@@ -124,15 +124,15 @@
           {{ scope.row.mobilePhone }}
         </template>
       </el-table-column>
-      <!--<el-table-column-->
-        <!--label="考勤状态"-->
-        <!--align="center"-->
-        <!--color="black"-->
-      <!--&gt;-->
-        <!--<template slot-scope="scope">-->
-          <!--{{getLevel(scope.row.checkState)  }}-->
-        <!--</template>-->
-      <!--</el-table-column>-->
+      <el-table-column
+        label="考勤状态"
+        align="center"
+        color="black"
+      >
+        <template slot-scope="scope">
+          {{getLevel(scope.row.checkState)  }}
+        </template>
+      </el-table-column>
       <el-table-column
         label="已报名"
         align="center"
