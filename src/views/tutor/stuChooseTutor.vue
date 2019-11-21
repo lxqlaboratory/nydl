@@ -16,7 +16,7 @@
             <el-button size="mini" class="submitBtn" @click="deleteTutor1">删除</el-button>
           </td>
           <td colspan="1" align="left">
-            <el-input v-model="checkState1"  size="mini"></el-input>
+           {{getLevel(this.checkState1)}}
           </td>
         </tr>
         <tr>
@@ -28,7 +28,7 @@
             <el-button size="mini" class="submitBtn" @click="deleteTutor2">删除</el-button>
           </td>
           <td colspan="1" align="left">
-            <el-input v-model="checkState2"  size="mini"></el-input>
+            {{getLevel(this.checkState2)}}
           </td>
         </tr>
         <tr>
@@ -40,7 +40,7 @@
             <el-button size="mini" class="submitBtn" @click="deleteTutor3">删除</el-button>
           </td>
           <td colspan="1" align="left">
-            <el-input v-model="checkState3"  size="mini"></el-input>
+            {{getLevel(this.checkState3)}}
           </td>
         </tr>
         </tbody></table>
@@ -71,7 +71,7 @@
       <el-table-column
         label="姓名"
         fixed="left"
-        width="100"
+        width="70"
         align="center"
         color="black"
       >
@@ -81,7 +81,6 @@
       </el-table-column>
       <el-table-column
         label="性别"
-        fixed="left"
         align="center"
         color="black"
       >
@@ -91,7 +90,6 @@
       </el-table-column>
       <el-table-column
         label="学历"
-        fixed="left"
         align="center"
         color="black"
       >
@@ -101,7 +99,6 @@
       </el-table-column>
       <el-table-column
         label=" 职称"
-        fixed="left"
         align="center"
         color="black"
       >
@@ -111,8 +108,6 @@
       </el-table-column>
       <el-table-column
         label="E-mail"
-        fixed="left"
-        width="120"
         align="center"
         color="black"
       >
@@ -123,28 +118,23 @@
       <el-table-column
         label="电话"
         align="center"
-        fixed="left"
-        width="120"
         color="black"
       >
         <template slot-scope="scope">
           {{ scope.row.mobilePhone }}
         </template>
       </el-table-column>
-      <el-table-column
-        label="考勤状态"
-        fixed="left"
-        align="center"
-        color="black"
-        width="100"
-      >
-        <template slot-scope="scope">
-          {{ scope.row.checkState }}
-        </template>
-      </el-table-column>
+      <!--<el-table-column-->
+        <!--label="考勤状态"-->
+        <!--align="center"-->
+        <!--color="black"-->
+      <!--&gt;-->
+        <!--<template slot-scope="scope">-->
+          <!--{{getLevel(scope.row.checkState)  }}-->
+        <!--</template>-->
+      <!--</el-table-column>-->
       <el-table-column
         label="已报名"
-        fixed="left"
         align="center"
         color="black"
       >
@@ -154,7 +144,6 @@
       </el-table-column>
       <el-table-column
         label="已确定"
-        fixed="left"
         align="center"
         color="black"
       >
@@ -164,7 +153,6 @@
       </el-table-column>
       <el-table-column
       label="招收数量"
-      fixed="left"
       align="center"
       color="black"
       >
@@ -174,8 +162,6 @@
      </el-table-column>
       <el-table-column
         label="操作"
-        fixed="left"
-        width="110"
         align="center"
         color="black"
       >
@@ -276,12 +262,21 @@ export default {
             message: res.data.msg,
             type: 'success'
           })
+          location.reload()
         }
       })
     },
     pushInfo(personId) {
       this.$router.push({ name: 'teacherInfomationEdit', params: { personId }})
     },
+    getLevel: function(id) {
+      const sw = {
+        '0': '待确认',
+        '1': '已确认',
+        '2': '已拒绝'
+      }
+      return sw[id]
+    }
   }
 }
 </script>
