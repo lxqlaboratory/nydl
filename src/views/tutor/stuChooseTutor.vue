@@ -85,7 +85,7 @@
         color="black"
       >
         <template slot-scope="scope">
-          {{ scope.row.gender }}
+          {{ getgender(scope.row.gender) }}
         </template>
       </el-table-column>
       <el-table-column
@@ -274,6 +274,13 @@ export default {
         '0': '待确认',
         '1': '已确认',
         '2': '已拒绝'
+      }
+      return sw[id]
+    },
+    getgender: function(id) {
+      const sw = {
+        '1': '男',
+        '2': '女'
       }
       return sw[id]
     }
