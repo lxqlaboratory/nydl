@@ -9,14 +9,19 @@ export function getStudentListCanConfirm() {
   })
 }
 
-/*导师确认学生提交 */
 
-export function submitStudentConfirm() {
+export function tutorConformStudentTutorApplyInit() {
   return request({
-    url: '/nydlBean/submitStudentConfirm',
+    url: '/nydlBean/tutorConformStudentTutorApplyInit',
     method: 'POST',
     data: {}
   })
 }
 
-
+export function tutorConformStudentTutorApply(data) {
+  return request({
+    url: '/nydlBean/tutorConformStudentTutorApply',
+    method: 'POST',
+    data
+  })
+}

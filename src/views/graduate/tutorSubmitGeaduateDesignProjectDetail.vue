@@ -27,8 +27,32 @@
           </el-option>
         </el-select></td>
       </tr>
+
+
       <tr>
+        <td colspan="1">项目类型</td>
+        <td colspan="2"><el-select v-model="research.projectType" placeholder="请选择" size="mini" style="width: 90%">
+          <el-option
+            v-for="item in projectTypeList"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value">
+          </el-option>
+        </el-select></td>
         <td colspan="1">课题类别</td>
+        <td colspan="2"><el-select v-model="research.topicCategory" placeholder="请选择" size="mini" style="width: 90%">
+          <el-option
+            v-for="item in topicCategoryList"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value">
+          </el-option>
+        </el-select></td>
+      </tr>
+
+
+      <tr>
+        <td colspan="1">课题类型</td>
         <td colspan="2"><el-select v-model="research.topicType" placeholder="请选择" size="mini" style="width: 90%">
           <el-option
             v-for="item in topicTypeList"
@@ -40,6 +64,7 @@
         <td colspan="1">设计地点</td>
         <td colspan="2"><el-input v-model="research.topicPlace" size="mini" /></td>
       </tr>
+
       <tr>
         <td colspan="1">设计时间</td>
         <td colspan="2">
@@ -142,10 +167,12 @@ export default {
         practiceHours: '',
         topicType: '',
         topicPlace: '',
-
+        projectType: ''
       },
       isDisable: false,
       topicTypeList: [],
+      projectTypeList: [],
+      topicCategoryList: [],
       topicResourceList: []
     }
   },
@@ -157,6 +184,8 @@ export default {
       tutorResearchApplyInitData().then(res => {
         this.topicTypeList = res.data.topicTypeList
         this.topicResourceList = res.data.topicResourceList
+        this.topicCategoryList = res.data.topicCategoryList
+        this.projectTypeList = res.data.projectTypeList
       })
     },
     submit(){
