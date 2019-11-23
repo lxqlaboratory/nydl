@@ -101,3 +101,19 @@ export function studentApplyDelete(data) {
 }
 
 
+export function graduateTeacherResearchApplyInfoShow() {
+  return request({
+    url: '/webNydl/graduateTeacherResearchApplyInfoShow',
+    method: 'POST',
+    data: {}
+  })
+}
+
+
+export function updateGraduateScore(data) {
+  return request({
+    url: '/webNydl/updateGraduateScore',
+    method: 'POST',
+    data
+  })
+}

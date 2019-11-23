@@ -8,45 +8,56 @@
         <td class="titStyle">申请状态</td>
       </tr>
       <tr>
-        <td >{{  this.applyData.topicTitle  }}</td>
-        <td >{{  this.applyData.tutorName  }}</td>
-        <td >{{  this.applyData.isConfirmName  }}</td>
+        <td>  <el-button type="text"  @click="submitDetail">{{ this.applyData.topicTitle }}</el-button></td>
+        <td>{{ this.applyData.tutorName }}</td>
+        <td>{{ this.applyData.isConfirmName }}</td>
       </tr>
     </table>
+    <table class="content">
+      <tr>
+        <td class="titStyle" width="30%">开题报告</td>
+        <td width="30%">  <el-button size="small" type="success">点击上传</el-button></td>
+        <td width="30%">  <el-button size="small" type="warning">点击下载</el-button></td>
+      </tr>
+    </table>
+
   </div>
 </template>
 
 <script>
 
-  import { studentApplyRearchListInit } from '@/api/graduate'
-  export default {
-    // 学生查看申请课题
-    name: "studentGeaduateDesignApply",
-    data() {
-      return {
-        applyData: {
-          topicTitle: '',
-
-        },
+import { studentApplyRearchListInit } from '@/api/graduate'
+export default {
+  // 学生查看申请课题
+  name: 'StudentGeaduateDesignApply',
+  data() {
+    return {
+      applyData: {
+        topicTitle: '',
+        applyId: ''
       }
+    }
+  },
+  created() {
+    this.fetchData()
+  },
+  methods: {
+    fetchData: function() {
+      studentApplyRearchListInit().then(res => {
+        for (var i = 0; i < res.data.applyList.length; i++) {
+          if (res.data.applyList[i].isConfirm === 1) {
+            this.applyData.topicTitle = res.data.applyList[i].topicTitle
+            this.applyData.tutorName = res.data.applyList[i].tutorName
+            this.applyData.isConfirmName = res.data.applyList[i].isConfirmName
+          }
+        }
+      })
     },
-    created() {
-      this.fetchData()
-    },
-    methods: {
-      fetchData: function() {
-        studentApplyRearchListInit().then(res => {
-            for(var i=0;i<res.data.applyList.length;i++){
-                if(res.data.applyList[i].isConfirm === 1 ) {
-                  this.applyData.topicTitle = res.data.applyList[i].topicTitle
-                  this.applyData.tutorName = res.data.applyList[i].tutorName
-                  this.applyData.isConfirmName = res.data.applyList[i].isConfirmName
-                }
-            }
-        })
-      },
+    submitDetail(){
+      this.$router.push({ name: 'tutorSubmitGeaduateDesignProjectEditDetail', params: { 'applyId': this.$route.params.applyId, 'hideAdd': false } })
     }
   }
+}
 </script>
 
 <style scoped>

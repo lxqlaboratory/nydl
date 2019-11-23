@@ -243,7 +243,7 @@ export const constantRoutes = [
     meta: {
       title: '本科毕业设计',
       icon: 'example',
-      roles: ['45']
+      roles: ['33']
     },
     children: [
       {
@@ -284,6 +284,12 @@ export const constantRoutes = [
         name: 'tutorConfirmGeaduateDesignApply',
         component: () => import('@/views/graduate/tutorConfirmGeaduateDesignApply'),
         meta: { title: '确认学生课题', icon: 'password'  }
+      },
+      {
+        path: 'subjectDocumentManagement',
+        name: 'subjectDocumentManagement',
+        component: () => import('@/views/graduate/subjectDocumentManagement'),
+        meta: { title: '课题文档管理', icon: 'password', roles: ['49']  }
       }
     ]
   },

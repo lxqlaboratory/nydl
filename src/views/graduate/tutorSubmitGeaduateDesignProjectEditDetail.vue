@@ -1,6 +1,5 @@
 <template>
   <div class="container">
-    <a ref="temp1" style="position: fixed;z-index:-1;top: 0;left: 0;" :href="'/nydl/webNydl/getBytesBufferDataByDataKey?dataKey='+this.dataKey" download="毕业设计（论文）课题申请表.pdf" />
     <div id="demo">
       <table class="content">
         <tr>
@@ -140,7 +139,10 @@
 
       <div align="center">
         <el-button v-if="hidden" size="medium" class="submitBtn" @click="submit">修改</el-button>
-      <!--<el-button size="mini" class="submitBtn" @click="downloadPDF()">下载pdf</el-button>-->
+        <button style="height: 30px; background-color:#1F2D3D;
+    color: #ffffff;  border: 0px;">
+        <a :href="'/nydl/webNydl/exportGraduateTeacherResearchApply?applyId='+this.$route.params.applyId" download="毕业设计（论文）课题申请表.pdf" >下载PDF</a>
+        </button>
       </div>
     </div>
   </div>
@@ -149,7 +151,6 @@
 <script>
 import { tutorResearchApplyInit } from '@/api/graduate'
 import { tutorResearchApply } from '@/api/graduate'
-import { pdfDownload } from '@/api/graduate'
 export default {
   name: 'TutorSubmitGeaduateDesignProjectEditDetail',
   data() {
@@ -169,8 +170,9 @@ export default {
         topicPlace: '',
         projectType: ''
       },
-      hidden: true,
+      hidden: '',
       dataKey: '',
+      value: '',
       topicTypeList: [],
       projectTypeList: [],
       topicCategoryList: [],
@@ -182,12 +184,13 @@ export default {
   },
   methods: {
     fetchData: function() {
-      if (this.$route.params.hideAdd == false) {
+
+      if (this.$route.query.hideAdd == false||this.$route.query.hideAdd =='false') {
         this.hidden = false
       } else {
         this.hidden = true
       }
-      tutorResearchApplyInit({ 'applyId': this.$route.params.applyId }).then(res => {
+      tutorResearchApplyInit({ 'applyId': this.$route.query.applyId }).then(res => {
         this.topicTypeList = res.data.topicTypeList
         this.topicResourceList = res.data.topicResourceList
         this.topicCategoryList = res.data.topicCategoryList
@@ -196,7 +199,7 @@ export default {
       })
     },
     submit() {
-      tutorResearchApply({ 'applyId': this.$route.params.applyId, 'topicDate': this.research.topicDate, 'headOpinion': this.research.headOpinion,
+      tutorResearchApply({ 'applyId': this.$route.query.applyId, 'topicDate': this.research.topicDate, 'headOpinion': this.research.headOpinion,
         'practiceHours': this.research.practiceHours, 'resultType': this.research.resultType, 'resultValue': this.research.resultValue,
         'topicContent': this.research.topicContent, 'topicPlace': this.research.topicPlace, 'topicResource': this.research.topicResource,
         'topicSpecial': this.research.topicSpecial, 'topicTarget': this.research.topicTarget, 'topicTitle': this.research.topicTitle,
@@ -213,27 +216,6 @@ export default {
             type: 'error',
             message: '修改失败'
           })
-        }
-      })
-    },
-    downloadPDF() {
-      pdfDownload({ 'applyId': this.$route.params.applyId }).then(res => {
-        this.dataKey = res.dataKey
-        if (this.dataKey != null) {
-          alert(this.dataKey)
-          this.$refs.temp1.click()
-        } else if (res.msg != null || res.msg != '') {
-          this.$message({
-            message: res.msg,
-            type: 'error'
-          })
-        } else {
-          (
-            this.$message({
-              message: '下载失败',
-              type: 'error'
-            })
-          )
         }
       })
     }

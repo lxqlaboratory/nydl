@@ -224,10 +224,10 @@ export default {
       })
     },
     modifyProject(applyId) {
-      this.$router.push({ name: 'tutorSubmitGeaduateDesignProjectEditDetail', params: { applyId }})
+      this.$router.push({ path: 'tutorSubmitGeaduateDesignProjectEditDetail', query: { applyId }})
     },
     addProject() {
-      this.$router.push({ name: 'tutorSubmitGeaduateDesignProjectDetail' })
+      this.$router.push({ path: 'tutorSubmitGeaduateDesignProjectDetail' })
     },
     deleteProject(applyId) {
       tutorResearchApplyDelete({ 'applyId': applyId }).then(res => {
@@ -254,7 +254,7 @@ export default {
       })
     },
     check(applyId) {
-      this.$router.push({ name: 'tutorSubmitGeaduateDesignProjectEditDetail', params: { 'applyId': applyId, 'hideAdd': this.hideAdd }})
+      this.$router.push({ path: 'tutorSubmitGeaduateDesignProjectEditDetail', query: { 'applyId': applyId, 'hideAdd': this.hideAdd }})
     },
     confimStu(stuApplyId){
       this.isDisable = true

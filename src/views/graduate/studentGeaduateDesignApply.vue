@@ -181,7 +181,7 @@
           for(var i=0;i<res.data.applyList.length;i++){
             if(res.data.applyList[i].isConfirm === 1 ) {
               alert(res.data.applyList[i].applyId)
-              this.$router.push({ name: 'studentViewGeaduateDesignApply', params: { 'applyId': res.data.applyList[i].applyId } })
+              this.$router.push({ path: 'studentViewGeaduateDesignApply', query: { 'applyId': res.data.applyList[i].applyId } })
             }
           }
           if(res.data.applyList.length === res.data.canApplyMax){
@@ -219,7 +219,7 @@
           }
       },
       infoBtn(applyId) {
-        this.$router.push({ name: 'tutorSubmitGeaduateDesignProjectEditDetail', params: { 'applyId': applyId, 'hideAdd': false } })
+        this.$router.push({ path: 'tutorSubmitGeaduateDesignProjectEditDetail', query: { 'applyId': applyId, 'hideAdd': false } })
       },
       deleteBtn(stuApplyId){
         studentApplyDelete({'stuApplyId':stuApplyId}).then(res => {
