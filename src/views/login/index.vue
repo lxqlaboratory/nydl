@@ -5,9 +5,9 @@
 
       <!--标题图-->
       <!--能源动力-->
-      <!--<img style="width: 550px;height: 82px;" src="http://www.epe.sdu.edu.cn/images/2018/logo.png">-->
+      <img style="width: 550px;height: 82px;" src="http://www.epe.sdu.edu.cn/images/2018/logo.png">
       <!--软件-->
-      <img style="width: 350px;height: 82px;" src="http://www.sc.sdu.edu.cn/images/logo.png">
+      <!--<img style="width: 350px;height: 82px;" src="http://www.sc.sdu.edu.cn/images/logo.png">-->
 
 
       <span style="margin-left:15px;font-size: 36px;font-weight: bold;color: white" />
@@ -56,9 +56,9 @@
       <div>
         <!--背景更换-->
         <!--能源动力-->
-        <!--<img class="bgflux" src="@/assets/login/lunhuan.jpg">-->
+        <img class="bgflux" src="@/assets/login/lunhuan.jpg">
         <!--软件-->
-        <img class="bgflux" src="@/assets/login/back3.png">
+        <!--<img class="bgflux" src="@/assets/login/back3.png">-->
       </div>
 
 
@@ -68,8 +68,8 @@
       <div style="width: 75%;background-color: gainsboro;height: 1px;" />
 
       <!--文字更换-->
-      <!--<div class="notice-title">能源动力与工程学院本科实践教学网络平台</div>-->
-      <div class="notice-title">软件学院本科实践教学网络平台</div>
+      <div class="notice-title">能源动力与工程学院本科实践教学网络平台</div>
+      <!--<div class="notice-title">软件学院本科实践教学网络平台</div>-->
 
 
       <span style="color: gray;font-size: 14px;line-height: 200%;">

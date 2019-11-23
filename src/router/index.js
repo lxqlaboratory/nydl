@@ -243,7 +243,7 @@ export const constantRoutes = [
     meta: {
       title: '本科毕业设计',
       icon: 'example',
-      roles: ['33']
+      roles: ['45']
     },
     children: [
       {
