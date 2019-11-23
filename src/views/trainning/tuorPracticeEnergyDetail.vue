@@ -82,7 +82,7 @@
     <div> &nbsp;&nbsp;</div>
     <div> &nbsp;&nbsp;</div>
     <div align="center">
-      <el-button size="mini" class="submitBtn" @click="submitPractice">确认提交</el-button>
+      <el-button size="mini" class="submitBtn" @click="submitPractice" :disabled="isDisable">确认提交</el-button>
     </div>
   </div>
 </template>
@@ -94,6 +94,7 @@ export default {
   name: 'TuorPracticeEnergyDetail',
   data() {
     return {
+      isDisable: false,
       loading: false,
       post: null,
       error: null,
@@ -154,7 +155,7 @@ export default {
       this.multipleSelection = val
     },
     submitPractice() {
-
+      this.isDisable = true
       var date = new Date();
       var seperator1 = "-";
       var year = date.getFullYear();
@@ -191,6 +192,7 @@ export default {
             message: '提交成功'
           })
         }
+        this.isDisable = false
         this.$router.push({ name: 'tuorPracticeEnergyAfterDetail',params: { 'applyList': this.applyList,'selected': this.selected}})
       })
     }

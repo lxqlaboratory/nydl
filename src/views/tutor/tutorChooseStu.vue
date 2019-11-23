@@ -240,7 +240,7 @@
         color="black"
       >
         <template slot-scope="scope">
-          <el-button class="chooseBtn" type="text" size="mini" @click="confirmStu(scope.row.applyId)">确认</el-button>
+          <el-button class="chooseBtn" type="text" size="mini" @click="confirmStu(scope.row.applyId)" :disabled="isDisable">确认</el-button>
           <el-button class="chooseBtn" type="text" size="mini" @click="refuseStu(scope.row.applyId)">拒绝</el-button>
         </template>
       </el-table-column>
@@ -258,6 +258,7 @@ export default {
       stuTableList: [],
       confirmArrInit: [],
       refuseArrInit: [],
+      isDisable: false,
       studentRemovedList: [],
       studentWantList: [],
       studentList: [],
@@ -291,6 +292,7 @@ export default {
       return sw[id]
     },
     confirmStu(applyId) {
+      this.isDisable = true
       tutorConformStudentTutorApply({'applyId': applyId, 'checkState': '1' }).then(res => {
         if(res.re == 1)
         {
@@ -298,7 +300,7 @@ export default {
             message: '确认成功',
             type: 'success'
           })
-
+          this.isDisable = false
           this.fetchData()
         }
       })

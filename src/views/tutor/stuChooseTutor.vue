@@ -46,7 +46,7 @@
         </tbody></table>
     </div>
     <div align="center">
-      <el-button size="mini" class="submitBtn"  @click="submitTutor">提交</el-button>
+      <el-button size="mini" class="submitBtn"  @click="submitTutor" :disabled="isDisable">提交</el-button>
     </div>
      <div > &nbsp;&nbsp;</div>
 
@@ -192,6 +192,7 @@ export default {
       teacherList:[],
       personId1:'',
       personId2:'',
+      isDisable: false,
       personId3:''
     }
   },
@@ -256,12 +257,14 @@ export default {
       this.personId3 = ""
     },
     submitTutor() {
+      this.isDisable = true
       stuChooseTutorSubmit({'tutorId1': this.personId1,'tutorId2': this.personId2,'tutorId3': this.personId3}).then(res => {
         if(res.re == 1){
           this.$message({
             message: res.data.msg,
             type: 'success'
           })
+          this.isDisable = false
           location.reload()
         }
       })

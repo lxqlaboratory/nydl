@@ -97,7 +97,7 @@
     <div> &nbsp;&nbsp;</div>
     <div> &nbsp;&nbsp;</div>
     <div align="center">
-      <el-button size="medium" class="submitBtn" @click="submitGrade">提交</el-button>
+      <el-button size="medium" class="submitBtn" @click="submitGrade" :disabled="isDisable">提交</el-button>
     </div>
   </div>
 </template>
@@ -109,6 +109,7 @@ export default {
   name: 'TutorProjectTrainningScoreSubmit',
   data() {
     return {
+      isDisable: false,
       applyList: [],
       stuIdList: [],
       scoreList: [],
@@ -150,6 +151,7 @@ export default {
       })
     },
     submitGrade() {
+      this.isDisable = true
       for (var i = 0; i < this.applyList.length; i++) {
         this.stuIdList[i] = this.applyList[i].personId
         this.scoreList[i] = this.applyList[i].projectScore
@@ -161,6 +163,7 @@ export default {
             message: '提交成功'
           })
         }
+        this.isDisable = false
       })
     }
   }

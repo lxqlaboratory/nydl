@@ -30,7 +30,7 @@
       </tr>
       <tr v-if="showButton">
         <td colspan="12" align="center">
-          <el-button  type="primary" size="medium" @click="projectSubmit">提交</el-button>
+          <el-button  type="primary" size="medium" @click="projectSubmit" :disabled="isDisable">提交</el-button>
         </td>
       </tr>
       </tbody>
@@ -55,6 +55,7 @@ export default {
       list: [],
       showTable: false,
       reportId: '',
+      isDisable: false,
       saveMessage: '',
       showButton: false,
       message: ''
@@ -84,12 +85,14 @@ export default {
       })
     },
     projectSubmit(){
+      this.isDisable = true
       fillProjectTrainningReport({'reportType': this.reportType, 'reportId': this.reportId, 'reportContent': this.list.reportContent }).then(response => {
         this.saveMessage = response.data
         this.$message({
           message: this.saveMessage,
           type: 'success'
         })
+        this.isDisable = false
       })
     }
   }
