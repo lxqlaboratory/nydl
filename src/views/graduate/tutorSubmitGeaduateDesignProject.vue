@@ -167,7 +167,7 @@
               width="180"
             >
               <template  slot-scope=" scope">
-                <el-button type="text" @click="confimStu(scope.row.stuApplyId)" >确认</el-button>
+                <el-button type="text" @click="confimStu(scope.row.stuApplyId)" :disabled="isDisable" >确认</el-button>
                 <el-button type="text" @click="refuseStu(scope.row.stuApplyId)" >拒绝</el-button>
               </template>
             </el-table-column>
@@ -194,6 +194,7 @@ export default {
     return {
       tableList: [],
       year: '',
+      isDisable: false,
       stuList: [],
       graduateMax: '',
       currentYear: '',
@@ -256,12 +257,14 @@ export default {
       this.$router.push({ name: 'tutorSubmitGeaduateDesignProjectEditDetail', params: { 'applyId': applyId, 'hideAdd': this.hideAdd }})
     },
     confimStu(stuApplyId){
+      this.isDisable = true
       tutorResearchConfirmStudentApply({ 'stuApplyId': stuApplyId , 'isConfirm': 1}).then(res => {
            if(res.data == '确认成功'){
              this.$message({
                type: 'success',
                message: '确认成功'
              })
+             this.isDisable = false
              this.fetchData()
            }
       })

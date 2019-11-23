@@ -141,7 +141,7 @@
         >
           <template slot-scope=" scope">
             <el-button type="text"  @click="infoBtn(scope.row.applyId)">详细</el-button>
-            <el-button type="text" size="mini" @click="applyBtn(scope.row.applyId)">申请</el-button>
+            <el-button type="text" size="mini" @click="applyBtn(scope.row.applyId)" :disabled="isDisable">申请</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -162,6 +162,7 @@
       return {
         tableList: [],
         year: '',
+        isDisable: false,
         showApply: false,
         showDeleteButton: true,
         yearList: [],
@@ -179,7 +180,8 @@
         studentApplyRearchListInit().then(res => {
           for(var i=0;i<res.data.applyList.length;i++){
             if(res.data.applyList[i].isConfirm === 1 ) {
-              this.$router.push({ name: 'studentViewGeaduateDesignApply' })
+              alert(res.data.applyList[i].applyId)
+              this.$router.push({ name: 'studentViewGeaduateDesignApply', params: { 'applyId': res.data.applyList[i].applyId } })
             }
           }
           if(res.data.applyList.length === res.data.canApplyMax){
@@ -203,13 +205,15 @@
         })
       },
       applyBtn(applyId){
+        this.isDisable = true
           if(this.flag === 1 ){
             this.$message({
               type: 'error',
               message: '对不起，您已申请三个课题！'
             })
           }else{
-            studentApplySubmit({'applyId':applyId}).then(res => {
+            studentApplySubmit({'applyId': applyId}).then(res => {
+              this.isDisable = false
               this.fetchData()
             })
           }
