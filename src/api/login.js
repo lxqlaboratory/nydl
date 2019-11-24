@@ -15,3 +15,11 @@ export function initMenu() {
     data: {}
   })
 }
+
+export function nydlGetApplicationInfo() {
+  return request({
+    url: '/system/nydlGetApplicationInfo',
+    method: 'POST',
+    data: {}
+  })
+}

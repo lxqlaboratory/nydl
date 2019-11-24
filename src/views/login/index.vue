@@ -5,7 +5,7 @@
 
       <!--标题图-->
       <!--能源动力-->
-      <img style="width: 550px;height: 82px;" src="http://www.epe.sdu.edu.cn/images/2018/logo.png">
+      <img style="width: 500px;height: 82px;" v-bind:src="logoImageUrl">
       <!--软件-->
       <!--<img style="width: 350px;height: 82px;" src="http://www.sc.sdu.edu.cn/images/logo.png">-->
 
@@ -56,9 +56,9 @@
       <div>
         <!--背景更换-->
         <!--能源动力-->
-        <img class="bgflux" src="@/assets/login/lunhuan.jpg">
+        <img class="bgflux" v-bind:src="imageUrl">
         <!--软件-->
-        <!--<img class="bgflux" src="@/assets/login/back3.png">-->
+        <!--<img class="bgflux" src="@/assets/login/rjxyBackground.jpg">-->
       </div>
 
 
@@ -68,7 +68,7 @@
       <div style="width: 75%;background-color: gainsboro;height: 1px;" />
 
       <!--文字更换-->
-      <div class="notice-title">能源动力与工程学院本科实践教学网络平台</div>
+      <div class="notice-title">{{title}}</div>
       <!--<div class="notice-title">软件学院本科实践教学网络平台</div>-->
 
 
@@ -83,7 +83,8 @@
 </template>
 
 <script>
-import { webLogin } from '@/api/login'
+  import { webLogin } from '@/api/login'
+import { nydlGetApplicationInfo } from '@/api/login'
 export default {
   name: 'Login',
   data() {
@@ -92,6 +93,9 @@ export default {
         username: '',
         password: ''
       },
+      logoImageUrl: '',
+      imageUrl: '',
+      title: '',
       ydxy: true,
       isPasswordType: true,
       loading: false,
@@ -99,7 +103,20 @@ export default {
       redirect: undefined
     }
   },
+  created() {
+    this.fetchData()
+  },
+  mounted() {
+    this.getCookie()
+  },
   methods: {
+    fetchData: function() {
+      nydlGetApplicationInfo().then(res => {
+       this.logoImageUrl = res.data.logoImageUrl
+        this.imageUrl = res.data.imageUrl
+        this.title = res.data.title
+      })
+    },
     showPwd() {
       if (this.passwordType === 'password') {
         this.passwordType = ''
@@ -113,6 +130,18 @@ export default {
     handleLogin() {
       webLogin({ loginName: this.loginForm.username, password: this.loginForm.password }).then(response => {
         if (response.reCode == 0) {
+          const _this = this
+          // 判断复选框是否被勾选 勾选则调用配置cookie方法
+          if (_this.ydxy == true) {
+            console.log('checked == true')
+            // 传入账号名，密码，和保存天数3个参数
+            _this.setCookie(_this.loginForm.username, _this.loginForm.password, 7)
+          } else {
+            console.log('清空Cookie')
+            // 清空Cookie
+            _this.clearCookie()
+          }
+
           this.$router.push({ path: '/dashboard' })
         } else {
           this.$message({
@@ -125,6 +154,32 @@ export default {
         this.loading = false
         console.log(err)
       })
+    },
+    setCookie(c_name, c_pwd, exdays) {
+      const exdate = new Date() // 获取时间
+      exdate.setTime(exdate.getTime() + 24 * 60 * 60 * 1000 * exdays) // 保存的天数
+      // 字符串拼接cookie
+      window.document.cookie = 'username' + '=' + c_name + ';path=/;expires=' + exdate.toGMTString()
+      window.document.cookie = 'password' + '=' + c_pwd + ';path=/;expires=' + exdate.toGMTString()
+    },
+    // 读取cookie
+    getCookie: function() {
+      if (document.cookie.length > 0) {
+        const arr = document.cookie.split('; ') // 这里显示的格式需要切割一下自己可输出看下
+        for (let i = 0; i < arr.length; i++) {
+          const arr2 = arr[i].split('=') // 再次切割
+          // 判断查找相对应的值
+          if (arr2[0] == 'username') {
+            this.loginForm.username = arr2[1] // 保存到保存数据的地方
+          } else if (arr2[0] == 'password') {
+            this.loginForm.password = arr2[1]
+          }
+        }
+      }
+    },
+    // 清除cookie
+    clearCookie: function() {
+      this.setCookie('', '', -1) // 修改2值都为空，天数为负1天就好了
     }
   }
 }
