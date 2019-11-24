@@ -25,3 +25,12 @@ export function tutorConformStudentTutorApply(data) {
     data
   })
 }
+
+
+export function studentInformationSubmitInit(data) {
+  return request({
+    url: '/nydlBean/studentInformationSubmitInit',
+    method: 'POST',
+    data
+  })
+}

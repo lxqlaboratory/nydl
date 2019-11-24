@@ -30,7 +30,7 @@
         color="black"
       >
         <template slot-scope="scope">
-          {{ scope.row.perName }}
+          <el-button class="chooseBtn" type="text" size="mini" @click="deTail(scope.row.personId)" >{{ scope.row.perName }}</el-button>
         </template>
       </el-table-column>
       <el-table-column
@@ -156,7 +156,7 @@
         color="black"
       >
         <template slot-scope="scope">
-          {{ scope.row.perName }}
+          <el-button class="chooseBtn" type="text" size="mini" @click="deTail(scope.row.personId)" >{{ scope.row.perName }}</el-button>
         </template>
       </el-table-column>
       <el-table-column
@@ -330,6 +330,9 @@ export default {
           this.fetchData()
         }
       })
+    },
+    deTail(stuId){
+      this.$router.push({ path: 'stuInfomations', query: { 'stuId': stuId }})
     }
   }
 }

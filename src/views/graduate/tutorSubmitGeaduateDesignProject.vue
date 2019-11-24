@@ -137,7 +137,7 @@
               color="black"
             >
               <template slot-scope="scope">
-                <el-button type="text" >{{ scope.row.perName }}</el-button>
+                <el-button type="text" @click="deTail(scope.row.personId)">{{ scope.row.perName }}</el-button>
               </template>
             </el-table-column>
             <el-table-column
@@ -279,6 +279,9 @@ export default {
           this.fetchData()
         }
       })
+    },
+    deTail(stuId){
+      this.$router.push({ path: '/tutor/stuInfomations', query: { 'stuId': stuId }})
     }
   }
 }
