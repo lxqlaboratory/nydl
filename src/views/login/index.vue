@@ -5,7 +5,7 @@
 
       <!--标题图-->
       <!--能源动力-->
-      <img style="width: 500px;height: 82px;" v-bind:src="logoImageUrl">
+      <img style="width: 500px;height: 82px;" :src="logoPath">
       <!--软件-->
       <!--<img style="width: 350px;height: 82px;" src="http://www.sc.sdu.edu.cn/images/logo.png">-->
 
@@ -56,7 +56,7 @@
       <div>
         <!--背景更换-->
         <!--能源动力-->
-        <img class="bgflux" v-bind:src="imageUrl">
+        <img class="bgflux" v-bind:src="imagePath">
         <!--软件-->
         <!--<img class="bgflux" src="@/assets/login/rjxyBackground.jpg">-->
       </div>
@@ -94,7 +94,10 @@ export default {
         password: ''
       },
       logoImageUrl: '',
+      publicPath: process.env.BASE_URL,
       imageUrl: '',
+      logoPath: '',
+      imagePath: '',
       title: '',
       ydxy: true,
       isPasswordType: true,
@@ -113,7 +116,9 @@ export default {
     fetchData: function() {
       nydlGetApplicationInfo().then(res => {
        this.logoImageUrl = res.data.logoImageUrl
+      this.logoPath = this.publicPath + this.logoImageUrl
         this.imageUrl = res.data.imageUrl
+        this.imagePath = this.publicPath + this.imageUrl
         this.title = res.data.title
       })
     },
