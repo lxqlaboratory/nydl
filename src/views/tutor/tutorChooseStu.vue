@@ -34,6 +34,15 @@
         </template>
       </el-table-column>
       <el-table-column
+        label="专业模块"
+        align="center"
+        color="black"
+      >
+        <template slot-scope="scope">
+          {{ scope.row.modularName }}
+        </template>
+      </el-table-column>
+      <el-table-column
         label="性别"
         align="center"
         color="black"
@@ -157,6 +166,15 @@
       >
         <template slot-scope="scope">
           <el-button class="chooseBtn" type="text" size="mini" @click="deTail(scope.row.personId)" >{{ scope.row.perName }}</el-button>
+        </template>
+      </el-table-column>
+      <el-table-column
+        label="专业模块"
+        align="center"
+        color="black"
+      >
+        <template slot-scope="scope">
+          {{ scope.row.modularNum }}
         </template>
       </el-table-column>
       <el-table-column

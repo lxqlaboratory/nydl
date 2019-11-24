@@ -125,7 +125,7 @@
         </template>
       </el-table-column>
       <el-table-column
-        label="考勤状态"
+        label="确认状态"
         align="center"
         color="black"
       >
