@@ -9,7 +9,7 @@
         <td width="25%">{{formData.perName}}</td>
         <td width="25%">性别</td>
         <td width="25%">
-         {{formData.gender ===1?'男' : '女' }}
+         {{formData.gender ==1 ? '男' : '女' }}
         </td>
       </tr>
       <tr>
