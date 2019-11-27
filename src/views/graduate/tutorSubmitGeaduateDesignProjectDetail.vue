@@ -197,7 +197,7 @@ export default {
          message: '提交成功'
         })
          this.isDisable = false
-         this.$router.push({ name: 'tutorSubmitGeaduateDesignProject'})
+         this.$router.push({ name: 'tutorProjectInfo'})
      }else{
          this.$message({
            type: 'error',

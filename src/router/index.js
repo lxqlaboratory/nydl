@@ -316,10 +316,32 @@ export const constantRoutes = [
         meta: { title: '学生申请项目', icon: 'user' , roles: ['6'] }
       },
       {
+        path: 'projectTutorChooseStu',
+        name: 'projectTutorChooseStu.vue',
+        component: () => import('@/views/masterproject/projectTutorChooseStu'),
+        hidden: true,
+        meta: { title: '项目学生申请情况表', icon: 'user' , }
+      },
+      {
+        path: 'tutorProjectInfoDetail',
+        name: 'tutorProjectInfoDetail',
+        component: () => import('@/views/masterproject/tutorProjectInfoDetail'),
+        hidden: true,
+        meta: { title: '导师项目情况表', icon: 'user' , }
+      },
+      {
+        path: 'stuProjectDetail',
+        name: 'stuProjectDetail',
+        component: () => import('@/views/masterproject/stuProjectDetail'),
+        hidden: true,
+        meta: { title: '导师确定项目', icon: 'user' , }
+      },
+
+      {
         path: 'tutorProjectInfoList',
         name: 'tutorProjectInfoList',
         component: () => import('@/views/masterproject/tutorProjectInfoList'),
-        meta: { title: '导师确认学生', icon: 'password' , roles: ['52'] }
+        meta: { title: '导师确认学生', icon: 'password' }
       }
     ]
   },

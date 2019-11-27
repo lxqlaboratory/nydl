@@ -69,7 +69,6 @@
     >
       <el-table-column
         label="序号"
-        fixed="left"
         width="60"
         align="center"
         color="black"
@@ -80,7 +79,6 @@
       </el-table-column>
       <el-table-column
         label="课题编号"
-        fixed="left"
         align="center"
         color="black"
       >
@@ -90,7 +88,6 @@
       </el-table-column>
       <el-table-column
         label="课题名称"
-        fixed="left"
         align="center"
         color="black"
       >
@@ -100,7 +97,6 @@
       </el-table-column>
       <el-table-column
         label="导师"
-        fixed="left"
         width="60"
         align="center"
         color="black"
@@ -111,7 +107,6 @@
       </el-table-column>
       <el-table-column
         label="申请经费"
-        fixed="left"
         align="center"
         color="black"
       >
@@ -121,7 +116,6 @@
       </el-table-column>
       <el-table-column
         label="申请专业要求"
-        fixed="left"
         align="center"
         color="black"
       >
@@ -131,7 +125,6 @@
       </el-table-column>
       <el-table-column
         label="项目描述"
-        fixed="left"
         align="center"
         color="black"
         width="300"
@@ -142,7 +135,6 @@
       </el-table-column>
       <el-table-column
         label="项目预期成果"
-        fixed="left"
         align="center"
         color="black"
         width="200"
@@ -153,9 +145,10 @@
       </el-table-column>
       <el-table-column
         label="操作"
-        fixed="left"
+        fixed="right"
         align="center"
         color="black"
+        width="100"
       >
         <template slot-scope="scope">
           <el-button class="chooseBtn" type="text" size="mini" @click="chooseProject(scope.row.projectId,scope.row.projectName)">选择</el-button>
@@ -194,6 +187,7 @@ export default {
       getAllProjectInfo().then(res => {
         this.projectList = res.data.projectList
       })
+
       getProjectApplyInfo().then(res => {
         for(var i = 0; i <res.data.projectApplyList.length; i++){
           let item = {
@@ -205,6 +199,13 @@ export default {
         this.applyProject1 = this.choosedArr[0].projectName
         this.applyProject2 = this.choosedArr[1].projectName
         this.applyProject3 = this.choosedArr[2].projectName
+        for(var j=0;j<res.data.projectApplyList.length;j++){
+          if(res.data.projectApplyList[j].checkState === '1' ) {
+            this.$router.push({ path: 'stuProjectDetail' })
+          }
+        }
+
+
       })
     },
     chooseProject(projectId,projectName){

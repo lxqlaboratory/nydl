@@ -1,116 +1,139 @@
 <template>
   <div class="container">
-    <div><p class="noProject" style="color: red;text-align: center">抱歉，您没有项目</p></div>
-    <div v-if="displayData">
-      <table class="content" v-show="displayData">
-      <tr>
-        <td colspan="6" style="font-size:16px;font-weight:bold;color:#304156 ">项目情况表</td>
-      </tr>
-      <tr>
-        <td colspan="1" width="17%">导师姓名</td>
-        <td colspan="1" width="17%">
-          {{tutorInfoData.perName}}
-        </td>
-        <td colspan="1" width="16%">学历/学位</td>
-        <td colspan="1" width="17%">{{tutorInfoData2.degree}}</td>
-        <td colspan="1" width="16%">职称</td>
-        <td colspan="1" width="17%">{{tutorInfoData2.proTitle}}</td>
-      </tr>
-      <tr>
-        <td colspan="1" >电话</td>
-        <td colspan="1" >{{tutorInfoData.mobilePhone}}</td>
-        <td colspan="1" >E-mail</td>
-        <td colspan="3" >{{tutorInfoData.email}}</td>
-      </tr>
-      <tr>
-        <td colspan="1" >课题名称</td>
-        <td colspan="5" style="text-align: left">
-          <el-input v-model="tutorProjectData.projectName" size="mini"></el-input>
-        </td>
-      </tr>
-      <tr>
-        <td colspan="1" >申请经费</td>
-        <td colspan="1" style="text-align: left">
-          <el-input v-model="tutorProjectData.applicatinFund" size="mini" style=" width:80%"></el-input>
-          <span>/ 元</span>
-        </td>
-        <td colspan="2" >学生专业要求</td>
-        <td colspan="2" ><el-input  size="mini" style=" width:80%"></el-input>
-        </td>
-      </tr>
-      <tr>
-        <td colspan="1">项目简介（1000字以内）</td>
-        <td colspan="5">
-          <el-input
-            type="textarea"
-            :rows="5"
-            placeholder="请输入内容"
-            v-model="tutorProjectData.proDescription">
-          </el-input>
-        </td>
-      </tr>
-      <tr>
-        <td colspan="1">项目预期成果</td>
-        <td colspan="5">
-          <el-input
-            type="textarea"
-            :rows="5"
-            placeholder="请输入内容"
-            v-model="tutorProjectData.proExpectedResult">
-          </el-input>
-        </td>
-      </tr>
-    </table>
-    </div>
-    <div style="text-align: center!important;">
-      <el-button size="mini">添加项目</el-button>
+    <el-table
+      :data="proList"
+      border
+      style="width: 100%;"
+      :header-cell-style="{background:'#eef1f6',color:'#606266',fontSize: '14px'}"
+    >
+      <el-table-column
+        label="序号"
+        fixed="left"
+        width="70"
+        align="center"
+        color="black"
+      >
+        <template slot-scope="scope">
+          {{ scope.$index+1 }}
+        </template>
+      </el-table-column>
+      <el-table-column
+        label="课题编号"
+        align="center"
+        color="black"
+      >
+        <template slot-scope="scope">
+          {{ scope.row.projectId }}
+        </template>
+      </el-table-column>
+      <el-table-column
+        label="课题名称"
+        align="center"
+        color="black"
+      >
+        <template slot-scope="scope">
+          {{ scope.row.projectName }}
+        </template>
+      </el-table-column>
+      <el-table-column
+        label="申请经费"
+        align="center"
+        color="black"
+      >
+        <template slot-scope="scope">
+          {{ scope.row.applicatinFund }}
+        </template>
+      </el-table-column>
+      <el-table-column
+        label="项目申请学生最大数"
+        align="center"
+        color="black"
+      >
+        <template slot-scope="scope">
+          {{ scope.row.studentMax }}
+        </template>
+      </el-table-column>
+      <el-table-column
+        label="查看"
+        fixed="right"
+        align="center"
+        color="black"
+        width="150"
+      >
+        <template slot-scope="scope">
+          <el-button type="text" @click="projectChooseStu(scope.row.projectId)">学生申请情况</el-button>
+        </template>
+      </el-table-column>
+      <el-table-column
+        label="操作"
+        align="center"
+        color="black"
+        width="200"
+      >
+        <template slot-scope="scope">
+          <el-button type="text" @click="projectModify(scope.row.projectId)">修改</el-button>
+          <el-button type="danger" size="mini" @click="projectDelete(scope.row.projectId)">删除</el-button>
+        </template>
+      </el-table-column>
+    </el-table>
+    <div class="addBtn">
+      <el-button size="medium" class="submitBtn" @click="addProject()" v-if="showButton">添加项目</el-button>
     </div>
   </div>
 </template>
 
 <script>
-  import { getProjectTutorInfo } from '@/api/masterProject'
-  import ElButton from "../../../node_modules/element-ui/packages/button/src/button";
-  export default {
-    components: {ElButton},
-    data() {
-      return {
-        tutorInfoData: {
-          perName:'',
-          degree:'',
-          education:'',
-          email:'',
-        },
-        tutorInfoData2:'',
-        tutorProjectData:'',
-        //displayData : false,
-      }
+import { getProjectTutorInfo } from '@/api/masterProject'
+import { deleteTutorProject } from '@/api/masterProject'
+export default {
+  data() {
+    return {
+      proList: [],
+      showButton: true,
+      projectMax: ''
+    }
+  },
+  created() {
+    this.fetchData()
+  },
+  methods: {
+    fetchData() {
+      getProjectTutorInfo().then(res => {
+        this.proList = res.data.proList
+        this.projectMax = res.data.projectMax
+        this.showButton = true
+        if(this.proList.length >= this.projectMax ){
+          this.showButton = false
+        }
+      })
     },
-    created() {
-      this.fetchData()
+    addProject() {
+      this.$router.push({ path: 'tutorProjectInfoDetail' })
     },
-    methods: {
-      fetchData() {
-        getProjectTutorInfo().then(res => {
-            if(res.data.proList === null){
-              $(".noProject").show();
-            }else {
-                alert(11)
-              $(".noProject").hide();
-              $(".content").show();
-              for(var i=0;i< res.data.proList.length;i++){
-                this.tutorInfoData = res.data.proList[i].nydlTeacherAuxiliaryInfo.infoPersonInfo
-                this.tutorInfoData2 = res.data.proList[i].nydlTeacherAuxiliaryInfo
-                this.tutorProjectData = res.data.proList[i]
-              }
-//              this.tutorInfoData = res.data.proList[0].nydlTeacherAuxiliaryInfo.infoPersonInfo
-//              this.tutorInfoData2 = res.data.proList[0].nydlTeacherAuxiliaryInfo
-//              this.tutorProjectData = res.data.proList[0]
-            }
-        })
-      }
+    projectChooseStu(projectId) {
+      this.$router.push({ path: 'projectTutorChooseStu', query: { projectId }})
+    },
+    projectDelete(projectId) {
+      deleteTutorProject({ 'projectId': projectId }).then(res => {
+        if(res.re == 1){
+          this.$message({
+            type: 'success',
+            message: '删除成功'
+          })
+          this.fetchData()
+        }else{
+          this.$message({
+            type: 'error',
+            message: res.data
+          })
+        }
+      })
+    },
+    projectModify(projectId) {
+      this.$router.push({ path: 'tutorProjectInfoDetail', query: { projectId }})
     }
   }
+}
 
 </script>
 
@@ -136,5 +159,15 @@
     border-right: 1px solid #EBEEF5;
     text-align: center;
     font-size: 12px;
+  }
+  .addBtn{
+    margin-top: 50px;
+    text-align: center;
+    color: #1f2d3d;
+  }
+  .submitBtn{
+    background-color:#1F2D3D;
+    color: #ffffff;
+    border: 0px;
   }
 </style>
