@@ -21,7 +21,7 @@
       <el-table-column
         label="序号"
         fixed="left"
-        width="100"
+        width="50"
         align="center"
         color="black"
       >
@@ -32,7 +32,6 @@
       <el-table-column
         label="课题名"
         prop = "projectName"
-        fixed="left"
         width="300"
         align="center"
         color="black"
@@ -48,14 +47,12 @@
       <el-table-column
         label="组长姓名"
         prop = "stuName"
-        fixed="left"
         align="center"
         color="black"
       />
       <el-table-column
         label="组长专业"
         prop = "majorName"
-        fixed="left"
         width="150"
         align="center"
         color="black"
@@ -63,26 +60,25 @@
       <el-table-column
         label="组长班级"
         prop = "className"
-        fixed="left"
         align="center"
         color="black"
       />
       <el-table-column
         label="审核状态"
+        fixed="right"
         prop = "checkStateName"
-        fixed="left"
         align="center"
         color="black"
       />
       <el-table-column
         label="操作"
-        fixed="left"
+        fixed="right"
         align="center"
         color="black"
         width="100"
       >
         <template slot-scope="scope">
-          <el-button class="infoBtn"  @click="pushReportCheck(scope.row.reportId )">审核</el-button>
+          <el-button class="infoBtn"  @click="pushReportCheck(scope.row.reportId )" style="background-color: #1f2d3d;color: #f4f4f5">审核</el-button>
         </template>
       </el-table-column>
     </el-table>

@@ -164,6 +164,7 @@
         label="操作"
         align="center"
         color="black"
+        fixed="right"
       >
         <template slot-scope="scope">
           <el-button class="chooseBtn" type="text" size="mini" @click="chooseTutor(scope.row.perName,scope.row.personId)">选择</el-button>
@@ -213,6 +214,7 @@ export default {
         this.personId2 = res.data[1].personId
         this.checkState2 = res.data[1].checkState
         this.tutorName3 = res.data[2].perName
+        this.personId3 = res.data[2].personId
         this.checkState3 = res.data[2].checkState
       })
     },
@@ -265,7 +267,6 @@ export default {
             type: 'success'
           })
           this.isDisable = false
-          location.reload()
         }
       })
     },

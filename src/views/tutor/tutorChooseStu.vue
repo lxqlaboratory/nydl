@@ -48,7 +48,7 @@
         color="black"
       >
         <template slot-scope="scope">
-          {{ scope.row.gender===1?'男' : '女' }}
+          {{ scope.row.gender==1?'男' : '女' }}
         </template>
       </el-table-column>
       <el-table-column
@@ -183,7 +183,7 @@
         color="black"
       >
         <template slot-scope="scope">
-          {{ scope.row.gender===1?'男' : '女' }}
+          {{ scope.row.gender ==1?'男' : '女' }}
         </template>
       </el-table-column>
       <el-table-column
