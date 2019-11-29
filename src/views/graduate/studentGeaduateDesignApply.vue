@@ -180,7 +180,7 @@
         studentApplyRearchListInit().then(res => {
           for(var i=0;i<res.data.applyList.length;i++){
             if(res.data.applyList[i].isConfirm === 1 ) {
-              this.$router.push({ path: 'studentViewGeaduateDesignApply', query: { 'applyId': res.data.applyList[i].stuApplyId } })
+              this.$router.push({ path: 'SubjectDocumentManagement'})
             }
           }
           if(res.data.applyList.length === res.data.canApplyMax){
@@ -199,7 +199,7 @@
       },
       search(){
         studentApplyRearchListInitByCondition({'tutorName':this.formData.tutorName,'topicTitle':this.formData.topicTitle}).then(res=>{
-          this.tableList = res.data.researchList
+          this.tableList = res.data.researchList0
           this.applyList = res.data.applyList
         })
       },
