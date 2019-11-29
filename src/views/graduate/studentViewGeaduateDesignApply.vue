@@ -8,18 +8,18 @@
         <td class="titStyle">申请状态</td>
       </tr>
       <tr>
-        <td>  <el-button type="text"  @click="submitDetail">{{ this.applyData.topicTitle }}</el-button></td>
+        <td>  {{ this.applyData.topicTitle }}</td>
         <td>{{ this.applyData.tutorName }}</td>
         <td>{{ this.applyData.isConfirmName }}</td>
       </tr>
     </table>
-    <table class="content">
-      <tr>
-        <td class="titStyle" width="30%">开题报告</td>
-        <td width="30%">  <el-button size="small" type="success">点击上传</el-button></td>
-        <td width="30%">  <el-button size="small" type="warning">点击下载</el-button></td>
-      </tr>
-    </table>
+    <!--<table class="content">-->
+      <!--<tr>-->
+        <!--<td class="titStyle" width="30%">开题报告</td>-->
+        <!--<td width="30%">  <el-button size="small" type="success">点击上传</el-button></td>-->
+        <!--<td width="30%">  <el-button size="small" type="warning">点击下载</el-button></td>-->
+      <!--</tr>-->
+    <!--</table>-->
 
   </div>
 </template>
@@ -54,7 +54,7 @@ export default {
       })
     },
     submitDetail(){
-      this.$router.push({ name: 'tutorSubmitGeaduateDesignProjectEditDetail', params: { 'applyId': this.$route.params.applyId, 'hideAdd': false } })
+      this.$router.push({ path: 'tutorSubmitGeaduateDesignProjectEditDetail', query: { 'applyId': this.$route.query.applyId, 'hideAdd': false } })
     }
   }
 }

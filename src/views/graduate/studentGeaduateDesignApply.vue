@@ -180,7 +180,7 @@
         studentApplyRearchListInit().then(res => {
           for(var i=0;i<res.data.applyList.length;i++){
             if(res.data.applyList[i].isConfirm === 1 ) {
-              this.$router.push({ path: 'studentViewGeaduateDesignApply', query: { 'applyId': res.data.applyList[i].applyId } })
+              this.$router.push({ path: 'studentViewGeaduateDesignApply', query: { 'applyId': res.data.applyList[i].stuApplyId } })
             }
           }
           if(res.data.applyList.length === res.data.canApplyMax){

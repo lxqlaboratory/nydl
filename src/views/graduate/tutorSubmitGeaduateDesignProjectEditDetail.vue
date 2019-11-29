@@ -191,6 +191,7 @@ export default {
         this.hidden = true
       }
       tutorResearchApplyInit({ 'applyId': this.$route.query.applyId }).then(res => {
+
         this.topicTypeList = res.data.topicTypeList
         this.topicResourceList = res.data.topicResourceList
         this.topicCategoryList = res.data.topicCategoryList
