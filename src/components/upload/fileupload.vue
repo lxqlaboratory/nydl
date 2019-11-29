@@ -52,7 +52,7 @@ export default {
     remarks: {
       type: String,
       default: function() {
-        return '只能上传word文件'
+        return ''
       }
     }
   },
@@ -88,7 +88,7 @@ export default {
 
 <style scoped>
   .styleBtn{
-    background-color: #001528;
+    background-color: #639b2b;
     border: none;
     color: #ffffff;
   }

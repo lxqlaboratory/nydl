@@ -164,7 +164,7 @@ export const constantRoutes = [
         path: 'studentUploadAchieve',
         component: () => import('@/views/trainning/studentUploadAchieve'),
         name: 'studentUploadAchieve',
-        meta: { title: '节能减排课程成果提交', icon: 'form', roles: ['32'] }
+        meta: { title: '节能减排课程成果提交', icon: 'form', roles: ['33'] }
       },
       {
         path: 'tutorViewProjectList',

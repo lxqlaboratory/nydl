@@ -1,51 +1,157 @@
 <template>
-
+  <div class="app-container">
+    <p class="titleStyle">请提交您的成果：</p>
+    <table class="content">
+      <tr>
+        <td class="titStyle" width="30%">专利</td>
+        <td width="30%">
+          <fileupload
+            url="/webNydl/uploadAttachFileTest"
+            :data="{'accepttype': accepttype }"
+            @successcallback="onSuccess"
+            @preview="onPreview"
+          >上传文件
+          </fileupload></td>
+        <td width="30%">
+          <el-button size="small" type="warning">点击下载</el-button></td>
+      </tr>
+      <tr>
+        <td class="titStyle" width="30%">获奖证书</td>
+        <td width="30%">   <fileupload
+          url="/webNydl/uploadAttachFileTest"
+          accepttype=".doc"
+          @successcallback="onSuccess"
+          @preview="onPreview"
+        >上传文件
+        </fileupload></td>
+        <td width="30%">
+          <el-button size="small" type="warning">点击下载</el-button></td>
+      </tr>
+      <tr>
+        <td class="titStyle" width="30%">论文/著作</td>
+        <td width="30%">   <fileupload
+          url="/webNydl/uploadAttachFileTest"
+          accepttype=".doc"
+          @successcallback="onSuccess"
+          @preview="onPreview"
+        >上传文件
+        </fileupload></td>
+        <td width="30%">
+          <el-button size="small" type="warning">点击下载</el-button></td>
+      </tr>
+      <tr>
+        <td class="titStyle" width="30%">软件</td>
+        <td width="30%">   <fileupload
+          url="/webNydl/uploadAttachFileTest"
+          accepttype=".doc"
+          @successcallback="onSuccess"
+          @preview="onPreview"
+        >上传文件
+        </fileupload></td>
+        <td width="30%">
+          <el-button size="small" type="warning">点击下载</el-button></td>
+      </tr>
+      <tr>
+        <td class="titStyle" width="30%">视频/动画</td>
+        <td width="30%">   <fileupload
+          url="/webNydl/uploadAttachFileTest"
+          accepttype=".doc"
+          @successcallback="onSuccess"
+          @preview="onPreview"
+        >上传文件
+        </fileupload></td>
+        <td width="30%">
+          <el-button size="small" type="warning">点击下载</el-button></td>
+      </tr>
+      <tr>
+        <td class="titStyle" width="30%">应用技术成果</td>
+        <td width="30%">   <fileupload
+          url="/webNydl/uploadAttachFileTest"
+          accepttype=".doc"
+          @successcallback="onSuccess"
+          @preview="onPreview"
+        >上传文件
+        </fileupload></td>
+        <td width="30%">
+          <el-button size="small" type="warning">点击下载</el-button></td>
+      </tr>
+      <tr>
+        <td class="titStyle" width="30%">其他</td>
+        <td width="30%">   <fileupload
+          url="/webNydl/uploadAttachFileTest"
+          accepttype=".doc"
+          @successcallback="onSuccess"
+          @preview="onPreview"
+        >上传文件
+        </fileupload></td>
+        <td width="30%">
+          <el-button size="small" type="warning">点击下载</el-button></td>
+      </tr>
+    </table>
+  </div>
 </template>
 
 <script>
-  export default {
-    name: 'studentApplyProjectResoure'
+import fileupload from '../../components/upload/fileupload'
+export default {
+  name: 'StudentApplyProjectResoure',
+  components: { fileupload },
+  data() {
+    return {
+      isStudent: true,
+      proList: [],
+      scoreA: '',
+      accept: '',
+      changeScoceId: '',
+      docList: []
+    }
+  },
+  created() {
+    this.fetchData()
+  },
+  methods: {
+    onPreview: function(file) {
+    },
+    onSuccess(res, file) {
+      console.log(res)
+      setTimeout(() => {
+        this.fetchData()
+      }, 1310)
+    },
+    fetchData: function() {
+
+    }
   }
+}
 </script>
 
 <style scoped>
-  .portlet-title{
-    border-bottom: 1px solid #eef1f5;
-    padding: 0;
-    min-height: 40px;
+  .titleStyle{
+    font-size: 14px;
+    color: #409EFF;
   }
-  .caption{
-    font-size: 20px;
-    line-height: 18px;
-    color: steelblue;
+  .titStyle{
+    background: #eef1f6 ;
+    color: #606266 ;
+    font-size: 15px!important;
     font-weight: bold;
-  }
-  .submitBtn{
-    background-color:#1F2D3D;
-    color: #ffffff;
-    border: 0px;
   }
   .content{
     width:100%;
     border-top: 1px solid #EBEEF5;
     border-left: 1px solid #EBEEF5;
     border-spacing: 0;/*去掉单元格间隙*/
-    margin-top: 15px;
-    margin-bottom: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
   }
   .content tr {
     width : 100% !important;
   }
   .content td {
-    padding: 10px 30px;
-    border-bottom: 1px solid #EBEEF5;
-    border-right: 1px solid #EBEEF5;
+    padding: 10px 10px;
+    border: 1px solid #034156;
     text-align: center;
-    font-size: 12px;
-  }
-  .elinput{
-    border: 1px solid #EBEEF5;
-    border-radius: 4px;
-    color:  #606266;
+    font-size: 14px;
+
   }
 </style>

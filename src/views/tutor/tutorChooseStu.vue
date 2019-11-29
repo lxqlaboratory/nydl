@@ -174,7 +174,7 @@
         color="black"
       >
         <template slot-scope="scope">
-          {{ scope.row.modularNum }}
+          {{ scope.row.modularName }}
         </template>
       </el-table-column>
       <el-table-column
@@ -254,6 +254,8 @@
       </el-table-column>
       <el-table-column
         label="操作"
+        width="100"
+        fixed="right"
         align="center"
         color="black"
       >
