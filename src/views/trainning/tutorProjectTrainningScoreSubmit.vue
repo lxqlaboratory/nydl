@@ -25,7 +25,6 @@
       </el-table-column>
       <el-table-column
         label="课题名"
-        fixed="left"
         align="center"
         color="black"
         width="300"
@@ -36,7 +35,6 @@
       </el-table-column>
       <el-table-column
         label="学号"
-        fixed="left"
         align="center"
         color="black"
         width="150"
@@ -47,7 +45,6 @@
       </el-table-column>
       <el-table-column
         label=" 姓名"
-        fixed="left"
         align="center"
         color="black"
       >
@@ -57,7 +54,6 @@
       </el-table-column>
       <el-table-column
         label="是否组长"
-        fixed="left"
         width="120"
         align="center"
         color="black"
@@ -68,7 +64,6 @@
       </el-table-column>
       <el-table-column
         label="专业"
-        fixed="left"
         align="center"
         color="black"
       >
@@ -78,7 +73,7 @@
       </el-table-column>
       <el-table-column
         label="成绩"
-        fixed="left"
+        fixed="right"
         align="center"
         color="black"
       >
