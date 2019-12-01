@@ -2,7 +2,7 @@
   <div class="app-container">
     <div class="portlet-title">
       <td width="25%">
-        请选择报告类型
+        请选择审核报告类型
         <el-select v-model="formData.reportType" size="mini" class="elinput"   @change="selectTrigger()" >
           <el-option
             v-for="item in reportTypes"
