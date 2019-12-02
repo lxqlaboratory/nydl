@@ -164,7 +164,7 @@ export const constantRoutes = [
         path: 'studentUploadAchieve',
         component: () => import('@/views/trainning/studentUploadAchieve'),
         name: 'studentUploadAchieve',
-        meta: { title: '节能减排课程成果提交', icon: 'form', roles: ['33'] }
+        meta: { title: '节能减排课程成果提交', icon: 'form', roles: ['32'] }
       },
       {
         path: 'tutorViewProjectList',
@@ -243,14 +243,14 @@ export const constantRoutes = [
     meta: {
       title: '本科毕业设计',
       icon: 'example',
-      roles: ['45']
+      roles: ['2']
     },
     children: [
       {
         path: 'studentGeaduateDesignApply',
         name: 'studentGeaduateDesignApply',
         component: () => import('@/views/graduate/studentGeaduateDesignApply'),
-        meta: { title: '学生课题申请', icon: 'user' , roles: ['46'] }
+        meta: { title: '学生课题申请', icon: 'user' , roles: ['2'] }
       },
       {
         path: 'studentViewGeaduateDesignApply',

@@ -1,109 +1,86 @@
 <template>
   <div class="app-container">
+    <div v-if="showDetail">
+
+      <p class="titleStyle2" >您没有选择这个模块，无法查看下载!!!</p>
+    </div>
+
+
+    <div v-else>
+      <div>
+        <p class="titleStyle2" >课题名称:    {{topicTitle}}</p>
+      </div>
     <p class="titleStyle">请提交您的成果：</p>
-    <table class="content">
-      <tr>
-        <td class="titStyle" width="30%">专利</td>
-        <td width="30%">
+
+      <el-table
+        :data="dataList"
+        border
+        style="width: 100%;"
+        :header-cell-style="{background:'#eef1f6',color:'#606266',fontSize: '14px'}"
+      >
+        <el-table-column
+          label="序号"
+          fixed="left"
+          width="70"
+          align="center"
+          color="black"
+        >
+          <template slot-scope="scope">
+            {{ scope.$index+1 }}
+          </template>
+        </el-table-column>
+        <el-table-column
+          label="文件类型"
+          align="center"
+          color="black"
+        >
+          <template slot-scope="scope">
+         {{scope.row.docName}}
+          </template>
+        </el-table-column>
+        <el-table-column
+          label="操作"
+          align="center"
+          color="black"
+        >
+          <template slot-scope="scope">
+            <span >
           <fileupload
-            url="/webNydl/uploadAttachFileTest"
-            :data="{'accepttype': accepttype }"
+            v-if="!readOnly"
+            url="/webNydl/uploadProjectAttachFile"
+            :data="{'docType': scope.row.docType }"
             @successcallback="onSuccess"
             @preview="onPreview"
+            style="float: left"
           >上传文件
-          </fileupload></td>
-        <td width="30%">
-          <el-button size="small" type="warning">点击下载</el-button></td>
-      </tr>
-      <tr>
-        <td class="titStyle" width="30%">获奖证书</td>
-        <td width="30%">   <fileupload
-          url="/webNydl/uploadAttachFileTest"
-          accepttype=".doc"
-          @successcallback="onSuccess"
-          @preview="onPreview"
-        >上传文件
-        </fileupload></td>
-        <td width="30%">
-          <el-button size="small" type="warning">点击下载</el-button></td>
-      </tr>
-      <tr>
-        <td class="titStyle" width="30%">论文/著作</td>
-        <td width="30%">   <fileupload
-          url="/webNydl/uploadAttachFileTest"
-          accepttype=".doc"
-          @successcallback="onSuccess"
-          @preview="onPreview"
-        >上传文件
-        </fileupload></td>
-        <td width="30%">
-          <el-button size="small" type="warning">点击下载</el-button></td>
-      </tr>
-      <tr>
-        <td class="titStyle" width="30%">软件</td>
-        <td width="30%">   <fileupload
-          url="/webNydl/uploadAttachFileTest"
-          accepttype=".doc"
-          @successcallback="onSuccess"
-          @preview="onPreview"
-        >上传文件
-        </fileupload></td>
-        <td width="30%">
-          <el-button size="small" type="warning">点击下载</el-button></td>
-      </tr>
-      <tr>
-        <td class="titStyle" width="30%">视频/动画</td>
-        <td width="30%">   <fileupload
-          url="/webNydl/uploadAttachFileTest"
-          accepttype=".doc"
-          @successcallback="onSuccess"
-          @preview="onPreview"
-        >上传文件
-        </fileupload></td>
-        <td width="30%">
-          <el-button size="small" type="warning">点击下载</el-button></td>
-      </tr>
-      <tr>
-        <td class="titStyle" width="30%">应用技术成果</td>
-        <td width="30%">   <fileupload
-          url="/webNydl/uploadAttachFileTest"
-          accepttype=".doc"
-          @successcallback="onSuccess"
-          @preview="onPreview"
-        >上传文件
-        </fileupload></td>
-        <td width="30%">
-          <el-button size="small" type="warning">点击下载</el-button></td>
-      </tr>
-      <tr>
-        <td class="titStyle" width="30%">其他</td>
-        <td width="30%">   <fileupload
-          url="/webNydl/uploadAttachFileTest"
-          accepttype=".doc"
-          @successcallback="onSuccess"
-          @preview="onPreview"
-        >上传文件
-        </fileupload></td>
-        <td width="30%">
-          <el-button size="small" type="warning">点击下载</el-button></td>
-      </tr>
-    </table>
+          </fileupload>
+            <button
+              style="height: 30px; background-color:#1F2D3D;
+            color: #ffffff;  border: 0px;"
+            >
+              <a :href="'/nydl/webNydl/downloadAttachData?attachId='+scope.row.attachId" :download='scope.row.fileName'>下载{{scope.row.docName}}</a>
+            </button>
+              </span>
+          </template>
+        </el-table-column>
+      </el-table>
+    </div>
   </div>
 </template>
 
 <script>
 import fileupload from '../../components/upload/fileupload'
+import { uploadProjectAttachFileInit } from '@/api/trainningProject'
 export default {
   name: 'StudentApplyProjectResoure',
   components: { fileupload },
   data() {
     return {
       isStudent: true,
-      proList: [],
-      scoreA: '',
-      accept: '',
-      changeScoceId: '',
-      docList: []
+      showDetail: false,
+      readOnly: '',
+      dataList: [],
+      topicTitle: ''
     }
   },
   created() {
@@ -113,13 +90,21 @@ export default {
     onPreview: function(file) {
     },
     onSuccess(res, file) {
-      console.log(res)
       setTimeout(() => {
         this.fetchData()
       }, 1310)
     },
     fetchData: function() {
-
+      uploadProjectAttachFileInit().then(res => {
+        this.dataList = res.data.dataList
+        this.topicTitle =  res.data.topicTitle
+        this.readOnly  = res.data.readOnly
+        if(res.re == '0'){
+          this.showDetail = false
+        }else if(res.re == '-1'){
+          this.showDetail = true
+        }
+      })
     }
   }
 }
@@ -127,8 +112,20 @@ export default {
 
 <style scoped>
   .titleStyle{
-    font-size: 14px;
+    font-size: 16px;
     color: #409EFF;
+  }
+
+  .titleStyle2{
+    font-size: 20px;
+    color: #409EFF;
+    font-weight: bold;
+  }
+  .titStyle2{
+    background: #eef1f6 ;
+    color: #606266 ;
+    font-size: 15px!important;
+    font-weight: bold;
   }
   .titStyle{
     background: #eef1f6 ;

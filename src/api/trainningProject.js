@@ -130,4 +130,19 @@ export function checkProjectTrainningReportSubmit(data) {
 }
 
 
+export function uploadProjectAttachFileInit() {
+  return request({
+    url: '/nydlWeb/uploadProjectAttachFileInit',
+    method: 'POST',
+    data: {}
+  })
+}
 
+
+export function teacherDownloadProjectAttachFileInit() {
+  return request({
+    url: '/nydlWeb/teacherDownloadProjectAttachFileInit',
+    method: 'POST',
+    data: {}
+  })
+}
