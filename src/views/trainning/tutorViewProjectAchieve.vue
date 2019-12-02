@@ -8,6 +8,7 @@
     <div v-else>
       <div>
         <p class="titleStyle2">请查看下载成果：</p>
+        <p class="titleStyle">若没有上传，则无法下载文件</p>
       </div>
       <el-table
         :data="list"

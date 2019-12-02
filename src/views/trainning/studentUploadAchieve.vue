@@ -11,7 +11,7 @@
         <p class="titleStyle2" >课题名称:    {{topicTitle}}</p>
       </div>
     <p class="titleStyle">请提交您的成果：</p>
-
+      <p class="titleStyle">若没有上传，则无法下载文件</p>
       <el-table
         :data="dataList"
         border
