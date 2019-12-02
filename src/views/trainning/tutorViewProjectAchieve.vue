@@ -84,6 +84,9 @@
               >
                 <a :href="'/nydl/webNydl/downloadAttachData?attachId='+scope.row.attachId" :download="scope.row.fileName">下载{{ scope.row.docName }}</a>
               </button>
+              <div v-else>
+                 <p class="titleStyl" >附件没有上传不能下载</p>
+              </div>
             </span>
           </template>
         </el-table-column>
@@ -141,6 +144,12 @@ export default {
 <style scoped>
   .titleStyle{
     font-size: 16px;
+    color: #409EFF;
+  }
+
+
+  .titleStyl{
+    font-size: 14px;
     color: #409EFF;
   }
 

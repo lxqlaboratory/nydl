@@ -10,7 +10,7 @@
       <div>
         <p class="titleStyle2" >课题名称:    {{topicTitle}}</p>
       </div>
-    <p class="titleStyle">请提交您的成果：</p>
+    <p class="titleStyle" v-if="!readOnly">请提交您的成果：</p>
       <p class="titleStyle">若没有上传，则无法下载文件</p>
       <el-table
         :data="dataList"
@@ -61,6 +61,9 @@
             >
               <a :href="'/nydl/webNydl/downloadAttachData?attachId='+scope.row.attachId" :download='scope.row.fileName'>下载{{scope.row.docName}}</a>
             </button>
+              <div v-else>
+                 <p class="titleStyl" >附件没有上传不能下载</p>
+              </div>
               </span>
           </template>
         </el-table-column>
@@ -114,6 +117,11 @@ export default {
 <style scoped>
   .titleStyle{
     font-size: 16px;
+    color: #409EFF;
+  }
+
+  .titleStyl{
+    font-size: 14px;
     color: #409EFF;
   }
 
