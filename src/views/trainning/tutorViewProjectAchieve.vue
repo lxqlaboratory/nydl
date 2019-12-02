@@ -77,6 +77,7 @@
               <!--&gt;上传文件-->
               <!--</fileupload>-->
               <button
+                v-if="scope.row.attachId"
                 style="height: 30px; background-color:#1F2D3D;
             color: #ffffff;  border: 0px;"
               >
