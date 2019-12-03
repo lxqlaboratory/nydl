@@ -401,6 +401,40 @@ export const constantRoutes = [
     ]
   },
 
+  {
+    path: '/course',
+    component: Layout,
+    name: 'course',
+    meta: {
+      title: '作业管理',
+      icon: 'example',
+      roles: ['53']
+    },
+    children: [
+      {
+        path: 'studentAssignmentUpload',
+        name: 'studentAssignmentUpload',
+        component: () => import('@/views/course/studentAssignmentUpload'),
+        meta: { title: '学生作业上传', icon: 'user' , roles: ['54'] }
+      },
+
+      {
+        path: 'courseDetail',
+        name: 'courseDetail',
+        hidden: true,
+        component: () => import('@/views/course/courseDetail'),
+        meta: { title: '课程作业下载', icon: 'user'  }
+      },
+      {
+        path: 'teacherHomeworkDownload',
+        name: 'teacherHomeworkDownload',
+        component: () => import('@/views/course/teacherHomeworkDownload'),
+        meta: { title: '老师作业下载', icon: 'user' , roles: ['55'] }
+      }
+    ]
+  },
+
+
   { path: '/', redirect: '/login', hidden: true },
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
