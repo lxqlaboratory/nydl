@@ -141,7 +141,7 @@
         <el-button v-if="hidden" size="medium" class="submitBtn" @click="submit">修改</el-button>
         <button style="height: 30px; background-color:#1F2D3D;
      color: #ffffff;  border: 0px;">
-        <a :href="'http://202.194.14.179/func/webNydl/exportGraduateTeacherResearchApply?applyId='+this.$route.query.applyId" download="毕业设计（论文）课题申请表.pdf" >下载PDF</a>
+        <a :href="this.GLOBAL.servicePort+'/func/webNydl/exportGraduateTeacherResearchApply?applyId='+this.$route.query.applyId" download="毕业设计（论文）课题申请表.pdf" >下载PDF</a>
         </button>
       </div>
     </div>
@@ -173,6 +173,7 @@ export default {
       hidden: '',
       dataKey: '',
       value: '',
+      herf: '',
       topicTypeList: [],
       projectTypeList: [],
       topicCategoryList: [],
@@ -191,7 +192,6 @@ export default {
         this.hidden = true
       }
       tutorResearchApplyInit({ 'applyId': this.$route.query.applyId }).then(res => {
-
         this.topicTypeList = res.data.topicTypeList
         this.topicResourceList = res.data.topicResourceList
         this.topicCategoryList = res.data.topicCategoryList
