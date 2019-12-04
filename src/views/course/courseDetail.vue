@@ -58,35 +58,35 @@
                color: #ffffff;  border: 0px;"
               v-if="scope.row.docList[0].attachId"
             >
-              <a :href="this.GLOBAL.servicePort+'/func/webNydl/downloadAttachData?attachId='+scope.row.docList[0].attachId" :download="scope.row.docList[0].fileName">{{ scope.row.docList[0].docName }}</a>
+              <a :href="data+'/func/webNydl/downloadAttachData?attachId='+scope.row.docList[0].attachId" :download="scope.row.docList[0].fileName">{{ scope.row.docList[0].docName }}</a>
             </button>
             <button
               style="height: 30px; background-color:#1F2D3D;
                color: #ffffff;  border: 0px;"
               v-if="scope.row.docList[1].attachId"
             >
-              <a :href="this.GLOBAL.servicePort+'/func/webNydl/downloadAttachData?attachId='+scope.row.docList[1].attachId" :download="scope.row.docList[1].fileName">{{ scope.row.docList[1].docName }}</a>
+              <a :href="data+'/func/webNydl/downloadAttachData?attachId='+scope.row.docList[1].attachId" :download="scope.row.docList[1].fileName">{{ scope.row.docList[1].docName }}</a>
             </button>
             <button
               style="height: 30px; background-color:#1F2D3D;
                color: #ffffff;  border: 0px;"
               v-if="scope.row.docList[2].attachId"
             >
-              <a :href="this.GLOBAL.servicePort+'/func/webNydl/downloadAttachData?attachId='+scope.row.docList[2].attachId" :download="scope.row.docList[2].fileName">{{ scope.row.docList[2].docName }}</a>
+              <a :href="data+'/func/webNydl/downloadAttachData?attachId='+scope.row.docList[2].attachId" :download="scope.row.docList[2].fileName">{{ scope.row.docList[2].docName }}</a>
             </button>
             <button
               style="height: 30px; background-color:#1F2D3D;
                color: #ffffff;  border: 0px;"
               v-if="scope.row.docList[3].attachId"
             >
-              <a :href="this.GLOBAL.servicePort+'/func/webNydl/downloadAttachData?attachId='+scope.row.docList[3].attachId" :download="scope.row.docList[3].fileName">{{ scope.row.docList[3].docName }}</a>
+              <a :href="data+'/func/webNydl/downloadAttachData?attachId='+scope.row.docList[3].attachId" :download="scope.row.docList[3].fileName">{{ scope.row.docList[3].docName }}</a>
             </button>
             <button
               style="height: 30px; background-color:#1F2D3D;
                color: #ffffff;  border: 0px;"
               v-if="scope.row.docList[4].attachId"
             >
-              <a :href="this.GLOBAL.servicePort+'/func/webNydl/downloadAttachData?attachId='+scope.row.docList[4].attachId" :download="scope.row.docList[4].fileName">{{ scope.row.docList[4].docName }}</a>
+              <a :href="data+'/func/webNydl/downloadAttachData?attachId='+scope.row.docList[4].attachId" :download="scope.row.docList[4].fileName">{{ scope.row.docList[4].docName }}</a>
             </button>
               </span>
           </template>
@@ -105,6 +105,7 @@
       showDetail: false,
       readOnly: '',
       list: [],
+      data: '',
       dataList: [],
       topicTitle: ''
     }
@@ -114,6 +115,7 @@
   },
   methods: {
     fetchData: function() {
+      this.data = this.GLOBAL.servicePort
       teacherDownloadCourseHomeAttachFileInit({ 'courseId': this.$route.query.courseId }).then(res => {
         this.list = res.data
       })

@@ -52,7 +52,7 @@
                 style="height: 30px; background-color:#1F2D3D;
             color: #ffffff;  border: 0px;"
               >
-              <a :href="this.GLOBAL.servicePort+'/func/webNydl/downloadAttachData?attachId='+scope.row.attachId" :download='scope.row.fileName'>下载{{scope.row.docName}}</a>
+              <a :href="data+'/func/webNydl/downloadAttachData?attachId='+scope.row.attachId" :download='scope.row.fileName'>下载{{scope.row.docName}}</a>
             </button>
             </span>
           </template>
@@ -74,6 +74,7 @@ export default {
       showDetail: false,
       readOnly: '',
       list: [],
+      data: '',
       dataList: [],
       topicTitle: ''
     }
@@ -90,6 +91,7 @@ export default {
       }, 1000)
     },
     fetchData: function() {
+      this.data = this.GLOBAL.servicePort
       uploadCourseHomeWorkAttachFileInit().then(res => {
         this.dataList = res.data
       })
