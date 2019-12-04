@@ -417,7 +417,12 @@ export const constantRoutes = [
         component: () => import('@/views/course/studentAssignmentUpload'),
         meta: { title: '学生作业上传', icon: 'user' , roles: ['54'] }
       },
-
+      {
+        path: 'changepwd',
+        name: 'changepwd',
+        component: () => import('@/views/personInfo/changepwd'),
+        meta: { title: '修改密码', icon: 'password' , roles: ['16'] }
+      },
       {
         path: 'courseDetail',
         name: 'courseDetail',
