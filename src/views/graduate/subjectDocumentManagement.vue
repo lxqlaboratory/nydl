@@ -130,7 +130,7 @@
             >
               <template slot-scope="itemScope">
                 <button style="height: 30px; background-color: #1f2d3d; border: 0px;  color: #ffffff;">
-                  <a :href="'/nydl/webNydl/downloadAttachData?attachId='+itemScope.row.attachId" :download="itemScope.row.title+'.doc'">下载文件</a>
+                  <a :href="this.GLOBAL.servicePort+'/func/webNydl/downloadAttachData?attachId='+itemScope.row.attachId" :download="itemScope.row.title+'.doc'">下载文件</a>
                 </button>
               </template>
             </el-table-column>
