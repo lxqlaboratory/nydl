@@ -141,7 +141,7 @@
         <el-button v-if="hidden" size="medium" class="submitBtn" @click="submit">修改</el-button>
         <button style="height: 30px; background-color:#1F2D3D;
      color: #ffffff;  border: 0px;">
-        <a :href="'http://localhost:8080/func/webNydl/exportGraduateTeacherResearchApply?applyId='+this.$route.query.applyId" download="毕业设计（论文）课题申请表.pdf" >下载PDF</a>
+        <a :href="'http://202.194.14.179/func/webNydl/exportGraduateTeacherResearchApply?applyId='+this.$route.query.applyId" download="毕业设计（论文）课题申请表.pdf" >下载PDF</a>
         </button>
       </div>
     </div>
