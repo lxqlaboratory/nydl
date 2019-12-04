@@ -130,7 +130,7 @@
             >
               <template slot-scope="itemScope">
                 <button style="height: 30px; background-color: #1f2d3d; border: 0px;  color: #ffffff;">
-                  <a :href="this.GLOBAL.servicePort+'/func/webNydl/downloadAttachData?attachId='+itemScope.row.attachId" :download="itemScope.row.title+'.doc'">下载文件</a>
+                  <a :href="data+'/func/webNydl/downloadAttachData?attachId='+itemScope.row.attachId" :download="itemScope.row.title+'.doc'">下载文件</a>
                 </button>
               </template>
             </el-table-column>
@@ -156,6 +156,7 @@ export default {
       isStudent: true,
       proList: [],
       scoreA: '',
+      data: '',
       changeScoceId: '',
       docList: []
     }
@@ -173,6 +174,7 @@ export default {
       }, 1310)
     },
     fetchData: function() {
+      this.data = this.GLOBAL.servicePort
       graduateTeacherResearchApplyInfoShow().then(res => {
         this.proList = res.data.proList
         this.isStudent = res.data.isStudent
