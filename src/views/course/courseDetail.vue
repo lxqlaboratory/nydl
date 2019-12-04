@@ -52,41 +52,13 @@
           color="black"
         >
           <template slot-scope="scope">
-            <span >
+            <span v-for="item in scope.row.docList">
             <button
               style="height: 30px; background-color:#1F2D3D;
-               color: #ffffff;  border: 0px;"
-              v-if="scope.row.docList[0].attachId"
+               color: #ffffff;  border: 0px;  margin-right:0.1cm; "
+              v-if="item.attachId"
             >
-              <a :href="data+'/func/webNydl/downloadAttachData?attachId='+scope.row.docList[0].attachId" :download="scope.row.docList[0].fileName">{{ scope.row.docList[0].docName }}</a>
-            </button>
-            <button
-              style="height: 30px; background-color:#1F2D3D;
-               color: #ffffff;  border: 0px;"
-              v-if="scope.row.docList[1].attachId"
-            >
-              <a :href="data+'/func/webNydl/downloadAttachData?attachId='+scope.row.docList[1].attachId" :download="scope.row.docList[1].fileName">{{ scope.row.docList[1].docName }}</a>
-            </button>
-            <button
-              style="height: 30px; background-color:#1F2D3D;
-               color: #ffffff;  border: 0px;"
-              v-if="scope.row.docList[2].attachId"
-            >
-              <a :href="data+'/func/webNydl/downloadAttachData?attachId='+scope.row.docList[2].attachId" :download="scope.row.docList[2].fileName">{{ scope.row.docList[2].docName }}</a>
-            </button>
-            <button
-              style="height: 30px; background-color:#1F2D3D;
-               color: #ffffff;  border: 0px;"
-              v-if="scope.row.docList[3].attachId"
-            >
-              <a :href="data+'/func/webNydl/downloadAttachData?attachId='+scope.row.docList[3].attachId" :download="scope.row.docList[3].fileName">{{ scope.row.docList[3].docName }}</a>
-            </button>
-            <button
-              style="height: 30px; background-color:#1F2D3D;
-               color: #ffffff;  border: 0px;"
-              v-if="scope.row.docList[4].attachId"
-            >
-              <a :href="data+'/func/webNydl/downloadAttachData?attachId='+scope.row.docList[4].attachId" :download="scope.row.docList[4].fileName">{{ scope.row.docList[4].docName }}</a>
+              <a :href="data+'/func/webNydl/downloadAttachData?attachId='+item.attachId" :download="item.fileName">{{ item.docName }}</a>
             </button>
               </span>
           </template>
