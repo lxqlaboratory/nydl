@@ -71,7 +71,7 @@
                 style="height: 30px; background-color:#1F2D3D;
                color: #ffffff;  border: 0px;"
               >
-                <a :href="'/nydl/webNydl/downloadAttachData?attachId='+scope.row.attachId" :download="scope.row.fileName">下载{{ scope.row.docName }}</a>
+                <a :href="'http://localhost:8080/func/webNydl/downloadAttachData?attachId='+scope.row.attachId" :download="scope.row.fileName">下载{{ scope.row.docName }}</a>
               </button>
               <div v-else>
                  <p class="titleStyl" >附件没有上传不能下载</p>
