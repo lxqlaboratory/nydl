@@ -19,16 +19,16 @@
           </template>
         </el-table-column>
         <el-table-column
-          label="课程名"
+          label="学号"
           align="center"
           color="black"
         >
           <template slot-scope="scope">
-            {{scope.row.className}}
+            {{scope.row.perNum}}
           </template>
         </el-table-column>
         <el-table-column
-          label="学名"
+          label="姓名"
           align="center"
           color="black"
         >
@@ -37,49 +37,58 @@
           </template>
         </el-table-column>
         <el-table-column
-          label="查看下载"
+          label="班级名"
           align="center"
-          width="100"
           color="black"
-          type="expand"
         >
           <template slot-scope="scope">
-            <el-table
-              :data="scope.row.docList"
-              border
-              style="width: 100%;"
-              :header-cell-style="{background:'#eef1f6',color:'#606266',fontSize: '14px'}"
-            >
-              <el-table-column
-                label="文件类型"
-                align="center"
-                color="black"
-              >
-                <template slot-scope="scope">
-                  {{ scope.row.docName }}
-                </template>
-              </el-table-column>
-              <el-table-column
-                label="操作"
-                align="center"
-                color="black"
-              >
-                <template slot-scope="scope">
-            <span>
-              <button
-                v-if="scope.row.attachId"
-                style="height: 30px; background-color:#1F2D3D;
+            {{scope.row.className}}
+          </template>
+        </el-table-column>
+        <el-table-column
+          label="下载作业"
+          align="center"
+          width="300"
+          color="black"
+        >
+          <template slot-scope="scope">
+            <span >
+            <button
+              style="height: 30px; background-color:#1F2D3D;
                color: #ffffff;  border: 0px;"
-              >
-                <a :href="this.GLOBAL.servicePort+'/func/webNydl/downloadAttachData?attachId='+scope.row.attachId" :download="scope.row.fileName">下载{{ scope.row.docName }}</a>
-              </button>
-              <div v-else>
-                 <p class="titleStyl" >附件没有上传不能下载</p>
-              </div>
-            </span>
-                </template>
-              </el-table-column>
-            </el-table>
+              v-if="scope.row.docList[0].attachId"
+            >
+              <a :href="this.GLOBAL.servicePort+'/func/webNydl/downloadAttachData?attachId='+scope.row.docList[0].attachId" :download="scope.row.docList[0].fileName">{{ scope.row.docList[0].docName }}</a>
+            </button>
+            <button
+              style="height: 30px; background-color:#1F2D3D;
+               color: #ffffff;  border: 0px;"
+              v-if="scope.row.docList[1].attachId"
+            >
+              <a :href="this.GLOBAL.servicePort+'/func/webNydl/downloadAttachData?attachId='+scope.row.docList[1].attachId" :download="scope.row.docList[1].fileName">{{ scope.row.docList[1].docName }}</a>
+            </button>
+            <button
+              style="height: 30px; background-color:#1F2D3D;
+               color: #ffffff;  border: 0px;"
+              v-if="scope.row.docList[2].attachId"
+            >
+              <a :href="this.GLOBAL.servicePort+'/func/webNydl/downloadAttachData?attachId='+scope.row.docList[2].attachId" :download="scope.row.docList[2].fileName">{{ scope.row.docList[2].docName }}</a>
+            </button>
+            <button
+              style="height: 30px; background-color:#1F2D3D;
+               color: #ffffff;  border: 0px;"
+              v-if="scope.row.docList[3].attachId"
+            >
+              <a :href="this.GLOBAL.servicePort+'/func/webNydl/downloadAttachData?attachId='+scope.row.docList[3].attachId" :download="scope.row.docList[3].fileName">{{ scope.row.docList[3].docName }}</a>
+            </button>
+            <button
+              style="height: 30px; background-color:#1F2D3D;
+               color: #ffffff;  border: 0px;"
+              v-if="scope.row.docList[4].attachId"
+            >
+              <a :href="this.GLOBAL.servicePort+'/func/webNydl/downloadAttachData?attachId='+scope.row.docList[4].attachId" :download="scope.row.docList[4].fileName">{{ scope.row.docList[4].docName }}</a>
+            </button>
+              </span>
           </template>
         </el-table-column>
       </el-table>
