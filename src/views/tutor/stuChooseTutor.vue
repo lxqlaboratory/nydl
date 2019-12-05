@@ -1,5 +1,5 @@
 <template>
-  <div class="container" style="width: 100%" >
+  <div class="container" style="width: 100%">
     <div class="portlet-title">
       <div class="caption">
         <span>请同学们选择导师！点击“提交”即可。</span>
@@ -8,47 +8,47 @@
     <div style="max-width: 80%; text-align: center; margin: 10px auto;">
       <table class="content" cellspacing="10" width="80%" align="center">
         <tbody><tr>
-          <td colspan="1" >一志愿导师:</td>
-          <td colspan="1" align="center">
-            <el-input v-model="tutorName1"  size="mini"></el-input>
-          </td>
-          <td colspan="1" align="left">
-            <el-button size="mini" class="submitBtn" @click="deleteTutor1">删除</el-button>
-          </td>
-          <td colspan="1" align="left">
-           {{getLevel(this.checkState1)}}
-          </td>
-        </tr>
-        <tr>
-          <td colspan="1" align="right">二志愿导师:</td>
-          <td colspan="1" align="center">
-            <el-input v-model="tutorName2"  size="mini"></el-input>
-          </td>
-          <td colspan="1" align="left">
-            <el-button size="mini" class="submitBtn" @click="deleteTutor2">删除</el-button>
-          </td>
-          <td colspan="1" align="left">
-            {{getLevel(this.checkState2)}}
-          </td>
-        </tr>
-        <tr>
-          <td colspan="1" align="right">三志愿导师:</td>
-          <td colspan="1" align="center">
-            <el-input v-model="tutorName3"  size="mini"></el-input>
-          </td>
-          <td colspan="1" align="left">
-            <el-button size="mini" class="submitBtn" @click="deleteTutor3">删除</el-button>
-          </td>
-          <td colspan="1" align="left">
-            {{getLevel(this.checkState3)}}
-          </td>
-        </tr>
+                 <td colspan="1">一志愿导师:</td>
+                 <td colspan="1" align="center">
+                   <el-input v-model="tutorName1" size="mini" />
+                 </td>
+                 <td colspan="1" align="left">
+                   <el-button size="mini" class="submitBtn" @click="deleteTutor1">删除</el-button>
+                 </td>
+                 <td colspan="1" align="left">
+                   {{ getLevel(this.checkState1) }}
+                 </td>
+               </tr>
+          <tr>
+            <td colspan="1" align="right">二志愿导师:</td>
+            <td colspan="1" align="center">
+              <el-input v-model="tutorName2" size="mini" />
+            </td>
+            <td colspan="1" align="left">
+              <el-button size="mini" class="submitBtn" @click="deleteTutor2">删除</el-button>
+            </td>
+            <td colspan="1" align="left">
+              {{ getLevel(this.checkState2) }}
+            </td>
+          </tr>
+          <tr>
+            <td colspan="1" align="right">三志愿导师:</td>
+            <td colspan="1" align="center">
+              <el-input v-model="tutorName3" size="mini" />
+            </td>
+            <td colspan="1" align="left">
+              <el-button size="mini" class="submitBtn" @click="deleteTutor3">删除</el-button>
+            </td>
+            <td colspan="1" align="left">
+              {{ getLevel(this.checkState3) }}
+            </td>
+          </tr>
         </tbody></table>
     </div>
     <div align="center">
-      <el-button size="mini" class="submitBtn"  @click="submitTutor" :disabled="isDisable">提交</el-button>
+      <el-button size="mini" class="submitBtn" :disabled="isDisable" @click="submitTutor">提交</el-button>
     </div>
-     <div > &nbsp;&nbsp;</div>
+    <div> &nbsp;&nbsp;</div>
 
     <el-table
       :data="teacherList"
@@ -125,15 +125,6 @@
         </template>
       </el-table-column>
       <el-table-column
-        label="确认状态"
-        align="center"
-        color="black"
-      >
-        <template slot-scope="scope">
-          {{getLevel(scope.row.checkState)  }}
-        </template>
-      </el-table-column>
-      <el-table-column
         label="已报名"
         align="center"
         color="black"
@@ -152,14 +143,14 @@
         </template>
       </el-table-column>
       <el-table-column
-      label="招收数量"
-      align="center"
-      color="black"
+        label="招收数量"
+        align="center"
+        color="black"
       >
         <template slot-scope="scope">
           {{ scope.row.undergraduateTutorMax }}
         </template>
-     </el-table-column>
+      </el-table-column>
       <el-table-column
         label="操作"
         align="center"
@@ -176,25 +167,25 @@
 </template>
 
 <script>
-  import { getTeacherList } from '@/api/tutorialSystem'
-  import { getStudentTutorApplyInfoList } from '@/api/tutorialSystem'
-  import { stuChooseTutorSubmit } from '@/api/tutorialSystem'
+import { getTeacherList } from '@/api/tutorialSystem'
+import { getStudentTutorApplyInfoList } from '@/api/tutorialSystem'
+import { stuChooseTutorSubmit } from '@/api/tutorialSystem'
 export default {
   name: 'StuChooseTutor',
-  data(){
+  data() {
     return {
-      tutorName1:'',
-      tutorName2:'',
-      tutorName3:'',
-      checkState1:'',
-      checkState2:'',
-      checkState3:'',
-      perName:'',
-      teacherList:[],
-      personId1:'',
-      personId2:'',
+      tutorName1: '',
+      tutorName2: '',
+      tutorName3: '',
+      checkState1: '',
+      checkState2: '',
+      checkState3: '',
+      perName: '',
+      teacherList: [],
+      personId1: '',
+      personId2: '',
       isDisable: false,
-      personId3:''
+      personId3: ''
     }
   },
   created() {
@@ -216,59 +207,94 @@ export default {
         this.tutorName3 = res.data[2].perName
         this.personId3 = res.data[2].personId
         this.checkState3 = res.data[2].checkState
+
+        if (this.checkState1 == '1') {
+          this.$router.push({ path: 'stuTutor', query: { 'tutorName': this.tutorName1 }})
+        }else if(this.checkState2 == '1'){
+          this.$router.push({ path: 'stuTutor', query: { 'tutorName': this.tutorName2 }})
+        }else if(this.checkState3 == '1'){
+          this.$router.push({ path: 'stuTutor', query: { 'tutorName': this.tutorName3 }})
+        }
       })
     },
-    chooseTutor(perName,personId){
-      if(perName==this.tutorName1 || perName==this.tutorName2 || perName==this.tutorName3 ){
+    chooseTutor(perName, personId) {
+      if (perName == this.tutorName1 || perName == this.tutorName2 || perName == this.tutorName3) {
         alert('请勿选择相同导师')
         return false
       }
-      if(this.tutorName1 == '' && this.tutorName2 == '' && this.tutorName3 == ''){
+      if (this.tutorName1 == '' && this.tutorName2 == '' && this.tutorName3 == '') {
         this.tutorName1 = perName
         this.personId1 = personId
-      }else if(this.tutorName1 != '' && this.tutorName2 == '' && this.tutorName3 == '') {
+      } else if (this.tutorName1 != '' && this.tutorName2 == '' && this.tutorName3 == '') {
         this.personId2 = personId
         this.tutorName2 = perName
-      }else if(this.tutorName1 != '' && this.tutorName2 != '' && this.tutorName3 == ''){
+      } else if (this.tutorName1 != '' && this.tutorName2 != '' && this.tutorName3 == '') {
         this.tutorName3 = perName
         this.personId3 = personId
-      }else if(this.tutorName1 == '' && this.tutorName2 != '' && this.tutorName3 != ''){
+      } else if (this.tutorName1 == '' && this.tutorName2 != '' && this.tutorName3 != '') {
         this.personId1 = personId
         this.tutorName1 = perName
-      }else if(this.tutorName1 != '' && this.tutorName2 == '' && this.tutorName3 != ''){
+      } else if (this.tutorName1 != '' && this.tutorName2 == '' && this.tutorName3 != '') {
         this.personId2 = personId
         this.tutorName2 = perName
-      }else if(this.tutorName1 == '' && this.tutorName2 == '' && this.tutorName3 != ''){
+      } else if (this.tutorName1 == '' && this.tutorName2 == '' && this.tutorName3 != '') {
         this.personId1 = personId
         this.tutorName1 = perName
-      }else if(this.tutorName1 == '' && this.tutorName2 != '' && this.tutorName3 == ''){
+      } else if (this.tutorName1 == '' && this.tutorName2 != '' && this.tutorName3 == '') {
         this.personId1 = personId
         this.tutorName1 = perName
       }
     },
-    deleteTutor1(){
-      this.tutorName1 = ""
-      this.personId1 = ""
+    deleteTutor1() {
+      this.tutorName1 = ''
+      this.personId1 = ''
     },
-    deleteTutor2(){
-      this.tutorName2 = ""
-      this.personId2 = ""
+    deleteTutor2() {
+      this.tutorName2 = ''
+      this.personId2 = ''
     },
-    deleteTutor3(){
-      this.tutorName3 = ""
-      this.personId3 = ""
+    deleteTutor3() {
+      this.tutorName3 = ''
+      this.personId3 = ''
     },
     submitTutor() {
       this.isDisable = true
-      stuChooseTutorSubmit({'tutorId1': this.personId1,'tutorId2': this.personId2,'tutorId3': this.personId3}).then(res => {
-        if(res.re == 1){
-          this.$message({
-            message: res.data.msg,
-            type: 'success'
-          })
-          this.isDisable = false
-        }
-      })
+      if(this.personId1 == '' && this.personId2 == '' && this.personId3 == ''){
+        alert('请选择至少一个导师')
+      }else if(this.personId1 != '' && this.personId2 == '' && this.personId3 == '' ){
+        this.personId2 = this.personId1
+        this.personId3 = this.personId1
+        stuChooseTutorSubmit({ 'tutorId1': this.personId1, 'tutorId2': this.personId2, 'tutorId3': this.personId3 }).then(res => {
+          if (res.re == 1) {
+            this.$message({
+              message: res.data.msg,
+              type: 'success'
+            })
+            this.isDisable = false
+          }
+        })
+      }else if(this.personId1 != '' && this.personId2 != '' && this.personId3 == ''){
+        this.personId3 = this.personId2
+        stuChooseTutorSubmit({ 'tutorId1': this.personId1, 'tutorId2': this.personId2, 'tutorId3': this.personId3 }).then(res => {
+          if (res.re == 1) {
+            this.$message({
+              message: res.data.msg,
+              type: 'success'
+            })
+            this.isDisable = false
+          }
+        })
+      }else{
+        stuChooseTutorSubmit({ 'tutorId1': this.personId1, 'tutorId2': this.personId2, 'tutorId3': this.personId3 }).then(res => {
+          if (res.re == 1) {
+            this.$message({
+              message: res.data.msg,
+              type: 'success'
+            })
+            this.isDisable = false
+          }
+        })
+      }
     },
     pushInfo(personId) {
       this.$router.push({ name: 'teacherInfomationEdit', params: { personId }})

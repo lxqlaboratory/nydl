@@ -368,6 +368,13 @@ export const constantRoutes = [
         meta: { title: '选择导师', icon: 'user' , roles: ['50'] }
       },
       {
+        path: 'stuTutor',
+        name: 'stuTutor',
+        component: () => import('@/views/tutor/stuTutor'),
+        hidden: true,
+        meta: { title: '已确认导师', icon: 'user' , }
+      },
+      {
         path: 'stuInfomations',
         name: 'stuInfomations',
         hidden: true,
