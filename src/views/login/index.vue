@@ -29,7 +29,7 @@
                <span class="svg-container">
              <svg-icon icon-class="password" />
            </span>
-              <input v-model="loginForm.password" maxlength="12"  :type="showPassword?'':'password'" class="login-form-input" style="width: 91%">
+              <input v-model="loginForm.password"   :type="showPassword?'':'password'" class="login-form-input" style="width: 91%">
               <el-button
                 type="text"
                 style="position: absolute;top:0;right: 0px;padding-top: 5px;color: #409EFF"
