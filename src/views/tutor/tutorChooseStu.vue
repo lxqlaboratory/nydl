@@ -123,7 +123,7 @@
         color="black"
       >
         <template slot-scope="scope">
-          <el-button class="chooseBtn" type="text" size="mini" @click="qvxiao(scope.row.applyId)">取消</el-button>
+          <el-button class="chooseBtn" v-if="!(scope.row.confirm == 1)" type="text" size="mini" @click="qvxiao(scope.row.applyId)">取消</el-button>
         </template>
       </el-table-column>
     </el-table>

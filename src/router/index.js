@@ -101,9 +101,42 @@ export const constantRoutes = [
     },
     children: [
       {
-        path: 'studentApplyPracticeEnergy',
-        name: 'studentApplyPracticeEnergy',
-        component: () => import('@/views/trainning/studentApplyPracticeEnergy'),
+        path: 'tutorTrainningResearch',
+        name: 'tutorTrainningResearch',
+        component: () => import('@/views/trainning/tutorTrainningResearch'),
+        meta: { title: '实训课题申请表', icon: 'form'  }
+      },
+      {
+        path: 'studentChoseTrainningResearch',
+        name: 'studentChoseTrainningResearch',
+        component: () => import('@/views/trainning/studentChoseTrainningResearch'),
+        meta: { title: '学生选择实训课题', icon: 'form' }
+      },
+      {
+        path: 'tutorTrainningReaserchDetail',
+        component: () => import('@/views/trainning/tutorTrainningReaserchDetail'),
+        name: 'tutorTrainningReaserchDetail',
+        hidden: true,
+        meta: { title: '创新项目课题详情', icon: 'form', roles: [] }
+      },
+      {
+        path: 'modifyTrainningReaserch',
+        component: () => import('@/views/trainning/modifyTrainningReaserch'),
+        name: 'modifyTrainningReaserch',
+        hidden: true,
+        meta: { title: '修改创新项目课题', icon: 'form', roles: [] }
+      },
+      {
+        path: 'checkTrainningReaserch',
+        component: () => import('@/views/trainning/checkTrainningReaserch'),
+        name: 'checkTrainningReaserch',
+        hidden: true,
+        meta: { title: '查看创新项目课题', icon: 'form', roles: [] }
+      },
+      {
+        path: 'tutorTrainningResearch',
+        name: 'tutorTrainningResearch',
+        component: () => import('@/views/trainning/tutorTrainningResearch'),
         meta: { title: '申请观摩项目', icon: 'form' , roles: ['22'] }
       },
       {
