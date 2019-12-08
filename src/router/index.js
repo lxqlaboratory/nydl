@@ -231,6 +231,13 @@ export const constantRoutes = [
         meta: { title: '观摩项目考勤详情', icon: 'form', roles: [] }
       },
       {
+        path: 'groupDetail',
+        component: () => import('@/views/trainning/groupDetail'),
+        name: 'groupDetail',
+        hidden: true,
+        meta: { title: '小组信息', icon: 'form', roles: [] }
+      },
+      {
         path: 'tuorPracticeEnergyAfterDetail',
         component: () => import('@/views/trainning/tuorPracticeEnergyAfterDetail'),
         name: 'tuorPracticeEnergyAfterDetail',

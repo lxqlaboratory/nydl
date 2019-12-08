@@ -1,8 +1,16 @@
 <template>
   <div class="app-container" >
-    <div >
 
-      <p class="titleStyle2">请上传您的文件</p>
+    <div v-if="!showBody">
+      <p class="titleStyle2" >
+      当前学期没有课程 无法上传下载
+      </p>
+    </div>
+    <div v-else>
+    <div >
+      <p class="titleStyle2" v-if="!show">
+      <a :href="url" :download="fileName">点击下载您的文档</a>
+      </p>
       <el-table
         :data="dataList"
         border
@@ -59,6 +67,7 @@
         </el-table-column>
       </el-table>
     </div>
+    </div>
   </div>
 </template>
 
@@ -74,7 +83,11 @@ export default {
       showDetail: false,
       readOnly: '',
       list: [],
+      downloadUrl: '',
       data: '',
+      url: '',
+      show: false,
+      showBody: false,
       dataList: [],
       topicTitle: ''
     }
@@ -93,7 +106,20 @@ export default {
     fetchData: function() {
       this.data = this.GLOBAL.servicePort
       uploadCourseHomeWorkAttachFileInit().then(res => {
-        this.dataList = res.data
+        if(res.re == 1)
+        {
+          this.dataList = res.data.dataList
+        this.showBody = true
+        this.downloadUrl = res.data.downloadUrl
+        this.url = this.data + this.downloadUrl
+        this.fileName = this.data.fileName
+        if(this.downloadUrl == ''){
+          this.show = true
+        }
+        }
+        else{
+          this.showBody = false
+        }
       })
     }
   }

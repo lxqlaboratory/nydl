@@ -150,7 +150,7 @@
               color="black"
             >
               <template slot-scope="scope2">
-                {{ scope2.row.groupNum }}
+                <el-button type="text" @click="zuhaoDetail(scope2.row.groupNum)" >{{ scope2.row.groupNum }}</el-button>
               </template>
             </el-table-column>
             <el-table-column
@@ -306,6 +306,9 @@ export default {
         '2': '已拒绝'
       }
       return sw[id]
+    },
+    zuhaoDetail(groupNum){
+      this.$router.push({ path: 'groupDetail', query: { 'groupNum': groupNum } })
     }
   }
 }

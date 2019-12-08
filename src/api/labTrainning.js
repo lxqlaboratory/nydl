@@ -75,3 +75,38 @@ export function updateLabUndergradStuResearchApplyInfoConfirmState(data) {
     data
   })
 }
+
+export function practiceStuAddGroupInfo() {
+  return request({
+    url: '/nydlWeb/practiceStuAddGroupInfo',
+    method: 'POST',
+    data: {}
+  })
+}
+
+
+export function practiceStuAddGroupInfoData(data) {
+  return request({
+    url: '/nydlWeb/practiceStuAddGroupInfo',
+    method: 'POST',
+    data
+  })
+}
+
+
+export function addLabUndergradStuResearchApplyInfo(data) {
+  return request({
+    url: '/nydlWeb/addLabUndergradStuResearchApplyInfo',
+    method: 'POST',
+    data
+  })
+}
+
+
+export function deleteLabUndergradStuResearchApplyInfo(data) {
+  return request({
+    url: '/nydlWeb/deleteLabUndergradStuResearchApplyInfo',
+    method: 'POST',
+    data
+  })
+}
