@@ -9,7 +9,7 @@
     <div v-else>
     <div >
       <p class="titleStyle2" v-if="!show">
-      <a :href="url" :download="fileName">点击下载您的文档</a>
+      <a :href="url" :download='fileName'>点击下载您的文档</a>
       </p>
       <el-table
         :data="dataList"
