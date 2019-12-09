@@ -161,7 +161,7 @@ export const constantRoutes = [
         path: 'studentApplyProjectResoure',
         name: 'studentApplyProjectResoure',
         component: () => import('@/views/trainning/studentApplyProjectResoure'),
-        meta: { title: '学生申请创新训练项目资源', icon: 'form' , roles: ['26'] }
+        meta: { title: '学生申请观摩项目资源', icon: 'form' , roles: ['26'] }
       },
       {
         path: 'studentProjectTrainningScoreView',
@@ -215,7 +215,7 @@ export const constantRoutes = [
         path: 'tutorCheckProjectResoureceApply',
         component: () => import('@/views/trainning/tutorCheckProjectResoureceApply'),
         name: 'tutorCheckProjectResoureceApply',
-        meta: { title: '审批学生创新训练项目资源申请', icon: 'form', roles: ['38'] }
+        meta: { title: '审批学生观摩项目资源申请', icon: 'form', roles: ['38'] }
       },
       {
         path: 'tutorPracticeEnergyCheck',
