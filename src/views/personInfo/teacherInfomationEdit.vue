@@ -14,15 +14,15 @@
       </tr>
       <tr>
         <td colspan="1" >电话</td>
-        <td colspan="1" >{{formData.mobilePhone}}</td>
+        <td colspan="1" ><el-input v-model="formData.mobilePhone" size="mini" class="elinput" ></el-input></td>
         <td colspan="1">qq</td>
-        <td colspan="1" >{{formData.qq}}</td>
+        <td colspan="1" ><el-input v-model="formData.qq" size="mini" class="elinput" ></el-input></td>
         <td colspan="1" >微信</td>
-        <td colspan="1" >{{formData.wechat}}</td>
+        <td colspan="1" ><el-input v-model="formData.wechat" size="mini" class="elinput" ></el-input></td>
       </tr>
       <tr>
         <td colspan="1" >E-mail</td>
-        <td colspan="5" >{{formData.email}}</td>
+        <td colspan="5" ><el-input v-model="formData.email" size="mini" class="elinput" ></el-input></td>
       </tr>
       <tr>
         <td colspan="1">研究方向</td>
@@ -35,7 +35,6 @@
           maxlength="300"
           rows="8"
           show-word-limit
-          disabled
         />
         </td>
       </tr>
@@ -49,21 +48,24 @@
           maxlength="300"
           rows="8"
           show-word-limit
-          disabled
         />
         </td>
       </tr>
     </table>
+    <div class="part3">
+      <el-button size="mini" class="submitBtn" @click="tutorSubmit()">确认提交</el-button>
+    </div>
   </div>
 
 </template>
 
 <script>
   import { tutorInformationSubmitInit } from '@/api/teachInfomation'
+  import { tutorInformationSubmit } from '@/api/teachInfomation'
   export default {
     data() {
       return {
-        formData: '',
+        formData: {},
         tutorId: ''
       }
     },
@@ -77,7 +79,17 @@
         }).then(res => {
           this.formData = res.data
         })
-      }
+      },
+     tutorSubmit(){
+        tutorInformationSubmit(this.formData).then(res=>{
+          if(res.re == 1){
+            this.$message({
+              message: '修改成功',
+              type: 'success'
+            })
+          }
+        })
+      }      
     }
   }
 </script>
