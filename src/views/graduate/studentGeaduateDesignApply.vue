@@ -199,7 +199,7 @@
       },
       search(){
         studentApplyRearchListInitByCondition({'tutorName':this.formData.tutorName,'topicTitle':this.formData.topicTitle}).then(res=>{
-          this.tableList = res.data.researchList0
+          this.tableList = res.data.researchList
           this.applyList = res.data.applyList
         })
       },
