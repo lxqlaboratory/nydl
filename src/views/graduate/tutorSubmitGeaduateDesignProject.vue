@@ -166,9 +166,16 @@
               color="black"
               width="180"
             >
-              <template  slot-scope=" scope">
-                <el-button type="text" @click="confimStu(scope.row.stuApplyId)" :disabled="isDisable" >确认</el-button>
-                <el-button type="text" @click="refuseStu(scope.row.stuApplyId)" >拒绝</el-button>
+              <template  slot-scope=" scope1">
+                <div v-if="scope.row.isConfirm == '0'">
+                <div v-if="scope1.row.isConfirm == '0'">
+                <el-button type="text" @click="confimStu(scope1.row.stuApplyId)" :disabled="isDisable" >确认</el-button>
+                <el-button type="text" @click="refuseStu(scope1.row.stuApplyId)" >拒绝</el-button>
+                </div>
+                <div v-else>
+                  <el-button type="text" @click="concel(scope1.row.stuApplyId)" >取消</el-button>
+                </div>
+                </div>
               </template>
             </el-table-column>
           </el-table>
@@ -259,7 +266,7 @@ export default {
     confimStu(stuApplyId){
       this.isDisable = true
       tutorResearchConfirmStudentApply({ 'stuApplyId': stuApplyId , 'isConfirm': 1}).then(res => {
-           if(res.data == '确认成功'){
+           if(res.data == '操作成功'){
              this.$message({
                type: 'success',
                message: '确认成功'
@@ -269,9 +276,20 @@ export default {
            }
       })
     },
+    concel(stuApplyId){
+      tutorResearchConfirmStudentApply({ 'stuApplyId': stuApplyId , 'isConfirm': 0}).then(res => {
+        if(res.data == '操作成功'){
+          this.$message({
+            type: 'success',
+            message: '取消成功'
+          })
+          this.fetchData()
+        }
+      })
+    },
     refuseStu(stuApplyId){
       tutorResearchConfirmStudentApply({ 'stuApplyId': stuApplyId , 'isConfirm': 2}).then(res => {
-        if(res.data == '确认成功'){
+        if(res.data == '操作成功'){
           this.$message({
             type: 'success',
             message: '已拒绝该学生'
