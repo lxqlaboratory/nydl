@@ -172,7 +172,7 @@
                 <el-button type="text" @click="confimStu(scope1.row.stuApplyId)" :disabled="isDisable" >确认</el-button>
                 <el-button type="text" @click="refuseStu(scope1.row.stuApplyId)" >拒绝</el-button>
                 </div>
-                <div v-else>
+                <div v-if="scope1.row.isConfirm == '1'||scope1.row.isConfirm == '2'">
                   <el-button type="text" @click="concel(scope1.row.stuApplyId)" >取消</el-button>
                 </div>
                 </div>
