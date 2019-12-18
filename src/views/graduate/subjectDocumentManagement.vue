@@ -34,7 +34,7 @@
         color="black"
       >
         <template slot-scope="scope">
-          {{ scope.row.stuName }}
+          <el-button type="text" size="medium " @click="studetail(scope.row.stuId)">{{ scope.row.stuName }}</el-button>
         </template>
       </el-table-column>
       <el-table-column
@@ -44,7 +44,7 @@
         color="black"
       >
         <template slot-scope="scope">
-          {{ scope.row.tutorName }}
+          <el-button type="text" size="medium " @click="tutordetail(scope.row.tutorId)">{{ scope.row.tutorName }}</el-button>
         </template>
       </el-table-column>
       <el-table-column
@@ -185,6 +185,12 @@ export default {
     },
     edit(applyId) {
       this.changeScoceId = applyId
+    },
+    studetail(stuId){
+      this.$router.push({ path: '/tutor/stuInfomations', query: { 'stuId': stuId }})
+    },
+    tutordetail(personId){
+      this.$router.push({name: 'teacherInfomation', params: { personId }})
     },
     haha(applyId) {
       this.changeScoceId = ''
