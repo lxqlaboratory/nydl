@@ -12,7 +12,7 @@
       <a :href="url" :download='fileName'>点击下载您的文档:{{fileName}}</a>
       </p>
       <p class="titleStyle2" v-if="!dataShow">
-      <a :href="dataUurl" :download='dataFileName'>点击下载测试数据:{{dataFileName}}</a>
+      <a :href="dataUrl" :download='dataFileName'>点击下载测试数据:{{dataFileName}}</a>
       </p>
       <el-table
         :data="dataList"
@@ -91,6 +91,7 @@ export default {
       url: '',
       fileName:'',
       show: false,
+      dataDownloadUrl:'',
       dataUrl: '',
       dataFileName:'',
       dataShow: false,
@@ -123,6 +124,7 @@ export default {
         if(this.downloadUrl == ''){
           this.show = true
         }
+        this.dataDownloadUrl = res.data.dataDownloadUrl
         this.dataUrl = this.data + this.dataDownloadUrl
         this.dataFileName = res.data.dataFileName
         if(this.dataDownloadUrl == ''){
