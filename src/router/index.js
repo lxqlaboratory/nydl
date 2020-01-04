@@ -101,6 +101,12 @@ export const constantRoutes = [
     },
     children: [
       {
+        path: 'commTableFileDownload',
+        name: 'commTableFileDownload',
+        component: () => import('@/views/comm/commTableFileDownload.vue'),
+        meta: { title: '常用表格下载', icon: 'user' , roles: [53] }
+      },
+      {
         path: 'tutorTrainningResearch',
         name: 'tutorTrainningResearch',
         component: () => import('@/views/trainning/tutorTrainningResearch'),

@@ -9,7 +9,10 @@
     <div v-else>
     <div >
       <p class="titleStyle2" v-if="!show">
-      <a :href="url" :download='fileName'>点击下载您的文档</a>
+      <a :href="url" :download='fileName'>点击下载您的文档:{{fileName}}</a>
+      </p>
+      <p class="titleStyle2" v-if="!dataShow">
+      <a :href="dataUurl" :download='dataFileName'>点击下载测试数据:{{dataFileName}}</a>
       </p>
       <el-table
         :data="dataList"
@@ -86,7 +89,11 @@ export default {
       downloadUrl: '',
       data: '',
       url: '',
+      fileName:'',
       show: false,
+      dataUrl: '',
+      dataFileName:'',
+      dataShow: false,
       showBody: false,
       dataList: [],
       topicTitle: ''
@@ -112,9 +119,14 @@ export default {
         this.showBody = true
         this.downloadUrl = res.data.downloadUrl
         this.url = this.data + this.downloadUrl
-        this.fileName = this.data.fileName
+        this.fileName = res.data.fileName
         if(this.downloadUrl == ''){
           this.show = true
+        }
+        this.dataUrl = this.data + this.dataDownloadUrl
+        this.dataFileName = res.data.dataFileName
+        if(this.dataDownloadUrl == ''){
+          this.dataShow = true
         }
         }
         else{
