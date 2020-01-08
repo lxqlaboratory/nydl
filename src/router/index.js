@@ -104,7 +104,7 @@ export const constantRoutes = [
         path: 'commTableFileDownload',
         name: 'commTableFileDownload',
         component: () => import('@/views/comm/commTableFileDownload.vue'),
-        meta: { title: '常用表格下载', icon: 'user' , roles: [53] }
+        meta: { title: '常用表格下载', icon: 'user' , roles: [57] }
       },
       {
         path: 'tutorTrainningResearch',
@@ -296,7 +296,7 @@ export const constantRoutes = [
         path: 'commTableFileDownload',
         name: 'commTableFileDownload',
         component: () => import('@/views/comm/commTableFileDownload.vue'),
-        meta: { title: '常用表格下载', icon: 'user' , roles: [53] }
+        meta: { title: '常用表格下载', icon: 'user' , roles: [54] }
       },
       {
         path: 'studentGeaduateDesignApply',
@@ -359,7 +359,7 @@ export const constantRoutes = [
         path: 'commTableFileDownload',
         name: 'commTableFileDownload',
         component: () => import('@/views/comm/commTableFileDownload.vue'),
-        meta: { title: '常用表格下载', icon: 'user' , roles: [53] }
+        meta: { title: '常用表格下载', icon: 'user' , roles: [55] }
       },
       {
         path: 'tutorProjectInfo',
@@ -417,7 +417,7 @@ export const constantRoutes = [
         path: 'commTableFileDownload',
         name: 'commTableFileDownload',
         component: () => import('@/views/comm/commTableFileDownload.vue'),
-        meta: { title: '常用表格下载', icon: 'user' , roles: [53] }
+        meta: { title: '常用表格下载', icon: 'user' , roles: [56] }
       },
       {
         path: 'tutorChooseStu',
