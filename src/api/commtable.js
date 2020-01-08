@@ -2,11 +2,11 @@ import request from '@/utils/request'
 
 
 
-export function getNydlSystemCommTableFileList() {
+export function getNydlSystemCommTableFileList(data) {
   return request({
     url: '/comm/getNydlSystemCommTableFileList',
     method: 'POST',
-    data: {}
+    data
   })
 }
 

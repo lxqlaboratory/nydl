@@ -25,7 +25,7 @@
         color="black"
       >
         <template slot-scope="scope">
-          {{ scope.row.courserName }}
+          {{ scope.row.fileName }}
         </template>
       </el-table-column>
       <el-table-column
@@ -49,6 +49,7 @@ export default {
     return {
       readOnly: '',
       list: [],
+      attachSubType: '',
       dataList: [],
     }
   },
@@ -57,7 +58,19 @@ export default {
   },
   methods: {
     fetchData: function() {
-      getNydlSystemCommTableFileList().then(res => {
+
+      if(this.$route.path == '/trainning/commTableFileDownload'){
+        this.attachSubType = '01'
+      }else if(this.$route.path == '/graduate/commTableFileDownload'){
+        this.attachSubType = '02'
+      }else if(this.$route.path == '/masterproject/commTableFileDownload'){
+        this.attachSubType = '03'
+      }else if(this.$route.path == '/tutor/commTableFileDownload'){
+        this.attachSubType = '04'
+      }else if(this.$route.path == '/modular/commTableFileDownload'){
+        this.attachSubType = '05'
+      }
+      getNydlSystemCommTableFileList({'attachSubType': this.attachSubType}).then(res => {
         this.dataList = res.data
       })
     },

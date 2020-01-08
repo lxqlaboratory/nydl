@@ -293,6 +293,12 @@ export const constantRoutes = [
     },
     children: [
       {
+        path: 'commTableFileDownload',
+        name: 'commTableFileDownload',
+        component: () => import('@/views/comm/commTableFileDownload.vue'),
+        meta: { title: '常用表格下载', icon: 'user' , roles: [53] }
+      },
+      {
         path: 'studentGeaduateDesignApply',
         name: 'studentGeaduateDesignApply',
         component: () => import('@/views/graduate/studentGeaduateDesignApply'),
@@ -350,6 +356,12 @@ export const constantRoutes = [
     },
     children: [
       {
+        path: 'commTableFileDownload',
+        name: 'commTableFileDownload',
+        component: () => import('@/views/comm/commTableFileDownload.vue'),
+        meta: { title: '常用表格下载', icon: 'user' , roles: [53] }
+      },
+      {
         path: 'tutorProjectInfo',
         name: 'tutorProjectInfo',
         component: () => import('@/views/masterproject/tutorProjectInfo'),
@@ -401,6 +413,12 @@ export const constantRoutes = [
       roles: ['2']
     },
     children: [
+      {
+        path: 'commTableFileDownload',
+        name: 'commTableFileDownload',
+        component: () => import('@/views/comm/commTableFileDownload.vue'),
+        meta: { title: '常用表格下载', icon: 'user' , roles: [53] }
+      },
       {
         path: 'tutorChooseStu',
         name: 'tutorChooseStu',
