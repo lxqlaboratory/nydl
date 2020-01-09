@@ -47,11 +47,14 @@
             style="width: 100%">
             <el-table-column
               label="通知内容"
-              prop="noticeContent"
               fixed="left"
               align="center"
               color="black"
-            />
+            >
+            <template slot-scope="scope">
+                <p v-html='scope.row.noticeContent'></p>
+            </template>
+            </el-table-column>
           </el-table>
         </template>
       </el-table-column>

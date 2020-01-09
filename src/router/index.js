@@ -209,7 +209,7 @@ export const constantRoutes = [
         path: 'tutorViewProjectList',
         component: () => import('@/views/trainning/tutorViewProjectList'),
         name: 'tutorViewProjectList',
-        meta: { title: '老师查看创新训练项目申请情况', icon: 'form', roles: ['36'] }
+        meta: { title: '创新训练项目提交与管理', icon: 'form', roles: ['36'] }
       },
       {
         path: 'tutorViewStudentWorkLog',
@@ -457,6 +457,12 @@ export const constantRoutes = [
       roles: ['20']
     },
     children: [
+      {
+        path: 'commTableFileDownload',
+        name: 'commTableFileDownload',
+        component: () => import('@/views/comm/commTableFileDownload.vue'),
+        meta: { title: '常用表格下载', icon: 'user' , roles: [57] }
+      },
       {
         path: 'stuChooseModular',
         name: 'stuChooseModular',
