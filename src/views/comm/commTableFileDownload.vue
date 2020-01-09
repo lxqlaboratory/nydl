@@ -34,7 +34,13 @@
         color="black"
       >
         <template slot-scope="scope">
-          <el-button type="text" @click="download(scope.row.courseId)">下载</el-button>
+            <button
+              style="height: 30px; background-color:#1F2D3D;
+               color: #ffffff;  border: 0px;  margin-right:0.1cm; "
+              v-if="scope.row.attachId"
+            >
+              <a :href="data+'/func/webNydl/downloadAttachData?attachId='+scope.row.attachId" :download="scope.row.fileName">下载</a>
+            </button>
         </template>
       </el-table-column>
     </el-table>
@@ -58,7 +64,7 @@ export default {
   },
   methods: {
     fetchData: function() {
-
+      this.data = this.GLOBAL.servicePort
       if(this.$route.path == '/trainning/commTableFileDownload'){
         this.attachSubType = '01'
       }else if(this.$route.path == '/graduate/commTableFileDownload'){
@@ -74,8 +80,8 @@ export default {
         this.dataList = res.data
       })
     },
-    download(courseId) {
-      this.$router.push({ path: 'courseDetail', query: { courseId }})
+    download(attachId) {
+      this.$router.push({ path: 'courseDetail', query: { attachId }})
     }
   }
 }
