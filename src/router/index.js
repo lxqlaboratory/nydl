@@ -104,7 +104,7 @@ export const constantRoutes = [
         path: 'commTableFileDownload',
         name: 'commTableFileDownload',
         component: () => import('@/views/comm/commTableFileDownload.vue'),
-        meta: { title: '常用表格下载', icon: 'user' , roles: [57] }
+        meta: { title: '常用表格下载', icon: 'user' , roles: [53] }
       },
       {
         path: 'tutorTrainningResearch',
