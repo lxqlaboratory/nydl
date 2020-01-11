@@ -149,13 +149,13 @@ export const constantRoutes = [
         path: 'studentViewProjectTrainningAppState',
         name: 'studentViewProjectTrainningAppState',
         component: () => import('@/views/trainning/studentViewProjectTrainningAppState'),
-        meta: { title: '查看创新训练项目申请状态', icon: 'form' , roles: ['23'] }
+        meta: { title: '创新训练项目申请', icon: 'form' , roles: ['23'] }
       },
       {
         path: 'studentViewProjectTeamInfo',
         name: 'studentViewProjectTeamInfo',
         component: () => import('@/views/trainning/studentViewProjectTeamInfo'),
-        meta: { title: '查看团队基本情况', icon: 'form' , roles: ['24'] }
+        meta: { title: '团队基本情况', icon: 'form' , roles: ['24'] }
       },
       {
         path: 'studentWorkLogSubmit',
