@@ -146,3 +146,11 @@ export function teacherDownloadProjectAttachFileInit() {
     data: {}
   })
 }
+
+export function practiceEnergyDetail(data) {
+  return request({
+    url: '/nydlWeb/practiceEnergyDetail',
+    method: 'POST',
+    data
+  })
+}

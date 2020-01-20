@@ -140,10 +140,16 @@ export const constantRoutes = [
         meta: { title: '查看创新项目课题', icon: 'form', roles: [] }
       },
       {
-        path: 'tutorTrainningResearch',
-        name: 'tutorTrainningResearch',
-        component: () => import('@/views/trainning/tutorTrainningResearch'),
+        path: 'studentApplyPracticeEnergy',
+        name: 'studentApplyPracticeEnergy',
+        component: () => import('@/views/trainning/studentApplyPracticeEnergy'),
         meta: { title: '申请观摩项目', icon: 'form' , roles: ['22'] }
+      },
+      {
+        path: 'practiceEnergyDetail',
+        name: 'practiceEnergyDetail',
+        component: () => import('@/views/trainning/practiceEnergyDetail'),
+        meta: { title: '观摩项目详细', icon: 'form' , roles: [] }
       },
       {
         path: 'studentViewProjectTrainningAppState',

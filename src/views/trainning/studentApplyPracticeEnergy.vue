@@ -25,18 +25,24 @@
       </el-table-column>
       <el-table-column
         label="活动名称"
-        prop="projectName"
         fixed="left"
         align="center"
         color="black"
-      />
+      >
+        <template slot-scope="scope">
+          <el-button type="text" size="medium " @click="actionDetail(scope.row.projectId)">{{ scope.row.projectName}}</el-button>
+        </template>
+      </el-table-column>
       <el-table-column
         label="负责人"
-        prop="tutorName"
         fixed="left"
         align="center"
         color="black"
-      />
+      >
+        <template slot-scope="scope">
+          <el-button type="text" size="medium " @click="tutorDetail(scope.row.personId)">{{ scope.row.tutorName}}</el-button>
+        </template>
+      </el-table-column>
       <el-table-column type="expand">
         <template scope="scope">
           <el-table
@@ -148,8 +154,14 @@
             type: 'success'
           })
         })
+      },
+      tutorDetail(personId){
+        this.$router.push({name: 'teacherInfomation', params: { personId}})
+      },
+      actionDetail(projectId){
+        this.$router.push({name: 'practiceEnergyDetail', params: { projectId }})
       }
-    }
+    },
   }
 </script>
 
