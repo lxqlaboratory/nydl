@@ -43,6 +43,17 @@
           <el-button type="text" size="medium " @click="tutorDetail(scope.row.personId)">{{ scope.row.tutorName}}</el-button>
         </template>
       </el-table-column>
+      <el-table-column
+        label="申请状态"
+        fixed="left"
+        align="center"
+        color="black"
+      >
+        <template slot-scope="scope">
+          <span v-if="scope.row.isApply == true" >已申请</span>
+          <span v-if="scope.row.isApply != true" >未申请</span>
+        </template>
+      </el-table-column>
       <el-table-column type="expand">
         <template scope="scope">
           <el-table

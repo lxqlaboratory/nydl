@@ -126,9 +126,10 @@
           align="center"
           color="black"
         >
-          <template slot-scope="scope">
-            {{ scope.row.createrName }}
-          </template>
+       <template slot-scope="scope">
+          <el-button v-if="scope.row.tutorId != 0" type="text" size="medium " @click="tutorDetail(scope.row.tutorId)">{{scope.row.createrName}}</el-button>
+          <span v-if="scope.row.tutorId == 0" >{{ scope.row.createrName}}</span>
+        </template>
         </el-table-column>
         <el-table-column
           label="课题地点"
@@ -253,7 +254,10 @@ export default {
     },
     addProject(){
       this.$router.push({path: 'tutorTrainningReaserchDetail',query: { 'isTutor': '0' }})
-    }
+    },
+    tutorDetail(personId){
+      this.$router.push({name: 'teacherInfomation', params: { personId}})
+    },
   }
 
 }
