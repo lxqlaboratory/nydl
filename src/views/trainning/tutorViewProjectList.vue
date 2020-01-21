@@ -188,9 +188,9 @@
               width="180"
             >
               <template  slot-scope=" scope2">
-                <el-button type="text" @click="confimStu(scope2.row.stuApplyId)" v-if="!scope2.row.isConform" >确认</el-button>
-                <el-button type="text" @click="refuseStu(scope2.row.stuApplyId)" v-if="!scope2.row.isConform" >拒绝</el-button>
-                <el-button type="text" @click="concelStu(scope2.row.stuApplyId)" v-if="scope2.row.isConform" >取消</el-button>
+                <el-button type="text" @click="confimStu(scope2.row.stuApplyId)" v-if="scope2.row.canOpear && !scope2.row.isConform" >确认</el-button>
+                <el-button type="text" @click="refuseStu(scope2.row.stuApplyId)" v-if="scope2.row.canOpear && !scope2.row.isConform" >拒绝</el-button>
+                <el-button type="text" @click="concelStu(scope2.row.stuApplyId)" v-if="scope2.row.canOpear && scope2.row.isConform" >取消</el-button>
               </template>
             </el-table-column>
           </el-table>

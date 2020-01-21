@@ -40,7 +40,8 @@
           color="black"
         >
           <template slot-scope="scope">
-            {{ scope.row.createrName }}
+            <el-button v-if="scope.row.tutorId != 0" type="text" size="medium " @click="tutorDetail(scope.row.tutorId)">{{scope.row.createrName}}</el-button>
+            <span v-if="scope.row.tutorId == 0" >{{ scope.row.createrName}}</span>
           </template>
         </el-table-column>
         <el-table-column
