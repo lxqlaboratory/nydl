@@ -66,6 +66,13 @@ export function studentApplyLabUndergradTeacherResearchApplyInfo(data) {
     data
   })
 }
+export function studentDeleteLabUndergradTeacherResearchApplyInfo(data) {
+  return request({
+    url: '/nydlWeb/studentDeleteLabUndergradTeacherResearchApplyInfo',
+    method: 'POST',
+    data
+  })
+}
 
 
 export function updateLabUndergradStuResearchApplyInfoConfirmState(data) {

@@ -81,6 +81,16 @@
             {{ scope.row.confirmState }}
           </template>
         </el-table-column>
+        <el-table-column
+          label="操作"
+          fixed="right"
+          align="center"
+          color="black"
+        >
+          <template slot-scope="scope">
+            <el-button v-if="!isConfirm" type="text"   @click="deleteBtn(scope.row.applyId)">删除</el-button>
+          </template>
+        </el-table-column>
       </el-table>
     </div>
 
@@ -204,6 +214,7 @@
 <script>
 import { getLabUndergradTeacherResearchApplyInfoListOfStudent } from '@/api/labTrainning'
 import { studentApplyLabUndergradTeacherResearchApplyInfo } from '@/api/labTrainning'
+import { studentDeleteLabUndergradTeacherResearchApplyInfo } from '@/api/labTrainning'
 export default {
   name: 'StudentViewProjectTrainningAppState',
   data() {
@@ -248,6 +259,22 @@ export default {
           this.$message({
             type: 'error',
             message: '申请失败'
+          })
+        }
+      })
+    },
+    deleteBtn(applyId){
+      studentDeleteLabUndergradTeacherResearchApplyInfo({'applyId': applyId}).then(res=>{
+        if (res.data == 'success') {
+          this.$message({
+            type: 'success',
+            message: '删除成功'
+          })
+          this.fetchData()
+        } else {
+          this.$message({
+            type: 'error',
+            message: '删除成功'
           })
         }
       })
