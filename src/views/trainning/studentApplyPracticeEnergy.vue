@@ -111,10 +111,10 @@
             >
               <template slot-scope="scope">
                 <template v-if="scope.row.attendanceState === '未申请该活动'" >
-                <el-button class="infoBtn"  @click="applySubmit(scope.row.timesId )">申请</el-button>
+                <el-button v-if="scope.row.countApply < scope.row.maxNum" class="infoBtn"  @click="applySubmit(scope.row.timesId )">申请</el-button>
                 </template>
                 <template v-else >
-                  <el-button class="infoBtn"  @click="cancleSubmit(scope.row.timesId)">退选</el-button>
+                  <el-button v-if="scope.row.isLock != true " class="infoBtn"  @click="cancleSubmit(scope.row.timesId)">退选</el-button>
                 </template>
               </template>
             </el-table-column>
