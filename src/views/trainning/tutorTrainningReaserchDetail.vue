@@ -53,66 +53,32 @@
 
       <tr>
         <td colspan="1">项目摘要</td>
-        <td colspan="6"><el-input
-          v-model="research.topicContent"
-          class="inputSpan"
-          type="textarea"
-          minlength="200"
-          rows="6"
-          show-word-limit
-        />
+        <td colspan="6">
+          <tinymce v-model="research.topicContent" :height="300" />
         </td>
       </tr>
       <tr>
         <td colspan="1">研究内容</td>
-        <td colspan="6"><el-input
-          v-model="research.topicTarget"
-          class="inputSpan"
-          type="textarea"
-          placeholder="（填写主要内容）"
-          maxlength="300"
-          rows="4"
-          show-word-limit
-        />
+        <td colspan="6">
+          <tinymce v-model="research.topicTarget" :height="300" />
         </td>
       </tr>
       <tr>
         <td colspan="1">预期成果</td>
-        <td colspan="6"><el-input
-          v-model="research.topicSpecial"
-          class="inputSpan"
-          type="textarea"
-          placeholder="（理论与实践意义，预见其成果应用后的影响与作用，研究成果的表现形式）"
-          maxlength="300"
-          rows="4"
-          show-word-limit
-        />
+        <td colspan="6">
+          <tinymce v-model="research.topicSpecial" :height="300" />
         </td>
       </tr>
       <tr>
         <td colspan="1">拟利用资源</td>
-        <td colspan="6"><el-input
-          v-model="research.resultType"
-          class="inputSpan"
-          type="textarea"
-          placeholder="实验室、研究所、大型仪器设备、资料等）"
-          maxlength="300"
-          rows="4"
-          show-word-limit
-        />
+        <td colspan="6">
+           <tinymce v-model="research.resultType" :height="300" />
         </td>
       </tr>
       <tr>
         <td colspan="1">目前进展情况</td>
-        <td colspan="6"><el-input
-          v-model="research.resultValue"
-          class="inputSpan"
-          type="textarea"
-          placeholder="(学生添加课题时，需要对目前情况进行说明，教师可以不填写)"
-          maxlength="300"
-          rows="4"
-          show-word-limit
-        />
+        <td colspan="6">
+           <tinymce v-model="research.resultValue" :height="300" />
         </td>
       </tr>
     </table>
@@ -126,8 +92,10 @@
 <script>
 import { getLabUndergradTeacherResearchApplyInfo } from '@/api/labTrainning'
 import { updateLabUndergradTeacherResearchApplyInfo } from '@/api/labTrainning'
+import Tinymce from '@/components/Tinymce'
 export default {
   name: 'TutorTrainningReaserchDetail',
+  components: { Tinymce },
   data() {
     return {
       research: {
