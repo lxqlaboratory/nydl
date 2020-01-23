@@ -6,79 +6,60 @@
       </tr>
       <tr>
         <td colspan="1" width="200">课题名称</td>
-        <td colspan="6"><el-input v-model="research.topicTitle" size="mini" /></td>
+        <td colspan="6">{{research.topicTitle}}</td>
       </tr>
       <tr>
         <td colspan="1">设计地点</td>
-        <td colspan="2"><el-input v-model="research.topicPlace" size="mini" /></td>
+        <td colspan="2">{{research.topicPlace}} /></td>
         <td colspan="1">导师姓名</td>
-        <td colspan="2">  <el-select v-model="research.tutorId" placeholder="请选择导师" size="mini">
-          <el-option
-            v-for="item in tutorList"
-            :key="item.tutorId"
-            :label="item.tutorName"
-            :value="item.tutorId">
-          </el-option>
-        </el-select></td>
+        <td colspan="2"> {{research.tutorName}}</td>
       </tr>
       <tr>
         <td colspan="1">所需人数</td>
-        <td colspan="2"><el-input v-model="research.countOfNeed" size="mini" placeholder="请输入数字" /></td>
+        <td colspan="2">{{research.countOfNeed}} </td>
         <td colspan="1">最大需要人数</td>
-        <td colspan="2"><el-input v-model="research.maxNeed" size="mini" placeholder="请输入数字" /></td>
+        <td colspan="2">{{research.maxNeed}} </td>
       </tr>
 
       <tr>
         <td colspan="1">项目开始时间</td>
-        <td colspan="2">
-          <el-date-picker
-            size="mini"
-            type="date"
-            v-model="research.startDate"
-            value-format="yyyy-MM-dd"
-            placeholder="选择日期时间">
-          </el-date-picker>
+        <td colspan="2"> 
+          {{research.startDate}} 
         </td>
         <td colspan="1">项目结束时间</td>
         <td colspan="2">
-          <el-date-picker
-            size="mini"
-            type="date"
-            v-model="research.endDate"
-            value-format="yyyy-MM-dd"
-            placeholder="选择日期时间">
-          </el-date-picker>
+          {{research.endDate}}
         </td>
       </tr>
 
-      <tr>
+      <tr height="100">
         <td colspan="1">项目摘要</td>
         <td colspan="6">
-          <tinymce v-model="research.topicContent" :height="300" />
+                <p v-html='research.topicContent'></p>
         </td>
       </tr>
-      <tr>
+      <tr height="100">
         <td colspan="1">研究内容</td>
         <td colspan="6">
-          <tinymce v-model="research.topicTarget" :height="300" />
+                <p v-html='research.topicTarget'></p>
         </td>
       </tr>
-      <tr>
+      <tr height="100" >
         <td colspan="1">预期成果</td>
         <td colspan="6">
-          <tinymce v-model="research.topicSpecial" :height="300" />
+                <p v-html='research.noticeContent'></p>
         </td>
       </tr>
-      <tr>
+      <tr height="100" >
         <td colspan="1">拟利用资源</td>
         <td colspan="6">
-          <tinymce v-model="research.resultType" :height="300" />
+                <p v-html='research.resultType'></p>
         </td>
       </tr>
-      <tr>
+      <tr height="100" >
         <td colspan="1">目前进展情况</td>
         <td colspan="6">
-          <tinymce v-model="research.resultValue" :height="300" />
+                <p v-html='research.resultValue'></p>
         </td>
       </tr>
     </table>
