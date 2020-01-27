@@ -164,16 +164,16 @@ export const constantRoutes = [
         meta: { title: '团队基本情况', icon: 'form' , roles: ['24'] }
       },
       {
-        path: 'studentWorkLogSubmit',
-        name: 'studentWorkLogSubmit',
-        component: () => import('@/views/trainning/studentWorkLogSubmit'),
+        path: 'fillLabProjectDailyRecord',
+        name: 'fillLabProjectDailyRecord',
+        component: () => import('@/views/trainning/fillLabProjectDailyRecord'),
         meta: { title: '填写创新训练项目日志', icon: 'form' , roles: ['25'] }
       },
       {
-        path: 'studentApplyProjectResoure',
-        name: 'studentApplyProjectResoure',
-        component: () => import('@/views/trainning/studentApplyProjectResoure'),
-        meta: { title: '学生申请观摩项目资源', icon: 'form' , roles: ['26'] }
+        path: 'trainningProjectResoureDownload',
+        name: 'trainningProjectResoureDownload',
+        component: () => import('@/views/trainning/trainningProjectResoureDownload'),
+        meta: { title: '创新训练项目资源下载', icon: 'form' , roles: ['26'] }
       },
       {
         path: 'studentProjectTrainningScoreView',
@@ -218,9 +218,9 @@ export const constantRoutes = [
         meta: { title: '创新训练项目提交与管理', icon: 'form', roles: ['36'] }
       },
       {
-        path: 'tutorViewStudentWorkLog',
-        component: () => import('@/views/trainning/tutorViewStudentWorkLog'),
-        name: 'tutorViewStudentWorkLog',
+        path: 'tutorViewLabProjectDailyRecord',
+        component: () => import('@/views/trainning/tutorViewLabProjectDailyRecord'),
+        name: 'tutorViewLabProjectDailyRecord',
         meta: { title: '查看学生工作日志', icon: 'form', roles: ['37'] }
       },
       {

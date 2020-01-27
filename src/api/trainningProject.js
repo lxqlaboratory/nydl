@@ -154,3 +154,27 @@ export function practiceEnergyDetail(data) {
     data
   })
 }
+
+export function fillLabProjectDailyRecordInit() {
+  return request({
+    url: '/nydlWeb/fillLabProjectDailyRecordInit',
+    method: 'POST',
+    data: {}
+  })
+}
+
+export function fillLabProjectDailyRecordAdd(data) {
+  return request({
+    url: '/nydlWeb/fillLabProjectDailyRecordAdd',
+    method: 'POST',
+    data
+  })
+}
+
+export function fillLabProjectDailyRecordDelete(data) {
+  return request({
+    url: '/nydlWeb/fillLabProjectDailyRecordDelete',
+    method: 'POST',
+    data
+  })
+}
