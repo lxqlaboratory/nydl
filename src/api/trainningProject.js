@@ -178,3 +178,11 @@ export function fillLabProjectDailyRecordDelete(data) {
     data
   })
 }
+
+export function tutorViewLabProjectDailyRecord() {
+  return request({
+    url: '/nydlWeb/tutorViewLabProjectDailyRecord',
+    method: 'POST',
+    data: {}
+  })
+}
