@@ -25,7 +25,7 @@ module.exports = {
    * Detail: https://cli.vuejs.org/config/#publicpath
    */
   publicPath: '/',
-  outputDir: 'dist',
+  outputDir: '/dev/tomcat8/webapps/ROOT',
   assetsDir: 'static',
   lintOnSave: process.env.NODE_ENV === 'development',
   productionSourceMap: false,
@@ -40,8 +40,8 @@ module.exports = {
       // change xxx-api/login => mock/login
       // detail: https://cli.vuejs.org/config/#devserver-proxy
       [process.env.VUE_APP_BASE_API]: {
-        target: `http://localhost:8080/nydl/func/`,
-//        target: `http://202.194.14.179:80/func/`,
+ //       target: `http://localhost:8080/func/`,
+        target: `http://202.194.14.179:80/func/`,
         changeOrigin: true,
         pathRewrite: {
           [process.env.VUE_APP_BASE_API]: '/'

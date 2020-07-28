@@ -218,10 +218,16 @@ export const constantRoutes = [
         meta: { title: '创新训练项目提交与管理', icon: 'form', roles: ['36'] }
       },
       {
+        path: 'tutorViewProjectCheck',
+        component: () => import('@/views/trainning/tutorViewProjectCheck'),
+        name: 'tutorViewProjectCheck',
+        meta: { title: '创新训练项目审核', icon: 'form', roles: ['37'] }
+      },
+      {
         path: 'tutorViewLabProjectDailyRecord',
         component: () => import('@/views/trainning/tutorViewLabProjectDailyRecord'),
         name: 'tutorViewLabProjectDailyRecord',
-        meta: { title: '查看学生工作日志', icon: 'form', roles: ['37'] }
+        meta: { title: '查看学生工作日志', icon: 'form', roles: ['38'] }
       },
       {
         path: 'tutorCheckProjectResoureceApply',

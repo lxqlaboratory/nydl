@@ -1,16 +1,5 @@
 <template>
   <div class="app-container">
-    <div class="sousuo">
-      <el-select v-model="year" placeholder="请输入年份">
-        <el-option
-          v-for="item in yearList"
-          :key="item.value"
-          :label="item.label"
-          :value="item.value"
-        />
-      </el-select>
-      <el-button size="medium" class="submitBtn" @click="searchByYear">搜索</el-button>
-    </div>
     <el-table
       :data="applyList"
       border
@@ -120,15 +109,9 @@
         width="150"
       >
         <template slot-scope=" scope">
-          <span v-if="hideAdd">
-            <el-button type="text" @click="modifyProject(scope.row.applyId)">修改</el-button>
-            <el-button v-if="!scope.row.applyCount" type="danger" size="mini" @click="deleteProject(scope.row.applyId)">删除</el-button>
-          </span>
           <el-button v-if="chakan" type="text" @click="check(scope.row.applyId)">查看</el-button>
         </template>
       </el-table-column>
-
-
       <el-table-column
         label="申请列表"
         align="center"
@@ -180,14 +163,23 @@
                 {{ getLevel(scope2.row.isConform) }}
               </template>
             </el-table-column>
+
+            <el-table-column
+              label="操作"
+              align="center"
+              color="black"
+              width="180"
+            >
+              <template  slot-scope=" scope2">
+                <el-button type="text" @click="confimStu(scope2.row.stuApplyId)" v-if="scope2.row.canOpear && !scope2.row.isConform" >确认</el-button>
+                <el-button type="text" @click="refuseStu(scope2.row.stuApplyId)" v-if="scope2.row.canOpear && !scope2.row.isConform" >拒绝</el-button>
+                <el-button type="text" @click="concelStu(scope2.row.stuApplyId)" v-if="scope2.row.canOpear && scope2.row.isConform" >取消</el-button>
+              </template>
+            </el-table-column>
           </el-table>
         </template>
       </el-table-column>
     </el-table>
-
-    <div class="addBtn">
-      <el-button v-if="tianjiaketi" size="medium" class="submitBtn" @click="addProject()">添加课题</el-button>
-    </div>
   </div>
 </template>
 
@@ -252,6 +244,21 @@ export default {
             message: '删除失败'
           })
         }
+      })
+    },
+    confimStu(stuApplyId){
+      updateLabUndergradStuResearchApplyInfoConfirmState({'stuApplyId': stuApplyId,'isConfirm': '1'}).then(res=>{
+        this.fetchData()
+      })
+    },
+    concelStu(stuApplyId){
+      updateLabUndergradStuResearchApplyInfoConfirmState({'stuApplyId': stuApplyId,'isConfirm': '0'}).then(res=>{
+        this.fetchData()
+      })
+    },
+    refuseStu(stuApplyId){
+      updateLabUndergradStuResearchApplyInfoConfirmState({'stuApplyId': stuApplyId,'isConfirm': '2'}).then(res=>{
+        this.fetchData()
       })
     },
     searchByYear() {

@@ -45,7 +45,7 @@
           color="black"
         >
           <template slot-scope="scope">
-            {{ scope.row.perNum }}
+            <el-button type="text" @click="deTail(scope.row.personId)" >{{ scope.row.perNum }}</el-button>
           </template>
         </el-table-column>
         <el-table-column
@@ -104,7 +104,7 @@
           color="black"
         >
           <template slot-scope="scope">
-            {{ scope.row.perNum }}
+            <el-button type="text" @click="deTail(scope.row.personId)" >{{ scope.row.perNum }}</el-button>
           </template>
         </el-table-column>
         <el-table-column
@@ -180,7 +180,11 @@
           }
 
         })
+      },
+      deTail(stuId){
+        this.$router.push({ path: '/tutor/stuInfomations', query: { 'stuId': stuId }})
       }
+ 
 
     }
   }
