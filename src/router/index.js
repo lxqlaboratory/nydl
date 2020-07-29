@@ -230,12 +230,6 @@ export const constantRoutes = [
         meta: { title: '查看学生工作日志', icon: 'form', roles: ['38'] }
       },
       {
-        path: 'tutorCheckProjectResoureceApply',
-        component: () => import('@/views/trainning/tutorCheckProjectResoureceApply'),
-        name: 'tutorCheckProjectResoureceApply',
-        meta: { title: '审批学生观摩项目资源申请', icon: 'form', roles: ['38'] }
-      },
-      {
         path: 'tutorPracticeEnergyCheck',
         component: () => import('@/views/trainning/tutorPracticeEnergyCheck'),
         name: 'tutorPracticeEnergyCheck',
